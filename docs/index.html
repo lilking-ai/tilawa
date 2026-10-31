@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tilawa — Quran Reader & Reciters</title>
+<meta name="theme-color" content="#0f5c4a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:wght@400;700&family=Inter:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Tilawa">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+</head>
+<body>
+<div class="app">
+  <header>
+    <button class="iconbtn mobile-only" id="openLeft" aria-label="Surahs"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></button>
+    <div class="brand">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.6 4.2L19 4.9l-1.3 4.5L22 12l-4.3 2.6 1.3 4.5-4.4-1.3L12 22l-2.6-4.2L5 19.1l1.3-4.5L2 12l4.3-2.6L5 4.9l4.4 1.3z"/><circle cx="12" cy="12" r="3.2"/></svg>
+      <span>Tilawa</span><span class="sub">تلاوة</span>
+    </div>
+    <button class="pill" id="langBtn" aria-label="Language">EN · ع</button>
+    <button class="iconbtn" id="themeBtn" aria-label="Theme"></button>
+    <button class="pill acct" id="acctBtn" hidden></button>
+    <button class="iconbtn" id="settingsBtn" aria-label="Settings"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg></button>
+    <button class="iconbtn mobile-only" id="openRight" aria-label="Reciters"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 17v5"/></svg></button>
+  </header>
+
+  <aside id="left">
+    <div class="panel-head">
+      <div class="tabs"><button id="tabSurahs" class="on" data-i18n="surahs"></button><button id="tabBm"><span data-i18n="bookmarks"></span> <span id="bmCount"></span></button></div>
+      <div class="search" id="surahSearchWrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="surahSearch" type="search" autocomplete="off"></div>
+    </div>
+    <div class="list" id="surahList"></div>
+    <div class="list" id="bmList" hidden></div>
+  </aside>
+
+  <main id="main"><div class="reader" id="reader"></div></main>
+
+  <aside id="right">
+    <div class="panel-head">
+      <div class="panel-title"><span data-i18n="reciters"></span><span class="count" id="recCount"></span></div>
+      <div class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="recSearch" type="search" autocomplete="off"></div>
+      <div class="tabs"><button id="tabAll" class="on" data-i18n="all"></button><button id="tabFav" data-i18n="favorites"></button></div>
+    </div>
+    <div class="list" id="recList"></div>
+  </aside>
+</div>
+<div class="scrim" id="scrim"></div>
+
+<div class="pop" id="acctPop">
+  <div class="acct-head"><img id="acctImg" alt="" referrerpolicy="no-referrer"><div><b id="acctName"></b><div class="muted" id="acctEmail"></div></div></div>
+  <div class="sync-note"><span class="dot" id="syncDot"></span><span id="syncText"></span></div>
+  <button class="btn ghost wide" id="signOutBtn" data-i18n="signOut"></button>
+</div>
+
+<div class="pop" id="settings">
+  <label data-i18n="translation"></label>
+  <select id="trSel"></select>
+  <label data-i18n="layout"></label>
+  <div class="row"><button id="layCards" data-i18n="withTr"></button><button id="layFlow" data-i18n="mushaf"></button></div>
+  <label data-i18n="fontSize"></label>
+  <div class="row"><button id="fsDown">A−</button><button id="fsReset">A</button><button id="fsUp">A+</button></div>
+  <label data-i18n="verseReciter"></label>
+  <select id="verseSel"></select>
+  <label data-i18n="follow"></label>
+  <div class="row"><button id="followOn" data-i18n="on"></button><button id="followOff" data-i18n="off"></button></div>
+</div>
+
+<div class="player" id="player">
+  <div class="np">
+    <div class="disc" id="npDisc">۱</div>
+    <div class="t"><b id="npTitle"></b><span class="muted" id="npSub"></span></div>
+  </div>
+  <div class="ctrl">
+    <div class="btns">
+      <button class="iconbtn" id="prevBtn" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
+      <button class="play" id="playBtn" aria-label="Play"></button>
+      <button class="iconbtn" id="nextBtn" aria-label="Next"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button>
+    </div>
+    <div class="seek"><span id="tCur">0:00</span><input type="range" id="seek" min="0" max="1000" value="0" aria-label="Seek"><span id="tDur">0:00</span></div>
+  </div>
+  <div class="extra">
+    <button class="tog" id="speedBtn" title="Speed">1×</button>
+    <button class="tog" id="repeatBtn" title="Repeat"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a3 3 0 013-3h15M7 22l-4-4 4-4"/><path d="M21 13v2a3 3 0 01-3 3H3"/></svg></button>
+    <button class="tog" id="autoBtn" title="Autoplay next"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4l10 8-10 8zM19 5v14"/></svg></button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+<script type="module" src="sync.js"></script>
+<script>
+if("serviceWorker" in navigator && location.protocol==="https:"){
+  window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+}
+</script>
+</body>
+</html>
