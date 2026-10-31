@@ -1,61 +1,73 @@
-# Tilawa — Quran Reader & Reciters
+# Tilawa — Quran Reader, Reciters & AI Sheikh
 
-Read the Quran with translation, listen to hundreds of reciters (from mp3quran.net),
-bookmark verses, and sync your favorites and settings across devices with Google sign-in.
-Installs on iPhone and Android as a home-screen app. Free to host.
+Read the Quran in **47 languages** (Somali first), listen to **244 reciters**, bookmark verses,
+sign in with a **one-tap email link** from a no-reply address, get a **welcome email**, and learn
+with a gentle **AI Sheikh**. Installs on iPhone and Android as a home-screen app. Free to run.
 
 **Live app:** https://lilking-ai.github.io/tilawa/
 
 ## Install on iPhone (free)
+Open the link in **Safari** → **Share** → **Add to Home Screen**. On Android: Chrome → menu → **Install app**.
 
-1. Open https://lilking-ai.github.io/tilawa/ in **Safari**.
-2. Tap **Share** → **Add to Home Screen** → Add.
+## What works right away
+Reading, translations in 47 languages, all reciters, verse-by-verse audio, bookmarks, the long welcome page
+and the language chooser. Sign-in, sync, the welcome email and the AI Sheikh switch on after the setup below.
 
-It opens full-screen with its own icon and shows play/pause/next on the lock screen
-(on recent iOS versions). Surahs you've opened can be read offline.
+## Switch on sign-in, sync and the AI Sheikh (Firebase, free Spark plan, ~15 minutes)
+You can do all of this from a phone browser. Edit files right on GitHub (open the file → pencil icon → *Commit changes*).
 
-On Android: open the link in Chrome → menu → **Install app**.
-
-## What's inside
-
-```
-firebase.json            Firebase Hosting + Firestore config (serves the docs/ folder)
-.firebaserc              Your Firebase project ID goes here
-firestore.rules          Security: each user can only read/write their own data
-docs/                    The app (GitHub Pages serves this folder too)
-  index.html, styles.css, app.js
-  sync.js                Google sign-in + Firestore sync
-  firebase-config.js     ← paste your Firebase web config here
-  sw.js, manifest.webmanifest, icons/   Installable app + offline reading
-```
-
-The app runs without a Firebase config — just without sign-in and sync.
-
-## Turn on sign-in & sync (Firebase, free Spark plan)
-
-1. **Create a project** at https://console.firebase.google.com → *Add project*.
-2. **Add a web app**: Project overview → the `</>` icon → register an app (name: Tilawa).
-   Copy the `firebaseConfig` values into `docs/firebase-config.js` (you can edit it right on GitHub).
-3. **Turn on Google sign-in**: Build → Authentication → Get started → Sign-in method → Google → Enable.
+1. **Create a project** at https://console.firebase.google.com → *Add project* (Analytics optional).
+2. **Add a web app**: Project overview → `</>` → name it Tilawa → copy the `firebaseConfig` values into
+   `docs/firebase-config.js` (section 1).
+3. **Email-link sign-in**: Build → Authentication → Get started → Sign-in method →
+   enable **Email/Password**, then also enable **Email link (passwordless sign-in)** → Save.
+   (Optional: enable **Google** too.)
 4. **Allow this site**: Authentication → Settings → Authorized domains → Add `lilking-ai.github.io`.
-5. **Create the database**: Build → Firestore Database → Create database → *Production mode*.
-6. **Publish the security rules**: Firestore → Rules → paste the contents of `firestore.rules` → Publish.
+5. **Sender name**: Authentication → Templates → edit the sender name to `Tilawa`. Sign-in emails come from
+   `noreply@YOUR_PROJECT_ID.firebaseapp.com` — a no-reply address.
+6. **Database**: Build → Firestore Database → Create database → *Production mode* → then the **Rules** tab →
+   paste everything from `firestore.rules` → **Publish**.
+7. **AI Sheikh**: Build → **AI Logic** → Get started → choose **Gemini Developer API** (free, no card needed).
+   Recommended: also turn on **App Check** so others can't use your free AI quota.
 
-That's it — the GitHub Pages site picks up the config automatically.
+## Lovely welcome email (free, optional)
+1. Create a free account at https://www.emailjs.com (200 emails/month free).
+2. **Email Services** → Add service → connect a Gmail you make for the app (e.g. `tilawa.noreply@gmail.com`).
+3. **Email Templates** → Create → set **Subject** `{{subject}}`, **To Email** `{{to_email}}`, **From Name** `Tilawa` →
+   in Content choose the code editor and paste `emails/welcome.html` → Save.
+4. Put the **Service ID**, **Template ID** and **Public Key** (Account → General) into `docs/firebase-config.js` (section 2).
+5. Account → Security: allow only `lilking-ai.github.io`.
 
-### Optional: host on Firebase instead (`*.web.app`)
+The email is sent once, after a new person signs up and picks their language, written in that language.
 
-```bash
-npm install -g firebase-tools
-firebase login
-firebase use --add        # pick your project
-firebase deploy           # publishes docs/ and firestore.rules
+## How sign-in works
+1. Someone enters their email on the welcome page → Firebase emails them a sign-in link from the no-reply address.
+2. Tapping the link signs them in. If it opens in a different browser than the app (common on iPhone with the
+   home-screen app), they can long-press the link, copy it, and paste it into the app's “Paste the sign-in link” box.
+3. They choose their language (Somali first, then English, Arabic and 44 more), and the welcome email goes out.
+
+## Files
+```
+docs/                 The app (GitHub Pages serves this folder)
+  index.html, styles.css, extras.css, app.js
+  i18n.js             Languages + Somali/English/Arabic text (hand-written)
+  i18n-extra.js       44 more languages (machine-translated - corrections welcome)
+  onboarding.js       Long welcome/sign-up page + language chooser
+  sync.js             Email-link & Google sign-in, sync, welcome email
+  sheikh.js           AI Sheikh (Firebase AI Logic / Gemini)
+  fb.js               Shared Firebase setup
+  firebase-config.js  ← your keys go here
+  sw.js, manifest.webmanifest, icons/
+emails/welcome.html   Welcome email template for EmailJS
+firestore.rules       Database security rules
+firebase.json         Optional: deploy to Firebase Hosting instead (`firebase deploy`)
 ```
 
-When you change files, bump `VERSION` in `docs/sw.js` so installed copies refresh.
+## About the AI Sheikh
+It is an AI, not a real scholar, and can make mistakes — the app says so clearly. It is instructed to be gentle,
+cite Quran references, admit uncertainty, avoid sectarian disputes, and send people to a qualified scholar for
+personal rulings. Each person can ask up to 40 questions a day (change `dailyLimit` in `firebase-config.js`).
 
 ## Data sources
-
-- Quran text & translations: api.alquran.cloud (fallback: api.quran.com)
-- Reciters & full-surah audio: mp3quran.net
-- Verse-by-verse audio: cdn.islamic.network (via alquran.cloud)
+Quran text & translations: api.alquran.cloud (fallback api.quran.com) · Reciters: mp3quran.net ·
+Verse audio: cdn.islamic.network

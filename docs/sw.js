@@ -1,7 +1,7 @@
 // Tilawa service worker: makes the app installable and lets surahs you've
 // already opened be read offline. Audio is streamed, not cached.
-const VERSION = "tilawa-v1";
-const SHELL = ["./", "index.html", "styles.css", "app.js", "sync.js", "firebase-config.js", "manifest.webmanifest", "icons/icon-192.png"];
+const VERSION = "tilawa-v2";
+const SHELL = ["./", "index.html", "styles.css", "extras.css", "i18n.js", "i18n-extra.js", "app.js", "onboarding.js", "fb.js", "sync.js", "sheikh.js", "firebase-config.js", "manifest.webmanifest", "icons/icon-192.png"];
 const SHELL_CACHE = VERSION + "-shell";
 const DATA_CACHE = VERSION + "-data";
 const DATA_HOSTS = ["api.alquran.cloud", "api.quran.com", "mp3quran.net", "fonts.googleapis.com", "fonts.gstatic.com", "www.gstatic.com"];
@@ -25,7 +25,7 @@ self.addEventListener("fetch", (e) => {
   // Never touch audio, Firebase auth/Firestore traffic, or range requests.
   if (/\.mp3($|\?)/.test(url.pathname) || req.headers.has("range")) return;
   if (/googleapis\.com$/.test(url.hostname) && url.hostname !== "fonts.googleapis.com") return;
-  if (url.pathname.startsWith("/__/")) return; // Firebase Hosting reserved URLs (auth handler)
+  if (url.pathname.startsWith("/__/") || url.searchParams.has("oobCode")) return; // Firebase Hosting reserved URLs (auth handler)
 
   // App shell: network first so updates show up, cache as fallback.
   if (url.origin === self.location.origin) {

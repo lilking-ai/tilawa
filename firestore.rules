@@ -11,7 +11,7 @@ service cloud.firestore {
     }
 
     function validUser(d) {
-      return d.keys().hasOnly(['favs', 'bookmarks', 'settings', 'last', 'updatedAt'])
+      return d.keys().hasOnly(['favs', 'bookmarks', 'settings', 'last', 'updatedAt', 'welcomedAt'])
         && (!('favs' in d) || (d.favs is list && d.favs.size() <= 1000))
         && (!('bookmarks' in d) || (d.bookmarks is list && d.bookmarks.size() <= 5000))
         && (!('settings' in d) || d.settings is map)

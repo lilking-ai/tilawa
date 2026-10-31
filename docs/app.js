@@ -7,13 +7,7 @@ const COUNTS=[7,286,200,176,120,165,206,75,129,109,123,111,43,52,99,128,111,110,
 const MEDINAN=new Set([2,3,4,5,8,9,13,22,24,33,47,48,49,55,57,58,59,60,61,62,63,64,65,66,76,98,99,110]);
 const START=[0];for(let i=0;i<114;i++)START.push(START[i]+COUNTS[i]); // START[n-1] = ayahs before surah n
 const MEANINGS={};
-const TRANSLATIONS=[
-  ["en.sahih","English — Saheeh International"],["en.pickthall","English — Pickthall"],["en.yusufali","English — Yusuf Ali"],
-  ["ar.muyassar","العربية — التفسير الميسر"],["ar.jalalayn","العربية — تفسير الجلالين"],
-  ["fr.hamidullah","Français — Hamidullah"],["es.cortes","Español — Cortés"],["de.aburida","Deutsch — Abu Rida"],
-  ["tr.diyanet","Türkçe — Diyanet"],["ur.jalandhry","اردو — جالندہری"],["id.indonesian","Indonesia — Kemenag"],
-  ["ms.basmeih","Melayu — Basmeih"],["bn.bengali","বাংলা — Muhiuddin Khan"],["ru.kuliev","Русский — Кулиев"],["fa.ansarian","فارسی — انصاریان"]
-];
+const TRANSLATIONS=(()=>{const out=[],seen=new Set();(window.TILAWA_LANGS||[]).forEach(l=>{if(l.tr&&!seen.has(l.tr)){seen.add(l.tr);out.push([l.tr,l.native+" — "+l.trName])}});[["en.pickthall","English — Pickthall"],["en.yusufali","English — Yusuf Ali"],["ar.jalalayn","العربية — تفسير الجلالين"]].forEach(x=>{if(!seen.has(x[0])){seen.add(x[0]);out.push(x)}});return out})();
 const VERSE_RECITERS=[
   ["ar.alafasy","Mishary Rashid Alafasy","مشاري راشد العفاسي"],["ar.abdulbasitmurattal","Abdul Basit (Murattal)","عبد الباسط عبد الصمد (مرتل)"],
   ["ar.abdurrahmaansudais","Abdurrahmaan As-Sudais","عبد الرحمن السديس"],["ar.husary","Mahmoud Khalil Al-Husary","محمود خليل الحصري"],
@@ -23,32 +17,9 @@ const VERSE_RECITERS=[
   ["ar.muhammadayyoub","Muhammad Ayyoub","محمد أيوب"],["ar.ahmedajamy","Ahmed Al-Ajamy","أحمد العجمي"],
   ["ar.abdullahbasfar","Abdullah Basfar","عبد الله بصفر"],["ar.hanirifai","Hani Ar-Rifai","هاني الرفاعي"],["ar.muhammadjibreel","Muhammad Jibreel","محمد جبريل"]
 ];
-const I18N={
-  en:{surahs:"Surahs",reciters:"Reciters",all:"All",favorites:"Favorites",searchSurah:"Search surah or number",searchRec:"Search reciters",
-    translation:"Translation",layout:"Reading layout",withTr:"With translation",mushaf:"Mushaf flow",fontSize:"Arabic font size",
-    verseReciter:"Verse-by-verse reciter (tap a verse)",follow:"Auto-scroll to playing verse",on:"On",off:"Off",
-    meccan:"Meccan",medinan:"Medinan",ayahs:"verses",playSurah:"Play surah",playVerses:"Play verse by verse",
-    pickReciter:"Choose a reciter",notAvail:"This recitation doesn't include this surah — pick another riwayah or reciter.",
-    loading:"Loading…",loadErr:"Couldn't load. Check your internet connection.",retry:"Retry",noFav:"Star reciters to keep them here.",
-    noRes:"No matches",prev:"Previous",next:"Next",verse:"Verse",audioErr:"Couldn't play this audio. Try another reciter.",
-    surahMode:"Full surah",verseMode:"Verse",tapHint:"Tap any verse to hear it",ready:"Select a surah and press play",recs:"reciters",riwayat:"recitations",
-    repeatOn:"Repeat on",repeatOff:"Repeat off",autoOn:"Autoplay next: on",autoOff:"Autoplay next: off",
-    bookmarks:"Bookmarks",noBm:"Tap the bookmark icon on any verse to save it here.",bmAdded:"Bookmark saved",bmRemoved:"Bookmark removed",
-    signIn:"Sign in",signOut:"Sign out",synced:"Favorites, bookmarks and settings are synced to your account.",syncing:"Syncing…",
-    syncErr:"Couldn't sync right now — changes are kept on this device and will sync later.",signInErr:"Sign-in failed. Please try again.",welcome:"Signed in — your data now syncs"},
-  ar:{surahs:"السور",reciters:"القرّاء",all:"الكل",favorites:"المفضلة",searchSurah:"ابحث باسم السورة أو رقمها",searchRec:"ابحث عن قارئ",
-    translation:"الترجمة / التفسير",layout:"طريقة العرض",withTr:"مع الترجمة",mushaf:"عرض المصحف",fontSize:"حجم الخط",
-    verseReciter:"قارئ الآيات (اضغط على آية)",follow:"التمرير التلقائي للآية",on:"تشغيل",off:"إيقاف",
-    meccan:"مكية",medinan:"مدنية",ayahs:"آية",playSurah:"تشغيل السورة",playVerses:"تشغيل آية آية",
-    pickReciter:"اختر قارئًا",notAvail:"هذه الرواية لا تحتوي على هذه السورة — اختر رواية أو قارئًا آخر.",
-    loading:"جارٍ التحميل…",loadErr:"تعذر التحميل. تحقق من اتصالك بالإنترنت.",retry:"إعادة المحاولة",noFav:"أضف القرّاء إلى المفضلة بالضغط على النجمة.",
-    noRes:"لا توجد نتائج",prev:"السابقة",next:"التالية",verse:"آية",audioErr:"تعذر تشغيل الصوت. جرّب قارئًا آخر.",
-    surahMode:"السورة كاملة",verseMode:"آية",tapHint:"اضغط على أي آية لسماعها",ready:"اختر سورة واضغط تشغيل",recs:"قارئ",riwayat:"روايات",
-    repeatOn:"التكرار مفعّل",repeatOff:"التكرار متوقف",autoOn:"التشغيل التلقائي للتالي: مفعّل",autoOff:"التشغيل التلقائي للتالي: متوقف",
-    bookmarks:"العلامات",noBm:"اضغط على أيقونة العلامة بجانب أي آية لحفظها هنا.",bmAdded:"تم حفظ العلامة",bmRemoved:"تم حذف العلامة",
-    signIn:"تسجيل الدخول",signOut:"تسجيل الخروج",synced:"المفضلة والعلامات والإعدادات متزامنة مع حسابك.",syncing:"جارٍ المزامنة…",
-    syncErr:"تعذرت المزامنة الآن — التغييرات محفوظة على هذا الجهاز وستتم مزامنتها لاحقًا.",signInErr:"فشل تسجيل الدخول. حاول مرة أخرى.",welcome:"تم تسجيل الدخول — بياناتك تتزامن الآن"}
-};
+const I18N=window.TILAWA_I18N||{en:{}};
+const LANGS=window.TILAWA_LANGS||[];
+const langInfo=c=>LANGS.find(l=>l.code===c)||{code:c,native:c,en:c,dir:"ltr"};
 const ICON={
   play:'<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z"/></svg>',
   pause:'<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>',
@@ -58,6 +29,8 @@ const ICON={
   moon:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>',
   mic:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 17v5"/></svg>',
   list:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>',
+  globe:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>',
+  ask:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1.1-4.6A8 8 0 1121 12z"/><path d="M12 8v2M12 14h.01" stroke-linecap="round"/></svg>',
   bm:'<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12a1 1 0 011 1v19l-7-4.5L5 22V3a1 1 0 011-1z"/></svg>',
   bmO:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2h12a1 1 0 011 1v19l-7-4.5L5 22V3a1 1 0 011-1z"/></svg>',
   x:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>',
@@ -76,7 +49,7 @@ function emitChange(){if(applyingRemote)return;clearTimeout(changeTimer);changeT
 const store={get(k,d){try{const v=localStorage.getItem("tilawa."+k);return v==null?d:JSON.parse(v)}catch(e){return d}},
   set(k,v){try{localStorage.setItem("tilawa."+k,JSON.stringify(v))}catch(e){}if(SYNC_KEYS.has(k))emitChange()}};
 const S={
-  lang:store.get("lang",(navigator.language||"").startsWith("ar")?"ar":"en"),
+  lang:store.get("lang",(()=>{const n=(navigator.language||"en").slice(0,2).toLowerCase();return (window.TILAWA_LANGS||[]).some(l=>l.code===n)?n:"en"})()),
   theme:store.get("theme",matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"),
   qs:store.get("qs",0),tr:store.get("tr","en.sahih"),layout:store.get("layout","cards"),follow:store.get("follow",true),
   surah:store.get("surah",1),reciterId:store.get("reciterId",null),moshafId:store.get("moshafId",null),
@@ -90,7 +63,7 @@ const S={
 };
 const textCache=new Map(),verseCache=new Map(),recCache={};
 const $=id=>document.getElementById(id);
-const t=k=>(I18N[S.lang]||I18N.en)[k]||k;
+const t=k=>(I18N[S.lang]&&I18N[S.lang][k])||I18N.en[k]||k;
 const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const arNum=n=>String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]);
 const locNum=n=>S.lang==="ar"?arNum(n):String(n);
@@ -120,7 +93,7 @@ async function loadText(n){
     const j=await getJSON(`https://api.alquran.cloud/v1/surah/${n}/editions/quran-uthmani,${S.tr}`);
     const [a,b]=j.data;
     if(a.englishNameTranslation)MEANINGS[n]=a.englishNameTranslation;
-    res={ar:a.ayahs.map(x=>stripBasmala(n,x.text)),tr:b.ayahs.map(x=>x.text),trDir:b.edition&&b.edition.direction==="rtl"?"rtl":"ltr"};
+    res={ar:a.ayahs.map(x=>stripBasmala(n,x.text)),tr:b.ayahs.map(x=>x.text),trDir:(b.edition&&b.edition.direction==="rtl")||/^(ar|ur|fa|ps|ug|dv|sd|ku)\./.test(S.tr)?"rtl":"ltr"};
   }catch(e){
     // fallback: quran.com (Arabic + Saheeh International)
     const v=await getJSON(`https://api.quran.com/api/v4/quran/verses/uthmani?chapter_number=${n}`);
@@ -167,11 +140,11 @@ const hasSurah=n=>{const m=curMoshaf();return !!m&&m.set.has(n)};
 function applyChrome(){
   document.documentElement.dataset.theme=S.theme;
   document.documentElement.lang=S.lang;
-  document.documentElement.dir=S.lang==="ar"?"rtl":"ltr";
+  document.documentElement.dir=langInfo(S.lang).dir==="rtl"?"rtl":"ltr";
   document.documentElement.style.setProperty("--qs",S.qs?S.qs+"px":"");
   if(!S.qs)document.documentElement.style.removeProperty("--qs");
   $("themeBtn").innerHTML=S.theme==="dark"?ICON.sun:ICON.moon;
-  $("langBtn").textContent=S.lang==="ar"?"English":"العربية";
+  $("langBtn").innerHTML=ICON.globe+"<span>"+esc(langInfo(S.lang).native)+"</span>";$("langBtn").title=t("langLabel");
   document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=t(el.dataset.i18n));
   $("surahSearch").placeholder=t("searchSurah");$("recSearch").placeholder=t("searchRec");
   $("trSel").innerHTML=TRANSLATIONS.map(([v,l])=>`<option value="${v}"${v===S.tr?" selected":""}>${esc(l)}</option>`).join("");
@@ -265,7 +238,7 @@ function renderReader(){
   if(S.layout==="flow"){
     body+=`<div class="flow">${d.ar.map((a,i)=>`<span class="v${playing(i)?" playing":""}" data-a="${i}" id="a${i}">${esc(a)} <span class="marker">${arNum(i+1)}</span></span> `).join("")}</div>`;
   }else{
-    body+=d.ar.map((a,i)=>`<div class="ayah${playing(i)?" playing":""}" data-a="${i}" id="a${i}" role="button" tabindex="0"><div class="ayah-top"><span class="key">${locNum(n)}:${locNum(i+1)}</span><span class="right"><span class="playico">${ICON.play}</span>${bmBtn(n,i)}</span></div><div class="q">${esc(a)} <span class="marker">${arNum(i+1)}</span></div>${d.tr[i]?`<div class="tr${d.trDir==="rtl"?" rtl":""}" dir="${d.trDir}">${esc(d.tr[i])}</div>`:""}</div>`).join("");
+    body+=d.ar.map((a,i)=>`<div class="ayah${playing(i)?" playing":""}" data-a="${i}" id="a${i}" role="button" tabindex="0"><div class="ayah-top"><span class="key">${locNum(n)}:${locNum(i+1)}</span><span class="right"><span class="playico">${ICON.play}</span><button class="bm ask" data-ask="${i}" aria-label="${t("shAsk")}" title="${t("shAsk")}">${ICON.ask}</button>${bmBtn(n,i)}</span></div><div class="q">${esc(a)} <span class="marker">${arNum(i+1)}</span></div>${d.tr[i]?`<div class="tr${d.trDir==="rtl"?" rtl":""}" dir="${d.trDir}">${esc(d.tr[i])}</div>`:""}</div>`).join("");
   }
   const prevB=n>1?`<button class="btn ghost" data-s="${n-1}">${S.lang==="ar"?ICON.chevR:ICON.chevL}${esc(surahName(n-1))}</button>`:"<span></span>";
   const nextB=n<114?`<button class="btn ghost" data-s="${n+1}">${esc(surahName(n+1))}${S.lang==="ar"?ICON.chevL:ICON.chevR}</button>`:"<span></span>";
@@ -399,10 +372,11 @@ document.addEventListener("click",e=>{if(!$("settings").contains(e.target)&&e.ta
 $("surahList").addEventListener("click",e=>{const b=e.target.closest("[data-s]");if(b)openSurah(+b.dataset.s)});
 $("reader").addEventListener("click",e=>{
   const s=e.target.closest("[data-s]");if(s){openSurah(+s.dataset.s);return}
+  const ak=e.target.closest("[data-ask]");if(ak){e.stopPropagation();const i=+ak.dataset.ask;window.dispatchEvent(new CustomEvent("tilawa:ask",{detail:{surah:S.surah,ayah:i+1,name:surahName(S.surah),ar:S.text&&S.text.ar[i],tr:S.text&&S.text.tr[i]}}));return}
   const bm=e.target.closest("[data-bm]");if(bm){e.stopPropagation();toggleBm(S.surah,+bm.dataset.bm);return}
   const a=e.target.closest("[data-a]");if(a&&S.textState==="ok")playAyah(S.surah,+a.dataset.a);
 });
-$("reader").addEventListener("keydown",e=>{if(e.target.closest&&e.target.closest("[data-bm]"))return;const a=e.target.closest&&e.target.closest("[data-a]");if(a&&(e.key==="Enter"||e.key===" ")){e.preventDefault();playAyah(S.surah,+a.dataset.a)}});
+$("reader").addEventListener("keydown",e=>{if(e.target.closest&&e.target.closest("[data-bm],[data-ask]"))return;const a=e.target.closest&&e.target.closest("[data-a]");if(a&&(e.key==="Enter"||e.key===" ")){e.preventDefault();playAyah(S.surah,+a.dataset.a)}});
 $("recList").addEventListener("click",e=>{
   if(e.target.closest("#recRetry")){init.reciters();return}
   const f=e.target.closest("[data-fav]");
@@ -424,7 +398,16 @@ $("recSearch").addEventListener("input",e=>{S.recQuery=e.target.value;renderReci
 $("tabAll").onclick=()=>{S.recTab="all";applyChrome();renderReciters()};
 $("tabFav").onclick=()=>{S.recTab="fav";applyChrome();renderReciters()};
 $("themeBtn").onclick=()=>{S.theme=S.theme==="dark"?"light":"dark";store.set("theme",S.theme);applyChrome()};
-$("langBtn").onclick=async()=>{S.lang=S.lang==="ar"?"en":"ar";store.set("lang",S.lang);applyChrome();renderSurahs();renderBookmarks();renderReader();updateNP();await loadReciters();renderReciters();renderReader();updateNP()};
+async function setLang(code,opt={}){
+  const L=langInfo(code),oldTr=S.tr;
+  S.lang=code;store.set("lang",code);
+  if(opt.setTr!==false&&L.tr){S.tr=L.tr;store.set("tr",S.tr)}
+  applyChrome();renderSurahs();renderBookmarks();updateNP();
+  window.dispatchEvent(new CustomEvent("tilawa:langchange",{detail:{code}}));
+  if(S.tr!==oldTr)openSurah(S.surah,{keepScroll:true,initial:true});else renderReader();
+  await loadReciters();renderReciters();renderReader();updateNP();
+}
+$("langBtn").onclick=()=>window.dispatchEvent(new CustomEvent("tilawa:langpicker"));
 $("trSel").onchange=e=>setTranslation(e.target.value);
 $("verseSel").onchange=e=>{S.verseEd=e.target.value;store.set("verseEd",S.verseEd);if(S.mode==="ayah"&&S.playingSurah)playAyah(S.playingSurah,Math.max(0,S.ayahIdx))};
 $("layCards").onclick=()=>{S.layout="cards";store.set("layout",S.layout);applyChrome();renderReader();markPlaying()};
@@ -477,7 +460,7 @@ function renderAccount(){
 }
 $("acctBtn").onclick=e=>{
   e.stopPropagation();
-  if(!S.auth.user){window.dispatchEvent(new CustomEvent("tilawa:signin"));return}
+  if(!S.auth.user){window.dispatchEvent(new CustomEvent("tilawa:showsignin"));return}
   $("settings").classList.remove("open");$("acctPop").classList.toggle("open");
 };
 $("signOutBtn").onclick=()=>{$("acctPop").classList.remove("open");window.dispatchEvent(new CustomEvent("tilawa:signout"))};
@@ -499,6 +482,7 @@ window.Tilawa={
       if(d.settings)SYNC_SETTINGS.forEach(k=>{if(k in d.settings&&d.settings[k]!=null){S[k]=d.settings[k];store.set(k,S[k])}});
       audio.playbackRate=S.speed;
       applyChrome();renderSurahs();renderBookmarks();
+      if(S.lang!==oldLang)window.dispatchEvent(new CustomEvent("tilawa:langchange",{detail:{code:S.lang}}));
       if(S.lang!==oldLang)loadReciters().then(()=>{renderReciters();renderReader();updateNP()});
       else renderReciters();
       const goTo=first&&!S.navigated&&d.last&&d.last.surah&&d.last.surah!==S.surah?d.last.surah:null;
@@ -508,8 +492,11 @@ window.Tilawa={
       updateNP();
     }finally{applyingRemote=false}
   },
-  setAuth(patch){Object.assign(S.auth,patch);renderAccount()},
-  toast:k=>toast(t(k))
+  setAuth(patch){Object.assign(S.auth,patch);renderAccount();window.dispatchEvent(new CustomEvent("tilawa:authchange",{detail:S.auth}))},
+  toast:k=>toast(t(k)),
+  t:k=>t(k),getLang:()=>S.lang,dir:()=>langInfo(S.lang).dir==="rtl"?"rtl":"ltr",langName:()=>langInfo(S.lang).en||"English",
+  setLang:(c,o)=>setLang(c,o),authState:()=>S.auth,
+  context:()=>({surah:S.surah,name:surahName(S.surah),en:EN_NAMES[S.surah-1],ar:AR_NAMES[S.surah-1]})
 };
 window.dispatchEvent(new CustomEvent("tilawa:ready"));
 

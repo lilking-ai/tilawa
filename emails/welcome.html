@@ -1,0 +1,27 @@
+<!-- Tilawa welcome email - paste into EmailJS: Email Templates -> your template -> Content -> "Edit content" -> Code editor.
+     Template settings: Subject = {{subject}}   To Email = {{to_email}}   From Name = Tilawa
+     The app fills every {{...}} value in the person's chosen language. -->
+<div dir="{{dir}}" style="margin:0;padding:0;background:#f5efe3;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f5efe3;padding:32px 12px;">
+    <tr><td align="center">
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:560px;background:#fffcf6;border-radius:24px;overflow:hidden;border:1px solid #e7dcc8;box-shadow:0 8px 30px rgba(40,30,10,.08);">
+        <tr><td style="background:#0f5c4a;padding:40px 28px 34px;text-align:center;">
+          <div style="width:72px;height:72px;margin:0 auto 16px;border-radius:22px;background:#13705a;line-height:72px;font-size:38px;color:#d6b169;">&#10022;</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-size:30px;color:#ffffff;letter-spacing:.3px;">{{title}}</div>
+          <div style="font-family:'Amiri','Traditional Arabic',serif;font-size:26px;color:#d6b169;margin-top:10px;">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+        </td></tr>
+        <tr><td style="padding:34px 32px 10px;font-family:Arial,Helvetica,sans-serif;color:#1c2822;">
+          <p style="font-size:19px;font-weight:bold;margin:0 0 14px;">{{greeting}}</p>
+          <p style="font-size:16px;line-height:1.75;margin:0 0 26px;color:#33443c;">{{message}}</p>
+          <table role="presentation" cellspacing="0" cellpadding="0" align="center" style="margin:0 auto 28px;"><tr><td style="border-radius:999px;background:#0f5c4a;">
+            <a href="{{app_url}}" style="display:inline-block;padding:15px 34px;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:bold;color:#ffffff;text-decoration:none;border-radius:999px;">{{cta}} &rarr;</a>
+          </td></tr></table>
+          <div style="border-top:1px solid #e7dcc8;margin:0 0 20px;"></div>
+          <p style="font-size:15px;color:#6c7a72;margin:0 0 6px;">{{signature}}</p>
+          <p style="font-family:'Amiri',serif;font-size:20px;color:#a9823a;margin:0 0 26px;">تلاوة</p>
+        </td></tr>
+      </table>
+      <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#9aa69f;margin:18px 0 0;">Tilawa · {{app_url}}</p>
+    </td></tr>
+  </table>
+</div>

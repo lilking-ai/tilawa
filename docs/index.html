@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:wght@400;700&family=Inter:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="extras.css">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -25,7 +26,7 @@
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.6 4.2L19 4.9l-1.3 4.5L22 12l-4.3 2.6 1.3 4.5-4.4-1.3L12 22l-2.6-4.2L5 19.1l1.3-4.5L2 12l4.3-2.6L5 4.9l4.4 1.3z"/><circle cx="12" cy="12" r="3.2"/></svg>
       <span>Tilawa</span><span class="sub">تلاوة</span>
     </div>
-    <button class="pill" id="langBtn" aria-label="Language">EN · ع</button>
+    <button class="pill" id="langBtn" aria-label="Language">EN</button>
     <button class="iconbtn" id="themeBtn" aria-label="Theme"></button>
     <button class="pill acct" id="acctBtn" hidden></button>
     <button class="iconbtn" id="settingsBtn" aria-label="Settings"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg></button>
@@ -94,8 +95,12 @@
 </div>
 <div class="toast" id="toast"></div>
 
+<script src="i18n.js"></script>
+<script src="i18n-extra.js"></script>
 <script src="app.js"></script>
+<script src="onboarding.js"></script>
 <script type="module" src="sync.js"></script>
+<script type="module" src="sheikh.js"></script>
 <script>
 if("serviceWorker" in navigator && location.protocol==="https:"){
   window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
