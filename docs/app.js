@@ -144,8 +144,8 @@ async function loadReciters(){
     list.sort((a,b)=>a.name.localeCompare(b.name,S.lang==="ar"?"ar":"en"));
     recCache[lang]=list;S.reciters=list;S.recState="ok";
     if(S.reciterId==null||!list.find(r=>r.id===S.reciterId)){
-      const def=list.find(r=>/afasy|العفاسي/i.test(r.name))||list[0];
-      if(def){S.reciterId=def.id;S.moshafId=def.moshaf[0].id}
+      const def=list.find(r=>r.id===123)||list.find(r=>/afas[iy]|العفاسي/i.test(r.name))||list[0];
+      if(def){S.reciterId=def.id;S.moshafId=(def.moshaf.find(m=>/hafs|حفص/i.test(m.name))||def.moshaf[0]).id}
     }
     const r=curReciter();if(r&&!r.moshaf.find(m=>m.id===S.moshafId))S.moshafId=r.moshaf[0].id;
     if(S.expanded==null)S.expanded=S.reciterId;
