@@ -443,26 +443,11 @@ $("bmList").addEventListener("click",e=>{
 
 /* ---------- account (Firebase Auth UI; logic lives in sync.js) ---------- */
 function renderAccount(){
-  const A=S.auth,btn=$("acctBtn");
-  btn.hidden=false;
-  if(A.user){
-    btn.classList.add("signed");
-    const photo=A.user.photoURL?`<img src="${esc(A.user.photoURL)}" alt="" referrerpolicy="no-referrer">`:`<span class="avatar" style="width:24px;height:24px;font-size:12px">${esc((A.user.displayName||A.user.email||"?")[0].toUpperCase())}</span>`;
-    btn.innerHTML=photo+`<span class="hide-m">${esc((A.user.displayName||"").split(" ")[0]||A.user.email||"")}</span>`;
-    $("acctImg").src=A.user.photoURL||"";$("acctImg").hidden=!A.user.photoURL;
-    $("acctName").textContent=A.user.displayName||"";$("acctEmail").textContent=A.user.email||"";
-    $("syncDot").className="dot"+(A.sync==="busy"?" busy":A.sync==="err"?" err":"");
-    $("syncText").textContent=A.sync==="busy"?t("syncing"):A.sync==="err"?t("syncErr"):t("synced");
-  }else{
-    btn.classList.remove("signed");btn.innerHTML=ICON.user+`<span>${t("signIn")}</span>`;
-    $("acctPop").classList.remove("open");
-  }
+  const A=S.auth,btn=$("acctBtn"),u=A.user;
+  btn.hidden=false;btn.className="iconbtn avatar-btn";btn.title=t("profile");btn.setAttribute("aria-label",t("profile"));
+  btn.innerHTML=u?(u.photoURL?`<img src="${esc(u.photoURL)}" alt="" referrerpolicy="no-referrer">`:`<span class="av-initial">${esc(String(u.displayName||u.email||"?").charAt(0).toUpperCase())}</span>`):ICON.user;
 }
-$("acctBtn").onclick=e=>{
-  e.stopPropagation();
-  if(!S.auth.user){window.dispatchEvent(new CustomEvent("tilawa:showsignin"));return}
-  $("settings").classList.remove("open");$("acctPop").classList.toggle("open");
-};
+$("acctBtn").onclick=e=>{e.stopPropagation();$("settings").classList.remove("open");window.dispatchEvent(new CustomEvent("tilawa:profile"))};
 $("signOutBtn").onclick=()=>{$("acctPop").classList.remove("open");window.dispatchEvent(new CustomEvent("tilawa:signout"))};
 document.addEventListener("click",e=>{if(!$("acctPop").contains(e.target)&&!$("acctBtn").contains(e.target))$("acctPop").classList.remove("open")});
 
@@ -496,6 +481,10 @@ window.Tilawa={
   toast:k=>toast(t(k)),
   t:k=>t(k),getLang:()=>S.lang,dir:()=>langInfo(S.lang).dir==="rtl"?"rtl":"ltr",langName:()=>langInfo(S.lang).en||"English",
   setLang:(c,o)=>setLang(c,o),authState:()=>S.auth,
+  profileInfo:()=>({bookmarks:S.bookmarks.length,favs:S.favs.size,theme:S.theme,langNative:langInfo(S.lang).native}),
+  toggleTheme:()=>{S.theme=S.theme==="dark"?"light":"dark";store.set("theme",S.theme);applyChrome()},
+  showBookmarks:()=>{setLeftTab("bm");if(matchMedia("(max-width:900px)").matches)openLeft()},
+  showFavs:()=>{S.recTab="fav";applyChrome();renderReciters();openRight()},
   context:()=>({surah:S.surah,name:surahName(S.surah),en:EN_NAMES[S.surah-1],ar:AR_NAMES[S.surah-1]})
 };
 window.dispatchEvent(new CustomEvent("tilawa:ready"));

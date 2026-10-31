@@ -27,7 +27,7 @@ How to teach:
 - Keep answers short (usually under 180 words) unless the student asks for more.`;
 
   const btn = document.createElement("button");
-  btn.className = "pill sheikh-btn"; btn.id = "sheikhBtn"; btn.type = "button";
+  btn.className = "iconbtn sheikh-btn"; btn.id = "sheikhBtn"; btn.type = "button";
   const anchor = document.getElementById("settingsBtn");
   anchor.parentNode.insertBefore(btn, anchor);
   const scrim = document.createElement("div"); scrim.className = "sh-scrim";
