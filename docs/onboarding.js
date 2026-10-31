@@ -31,7 +31,6 @@ document.body.appendChild(ob);document.body.appendChild(lp);
 function signHTML(){
   var A=T.authState();
   if(A.user) return '<div class="ob-sign-card ob-sent"><div class="ob-ic">'+I.check+'</div><h2>'+esc(t("obSignedIn"))+'</h2><p></p><button class="ob-btn primary" data-act="continue">'+esc(t("obStart"))+'</button></div>';
-  if(!A.configured) return '<div class="ob-sign-card"><h2>'+esc(t("obTag"))+'</h2><p class="sub"></p><button class="ob-btn primary" data-act="guest">'+esc(t("obStart"))+'</button></div>';
   var err=st.error?'<div class="ob-err" role="alert">'+esc(st.error)+'</div>':'';
   if(st.form==="confirm") return '<div class="ob-sign-card"><h2>'+esc(t("obConfirmEmail"))+'</h2><p class="sub"></p>'+err+
     '<label class="ob-field"><input id="obConfirm" type="email" inputmode="email" autocomplete="email" placeholder="'+esc(t("obEmail"))+'" value="'+esc(st.email)+'"></label>'+
@@ -70,19 +69,20 @@ function renderOb(){
 function renderSign(){var s=document.getElementById("obSign");if(s)s.innerHTML=signHTML()}
 function toSign(){var s=document.getElementById("obSign");if(s)setTimeout(function(){s.scrollIntoView({behavior:"smooth",block:"start"})},60)}
 function openOb(sign){if(ob.hidden){ob.hidden=false;document.body.classList.add("ob-open");renderOb()}else renderSign();if(sign)toSign()}
-function closeOb(){ob.hidden=true;document.body.classList.remove("ob-open")}
+function closeOb(){ob.hidden=true;document.body.classList.remove("ob-open");if(location.hash==="#welcome")history.replaceState(null,"",location.pathname+location.search)}
 function finish(){LS.set("onboarded","1");closeOb();if(!LS.get("langChosen"))openLp(true)}
 function validEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)}
 ob.addEventListener("click",function(e){
   var b=e.target.closest("[data-act]");if(!b)return;var a=b.dataset.act;
   if(a==="down"){document.getElementById("obFeat").scrollIntoView({behavior:"smooth"});return}
   if(a==="guest"||a==="continue"){finish();return}
-  if(a==="google"){emit("tilawa:signin");return}
+  if(a==="google"){if(!T.authState().configured){st.error=t("obSoon");renderSign();return}emit("tilawa:signin");return}
   if(a==="resend"){st.form="email";st.error="";renderSign();return}
   if(a==="send"){
     var email=(document.getElementById("obEmail").value||"").trim(),name=(document.getElementById("obName").value||"").trim();
     st.email=email;if(name)LS.set("pendingName",name);
     if(!validEmail(email)){st.error=t("obBadEmail");renderSign();return}
+    if(!T.authState().configured){st.error=t("obSoon");renderSign();return}
     st.error="";st.busy=true;renderSign();emit("tilawa:emaillink",{email:email,name:name});return}
   if(a==="paste"){var link=(document.getElementById("obPaste").value||"").trim();if(!link)return;st.error="";emit("tilawa:pastelink",{email:st.sentTo||st.email,link:link});return}
   if(a==="confirm"){var em=(document.getElementById("obConfirm").value||"").trim();if(!validEmail(em)){st.error=t("obBadEmail");renderSign();return}st.email=em;st.error="";emit("tilawa:confirmemail",{email:em});return}
@@ -136,6 +136,8 @@ window.addEventListener("tilawa:authchange",function(e){
 window.addEventListener("tilawa:langchange",function(){if(!ob.hidden)renderOb()});
 
 /* ---------- first visit ---------- */
-if(!LS.get("onboarded"))openOb(false);
+window.addEventListener("hashchange",function(){if(location.hash==="#welcome")openOb(true)});
+if(location.hash==="#welcome")openOb(true);
+else if(!LS.get("onboarded"))openOb(false);
 else if(!LS.get("langChosen"))openLp(true);
 })();

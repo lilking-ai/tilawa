@@ -29,6 +29,7 @@ const ICON={
   moon:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>',
   mic:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 17v5"/></svg>',
   list:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>',
+  user:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg>',
   globe:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>',
   ask:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1.1-4.6A8 8 0 1121 12z"/><path d="M12 8v2M12 14h.01" stroke-linecap="round"/></svg>',
   bm:'<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12a1 1 0 011 1v19l-7-4.5L5 22V3a1 1 0 011-1z"/></svg>',
@@ -443,8 +444,7 @@ $("bmList").addEventListener("click",e=>{
 /* ---------- account (Firebase Auth UI; logic lives in sync.js) ---------- */
 function renderAccount(){
   const A=S.auth,btn=$("acctBtn");
-  btn.hidden=!A.configured;
-  if(!A.configured)return;
+  btn.hidden=false;
   if(A.user){
     btn.classList.add("signed");
     const photo=A.user.photoURL?`<img src="${esc(A.user.photoURL)}" alt="" referrerpolicy="no-referrer">`:`<span class="avatar" style="width:24px;height:24px;font-size:12px">${esc((A.user.displayName||A.user.email||"?")[0].toUpperCase())}</span>`;
@@ -454,7 +454,7 @@ function renderAccount(){
     $("syncDot").className="dot"+(A.sync==="busy"?" busy":A.sync==="err"?" err":"");
     $("syncText").textContent=A.sync==="busy"?t("syncing"):A.sync==="err"?t("syncErr"):t("synced");
   }else{
-    btn.classList.remove("signed");btn.innerHTML=ICON.google+`<span>${t("signIn")}</span>`;
+    btn.classList.remove("signed");btn.innerHTML=ICON.user+`<span>${t("signIn")}</span>`;
     $("acctPop").classList.remove("open");
   }
 }
