@@ -1,0 +1,16 @@
+{
+  "name": "Tilawa — Quran Reader & Reciters",
+  "short_name": "Tilawa",
+  "description": "Read the Holy Quran with translation and listen to hundreds of reciters.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f5efe3",
+  "theme_color": "#0f5c4a",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

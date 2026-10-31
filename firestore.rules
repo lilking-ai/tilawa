@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Each signed-in user can read and write only their own document.
+    match /users/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if request.auth != null
+                   && request.auth.uid == uid
+                   && validUser(request.resource.data);
+    }
+
+    function validUser(d) {
+      return d.keys().hasOnly(['favs', 'bookmarks', 'settings', 'last', 'updatedAt'])
+        && (!('favs' in d) || (d.favs is list && d.favs.size() <= 1000))
+        && (!('bookmarks' in d) || (d.bookmarks is list && d.bookmarks.size() <= 5000))
+        && (!('settings' in d) || d.settings is map)
+        && (!('last' in d) || d.last is map);
+    }
+
+    // Everything else is closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
