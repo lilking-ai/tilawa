@@ -1,7 +1,7 @@
 // Tilawa service worker: makes the app installable and lets surahs you've
 // already opened be read offline. Audio is streamed, not cached.
-const VERSION = "tilawa-v4";
-const SHELL = ["./", "index.html", "styles.css", "extras.css", "i18n.js", "i18n-extra.js", "app.js", "onboarding.js", "fb.js", "sync.js", "sheikh.js", "firebase-config.js", "manifest.webmanifest", "icons/icon-192.png"];
+const VERSION = "tilawa-v5";
+const SHELL = ["./", "index.html", "styles.css", "extras.css", "i18n.js", "i18n-extra.js", "app.js", "onboarding.js", "recite.js", "ui.js", "fb.js", "sync.js", "sheikh.js", "firebase-config.js", "manifest.webmanifest", "icons/icon-192.png"];
 const SHELL_CACHE = VERSION + "-shell";
 const DATA_CACHE = VERSION + "-data";
 const DATA_HOSTS = ["api.alquran.cloud", "api.quran.com", "mp3quran.net", "fonts.googleapis.com", "fonts.gstatic.com", "www.gstatic.com"];

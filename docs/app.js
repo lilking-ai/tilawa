@@ -228,7 +228,8 @@ function renderReader(){
   let head=`<section class="banner">${ICON.pattern}<h1>سورة ${AR_NAMES[n-1]}</h1><h2>${esc(S.lang==="ar"?"":EN_NAMES[n-1])}</h2>
     <div class="meta">${locNum(n)} · ${type} · ${locNum(COUNTS[n-1])} ${t("ayahs")}${meaning}</div>
     <div class="actions"><button class="btn primary" id="playSurahBtn"${rec&&!avail?" disabled":""}>${ICON.play}${t("playSurah")}</button>
-    <button class="btn ghost" id="playVersesBtn">${ICON.list}${t("playVerses")}</button></div>
+    <button class="btn ghost" id="playVersesBtn">${ICON.list}${t("playVerses")}</button>
+    <button class="btn ghost" id="reciteBtn">${ICON.mic}${t("rcBtn")}</button></div>
     ${rec&&!avail&&S.recState==="ok"?`<div class="notice">${t("notAvail")}</div>`:""}</section>`;
   if(S.textState==="loading"){el.innerHTML=head+`<div class="state"><div class="spinner"></div>${t("loading")}</div>`;bindReader();return}
   if(S.textState==="err"){el.innerHTML=head+`<div class="state">${t("loadErr")}<br><br><button class="btn ghost" id="txtRetry">${t("retry")}</button></div>`;bindReader();return}
@@ -239,7 +240,7 @@ function renderReader(){
   if(S.layout==="flow"){
     body+=`<div class="flow">${d.ar.map((a,i)=>`<span class="v${playing(i)?" playing":""}" data-a="${i}" id="a${i}">${esc(a)} <span class="marker">${arNum(i+1)}</span></span> `).join("")}</div>`;
   }else{
-    body+=d.ar.map((a,i)=>`<div class="ayah${playing(i)?" playing":""}" data-a="${i}" id="a${i}" role="button" tabindex="0"><div class="ayah-top"><span class="key">${locNum(n)}:${locNum(i+1)}</span><span class="right"><span class="playico">${ICON.play}</span><button class="bm ask" data-ask="${i}" aria-label="${t("shAsk")}" title="${t("shAsk")}">${ICON.ask}</button>${bmBtn(n,i)}</span></div><div class="q">${esc(a)} <span class="marker">${arNum(i+1)}</span></div>${d.tr[i]?`<div class="tr${d.trDir==="rtl"?" rtl":""}" dir="${d.trDir}">${esc(d.tr[i])}</div>`:""}</div>`).join("");
+    body+=d.ar.map((a,i)=>`<div class="ayah${playing(i)?" playing":""}" data-a="${i}" id="a${i}" role="button" tabindex="0"><div class="ayah-top"><span class="key">${locNum(n)}:${locNum(i+1)}</span><span class="right"><span class="playico">${ICON.play}</span><button class="bm rec" data-recite="${i}" aria-label="${t("rcTitle")}" title="${t("rcTitle")}">${ICON.mic}</button><button class="bm ask" data-ask="${i}" aria-label="${t("shAsk")}" title="${t("shAsk")}">${ICON.ask}</button>${bmBtn(n,i)}</span></div><div class="q">${esc(a)} <span class="marker">${arNum(i+1)}</span></div>${d.tr[i]?`<div class="tr${d.trDir==="rtl"?" rtl":""}" dir="${d.trDir}">${esc(d.tr[i])}</div>`:""}</div>`).join("");
   }
   const prevB=n>1?`<button class="btn ghost" data-s="${n-1}">${S.lang==="ar"?ICON.chevR:ICON.chevL}${esc(surahName(n-1))}</button>`:"<span></span>";
   const nextB=n<114?`<button class="btn ghost" data-s="${n+1}">${esc(surahName(n+1))}${S.lang==="ar"?ICON.chevL:ICON.chevR}</button>`:"<span></span>";
@@ -249,6 +250,7 @@ function renderReader(){
 function bindReader(){
   const ps=$("playSurahBtn");if(ps)ps.onclick=()=>playSurah(S.surah);
   const pv=$("playVersesBtn");if(pv)pv.onclick=()=>playAyah(S.surah,0);
+  const rb=$("reciteBtn");if(rb)rb.onclick=()=>window.dispatchEvent(new CustomEvent("tilawa:recite",{detail:{surah:S.surah,ayah:0}}));
   const rr=$("txtRetry");if(rr)rr.onclick=()=>openSurah(S.surah,{keepScroll:true});
   const ts=$("trSel2");if(ts)ts.onchange=e=>setTranslation(e.target.value);
 }
@@ -373,11 +375,12 @@ document.addEventListener("click",e=>{if(!$("settings").contains(e.target)&&e.ta
 $("surahList").addEventListener("click",e=>{const b=e.target.closest("[data-s]");if(b)openSurah(+b.dataset.s)});
 $("reader").addEventListener("click",e=>{
   const s=e.target.closest("[data-s]");if(s){openSurah(+s.dataset.s);return}
+  const rk=e.target.closest("[data-recite]");if(rk){e.stopPropagation();window.dispatchEvent(new CustomEvent("tilawa:recite",{detail:{surah:S.surah,ayah:+rk.dataset.recite}}));return}
   const ak=e.target.closest("[data-ask]");if(ak){e.stopPropagation();const i=+ak.dataset.ask;window.dispatchEvent(new CustomEvent("tilawa:ask",{detail:{surah:S.surah,ayah:i+1,name:surahName(S.surah),ar:S.text&&S.text.ar[i],tr:S.text&&S.text.tr[i]}}));return}
   const bm=e.target.closest("[data-bm]");if(bm){e.stopPropagation();toggleBm(S.surah,+bm.dataset.bm);return}
   const a=e.target.closest("[data-a]");if(a&&S.textState==="ok")playAyah(S.surah,+a.dataset.a);
 });
-$("reader").addEventListener("keydown",e=>{if(e.target.closest&&e.target.closest("[data-bm],[data-ask]"))return;const a=e.target.closest&&e.target.closest("[data-a]");if(a&&(e.key==="Enter"||e.key===" ")){e.preventDefault();playAyah(S.surah,+a.dataset.a)}});
+$("reader").addEventListener("keydown",e=>{if(e.target.closest&&e.target.closest("[data-bm],[data-ask],[data-recite]"))return;const a=e.target.closest&&e.target.closest("[data-a]");if(a&&(e.key==="Enter"||e.key===" ")){e.preventDefault();playAyah(S.surah,+a.dataset.a)}});
 $("recList").addEventListener("click",e=>{
   if(e.target.closest("#recRetry")){init.reciters();return}
   const f=e.target.closest("[data-fav]");
@@ -481,6 +484,8 @@ window.Tilawa={
   toast:k=>toast(t(k)),
   t:k=>t(k),getLang:()=>S.lang,dir:()=>langInfo(S.lang).dir==="rtl"?"rtl":"ltr",langName:()=>langInfo(S.lang).en||"English",
   setLang:(c,o)=>setLang(c,o),authState:()=>S.auth,
+  playVerse:(n,i)=>playAyah(n,i),openSurahs:()=>{setLeftTab("surahs");openLeft()},openReciters:()=>{$("right").classList.add("open");$("scrim").classList.add("open")},
+  closeDrawers:()=>closeDrawers(),surahName:n=>surahName(n),ayahCount:n=>COUNTS[n-1],
   profileInfo:()=>({bookmarks:S.bookmarks.length,favs:S.favs.size,theme:S.theme,langNative:langInfo(S.lang).native}),
   toggleTheme:()=>{S.theme=S.theme==="dark"?"light":"dark";store.set("theme",S.theme);applyChrome()},
   showBookmarks:()=>{setLeftTab("bm");if(matchMedia("(max-width:900px)").matches)openLeft()},

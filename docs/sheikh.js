@@ -1,6 +1,8 @@
-// Tilawa - AI Sheikh: a gentle AI teacher, powered by Firebase AI Logic (Gemini Developer API, free tier).
-import { aiConfig } from "./firebase-config.js";
-import { SDK, configured, getApp } from "./fb.js";
+// Tilawa - AI Sheikh: a gentle Quran teacher you can talk to (voice) or type to.
+// Runs on an ElevenLabs agent ("Tilawa AI Sheikh"). The agent id is public; no secret keys live in the app.
+const AGENT_ID = "agent_8601m7ddnakpfdqv57gk9n1w6pfz";
+const SDK_URL = "https://cdn.jsdelivr.net/npm/@elevenlabs/client@1.36.1/+esm";
+const DAILY_TEXT = 40, DAILY_VOICE = 8;
 
 const T = window.Tilawa;
 if (T) init();
@@ -8,23 +10,15 @@ if (T) init();
 function init() {
   const t = (k) => T.t(k);
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  const MODELS = [...new Set([...((aiConfig && aiConfig.models) || []), "gemini-3.6-flash", "gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-2.5-flash"])];
-  const DAILY = (aiConfig && aiConfig.dailyLimit) || 40;
+  const sv = (p, w) => `<svg width="${w || 20}" height="${w || 20}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
   const I = {
-    chat: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1.1-4.6A8 8 0 1121 12z"/><path d="M14.5 9.2a2.6 2.6 0 10.9 3.9 3.2 3.2 0 11-.9-3.9z" fill="currentColor" stroke="none"/></svg>',
+    chat: sv('<path d="M21 12a8 8 0 01-11.6 7.1L4 20l1.1-4.6A8 8 0 1121 12z"/>'),
     send: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20l18-8L3 4v6l12 2-12 2z"/></svg>',
-    plus: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
-    x: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>',
+    plus: sv('<path d="M12 5v14M5 12h14"/>'),
+    x: sv('<path d="M18 6L6 18M6 6l12 12"/>'),
+    mic: sv('<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 17v5"/>', 26),
+    stop: '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>',
   };
-  const SYSTEM = (lang) => `You are "AI Sheikh", a gentle, warm and patient Islamic teacher inside the Tilawa Quran app. You are an AI, not a human scholar - never claim otherwise.
-How to teach:
-- Speak kindly and encouragingly, like a caring teacher with a beginner. Use simple words, short paragraphs and step-by-step explanations. When it helps, end with one gentle follow-up question.
-- Base your answers on the Quran and authentic Sunnah. When you refer to the Quran, give the reference like (Al-Baqarah 2:255). Quote Arabic only when you are sure of the exact wording; otherwise explain the meaning.
-- Where scholars differ, say briefly and respectfully that there are different views, without criticising any group. For personal rulings (fatwa), marriage/divorce, inheritance, health or legal matters, give general guidance and kindly advise asking a qualified local scholar or imam.
-- If you are not sure, say so honestly. Never invent verses, hadith, narrators or references.
-- Stay with the Quran, Islam, Arabic, tajweed, good character and learning. Gently steer back if asked about unrelated topics. Never produce hateful, extremist or harmful content.
-- Reply in ${lang}, unless the student writes in another language - then reply in the language they used. Keep Quranic Arabic in Arabic script followed by its meaning.
-- Keep answers short (usually under 180 words) unless the student asks for more.`;
 
   const btn = document.createElement("button");
   btn.className = "iconbtn sheikh-btn"; btn.id = "sheikhBtn"; btn.type = "button";
@@ -34,11 +28,19 @@ How to teach:
   const panel = document.createElement("aside"); panel.className = "sh"; panel.id = "sheikh"; panel.setAttribute("aria-label", "AI Sheikh");
   document.body.append(scrim, panel);
 
-  let msgs = [], busy = false, aiMod = null, modelIdx = 0, model = null, modelLang = null, lastGate = "";
+  let msgs = [], sdk = null, conv = null, kind = null, status = "disconnected", agentMode = "listening", idleTimer = null, waitTimer = null, raf = 0, starting = null;
 
-  function label() { btn.innerHTML = I.chat + `<span class="hide-m">${esc(t("shTitle"))}</span>`; btn.title = t("shTitle"); }
-  function gateKey() { const A = T.authState(); return !configured ? "off" : !A.user ? "signin" : "chat"; }
+  function label() { btn.innerHTML = I.chat; btn.title = t("shTitle"); btn.setAttribute("aria-label", t("shTitle")); }
+  const isOpen = () => panel.classList.contains("open");
 
+  function counter(key, max) {
+    const day = new Date().toISOString().slice(0, 10);
+    let c; try { c = JSON.parse(localStorage.getItem("tilawa." + key) || "{}"); } catch (e) { c = {}; }
+    if (c.d !== day) c = { d: day, n: 0 };
+    if (c.n >= max) return false;
+    c.n++; try { localStorage.setItem("tilawa." + key, JSON.stringify(c)); } catch (e) {}
+    return true;
+  }
   function md(s) {
     const inline = (x) => x.replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/(^|[^*])\*(?!\s)([^*]+?)\*(?!\*)/g, "$1<i>$2</i>");
     let html = "", list = null;
@@ -58,90 +60,126 @@ How to teach:
   }
   function bubble(m) {
     if (m.role === "user") return `<div class="sh-m me" dir="auto">${esc(m.text)}</div>`;
-    if (m.pending && !m.text) return `<div class="sh-m bot"><span class="sh-typing" aria-label="${esc(t("shThinking"))}"><i></i><i></i><i></i></span></div>`;
+    if (m.pending) return `<div class="sh-m bot"><span class="sh-typing" aria-label="${esc(t("shThinking"))}"><i></i><i></i><i></i></span></div>`;
     return `<div class="sh-m bot${m.err ? " err" : ""}">${md(m.text)}</div>`;
   }
   function renderMsgs() {
-    const box = document.getElementById("shMsgs"); if (!box) return;
-    box.innerHTML = bubble({ role: "model", text: t("shHello") }) + msgs.map(bubble).join("");
+    const box = panel.querySelector(".sh-msgs"); if (!box) return;
+    box.innerHTML = bubble({ role: "agent", text: t("shHello") }) + msgs.map(bubble).join("");
     box.scrollTop = box.scrollHeight;
-    const s = panel.querySelector(".sh-send"); if (s) s.disabled = busy;
+  }
+  function voiceLabel() {
+    if (kind !== "voice") return t("shTalk");
+    if (status === "connecting") return t("shConnecting");
+    return agentMode === "speaking" ? t("shSpeaking") : t("shListening");
+  }
+  function renderVoice() {
+    const v = panel.querySelector(".sh-voice"); if (!v) return;
+    const on = kind === "voice";
+    v.classList.toggle("on", on); v.classList.toggle("speaking", on && agentMode === "speaking");
+    v.querySelector(".sh-mic").innerHTML = on ? I.stop : I.mic;
+    v.querySelector(".sh-mic").setAttribute("aria-label", on ? t("shEnd") : t("shTalk"));
+    v.querySelector(".sh-vstat").textContent = voiceLabel();
   }
   function render() {
     panel.dir = T.dir();
-    const g = gateKey(); lastGate = g;
-    let body;
-    if (g === "off") body = `<div class="sh-gate">${I.chat}<p>${esc(t("shOff"))}</p></div>`;
-    else if (g === "signin") body = `<div class="sh-gate">${I.chat}<p>${esc(t("shSignIn"))}</p><button class="ob-btn primary" data-act="signin">${esc(t("signIn"))}</button></div>`;
-    else body = `<div class="sh-msgs" id="shMsgs" aria-live="polite"></div>
-      <div class="sh-chips">${["shQ1", "shQ2", "shQ3", "shQ4"].map((k) => `<button type="button" data-q="${k}">${esc(t(k))}</button>`).join("")}</div>
-      <form class="sh-form" id="shForm"><textarea id="shIn" rows="1" dir="auto" placeholder="${esc(t("shPlaceholder"))}"></textarea>
-      <button class="sh-send" aria-label="${esc(t("shSend"))}">${I.send}</button></form>`;
     panel.innerHTML = `<div class="sh-head"><div class="sh-av">${I.chat}</div><div class="t"><b>${esc(t("shTitle"))}</b><span class="muted">${esc(t("shSub"))}</span></div>
-      ${g === "chat" ? `<button class="iconbtn" data-act="new" title="${esc(t("shNew"))}" aria-label="${esc(t("shNew"))}">${I.plus}</button>` : ""}
+      <button class="iconbtn" data-act="new" title="${esc(t("shNew"))}" aria-label="${esc(t("shNew"))}">${I.plus}</button>
       <button class="iconbtn" data-act="close" aria-label="Close">${I.x}</button></div>
-      <div class="sh-note">${esc(t("shNote"))}</div>${body}`;
-    renderMsgs();
+      <div class="sh-note">${esc(t("shNote"))}</div>
+      <div class="sh-msgs" aria-live="polite"></div>
+      <div class="sh-chips">${["shQ1", "shQ2", "shQ3", "shQ4"].map((k) => `<button type="button" data-q="${k}">${esc(t(k))}</button>`).join("")}</div>
+      <div class="sh-voice"><button class="sh-mic" type="button" data-act="voice"></button><div class="sh-vstat"></div></div>
+      <form class="sh-form"><textarea rows="1" dir="auto" placeholder="${esc(t("shPlaceholder"))}"></textarea>
+      <button class="sh-send" aria-label="${esc(t("shSend"))}">${I.send}</button></form>`;
+    renderMsgs(); renderVoice();
   }
-  function open() { render(); panel.classList.add("open"); scrim.classList.add("open"); const i = document.getElementById("shIn"); if (i && matchMedia("(min-width:901px)").matches) i.focus(); }
-  function close() { panel.classList.remove("open"); scrim.classList.remove("open"); }
-  const isOpen = () => panel.classList.contains("open");
+  function open() { if (!panel.innerHTML) render(); else { panel.dir = T.dir(); } panel.classList.add("open"); scrim.classList.add("open"); }
+  function close() { panel.classList.remove("open"); scrim.classList.remove("open"); if (kind === "voice") stop(); }
 
-  function underLimit() {
-    const day = new Date().toISOString().slice(0, 10);
-    let c; try { c = JSON.parse(localStorage.getItem("tilawa.shCount") || "{}"); } catch (e) { c = {}; }
-    if (c.d !== day) c = { d: day, n: 0 };
-    if (c.n >= DAILY) return false;
-    c.n++; try { localStorage.setItem("tilawa.shCount", JSON.stringify(c)); } catch (e) {}
-    return true;
-  }
-  async function getModel() {
-    const lang = T.langName();
-    if (model && modelLang === lang) return model;
-    if (!aiMod) aiMod = await import(`${SDK}/firebase-ai.js`);
-    const app = await getApp();
-    const ai = aiMod.getAI(app, { backend: new aiMod.GoogleAIBackend() });
-    model = aiMod.getGenerativeModel(ai, { model: MODELS[modelIdx], systemInstruction: SYSTEM(lang), generationConfig: { temperature: 0.6, maxOutputTokens: 1200 } });
-    modelLang = lang;
-    return model;
-  }
-  async function ask(text, extra, onPartial) {
-    const c = T.context();
-    const prefix = `[App context, not written by the student: they are reading Surah ${c.en} (${c.surah}).${extra ? " " + extra : ""}]\n`;
-    const history = msgs.slice(0, -2).filter((m) => !m.err && m.text).map((m) => ({ role: m.role, parts: [{ text: m.text }] }));
-    while (history.length && history[0].role !== "user") history.shift();
-    for (;;) {
-      try {
-        const m = await getModel();
-        const chat = m.startChat({ history });
-        const res = await chat.sendMessageStream(prefix + text);
-        let full = "";
-        for await (const chunk of res.stream) { const s = chunk.text(); if (s) { full += s; onPartial(full); } }
-        return full;
-      } catch (e) {
-        const msg = String((e && (e.message || e.code)) || "");
-        if (/not found|404|not supported|unsupported|not available|deprecated|retired|no longer|invalid.*model|model.*invalid/i.test(msg) && modelIdx < MODELS.length - 1) {
-          modelIdx++; model = null; continue;
-        }
-        throw e;
-      }
+  const ctxText = (extra) => { const c = T.context(); return `The student's app language is ${T.langName()}. They are reading Surah ${c.en} (${c.surah}) in the Tilawa app.${extra ? " " + extra : ""}`; };
+
+  function onMessage(m) {
+    const role = m.role || (m.source === "ai" ? "agent" : "user");
+    const text = (m.message || "").trim(); if (!text) return;
+    if (role === "user") {
+      const last = [...msgs].reverse().find((x) => x.role === "user");
+      if (last && last.local && last.text === text) { last.local = false; return; }
+      msgs = msgs.filter((x) => !x.pending); msgs.push({ role: "user", text });
+    } else {
+      clearTimeout(waitTimer);
+      msgs = msgs.filter((x) => !x.pending); msgs.push({ role: "agent", text });
     }
+    renderMsgs(); armIdle();
   }
-  async function send(text, extra) {
-    text = (text || "").trim();
-    if (!text || busy || gateKey() !== "chat") return;
-    const user = { role: "user", text };
-    if (!underLimit()) { msgs.push(user, { role: "model", text: t("shLimit"), err: true }); user.err = true; renderMsgs(); return; }
-    const bot = { role: "model", text: "", pending: true };
-    msgs.push(user, bot); busy = true; renderMsgs();
+  function armIdle() { clearTimeout(idleTimer); if (kind === "text") idleTimer = setTimeout(stop, 180000); }
+  function levels() {
+    cancelAnimationFrame(raf);
+    const v = panel.querySelector(".sh-voice");
+    const tick = () => {
+      if (!conv || kind !== "voice" || !v) return;
+      let lvl = 0;
+      try { lvl = agentMode === "speaking" ? conv.getOutputVolume() : conv.getInputVolume(); } catch (e) {}
+      v.style.setProperty("--lvl", Math.min(1, lvl * 2.2).toFixed(3));
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+  }
+  async function start(want, extra) {
+    if (conv && kind === want) return conv;
+    if (starting) { try { await starting; } catch (e) {} if (conv && kind === want) return conv; }
+    await stop();
+    kind = want; status = "connecting"; renderVoice();
+    starting = (async () => {
+      if (!sdk) sdk = await import(SDK_URL);
+      const base = {
+        agentId: AGENT_ID,
+        textOnly: want === "text",
+        onMessage,
+        onModeChange: ({ mode }) => { agentMode = mode; renderVoice(); },
+        onStatusChange: ({ status: s }) => { status = s; renderVoice(); },
+        onDisconnect: () => { conv = null; kind = null; status = "disconnected"; cancelAnimationFrame(raf); renderVoice(); msgs = msgs.filter((x) => !x.pending); renderMsgs(); },
+        onError: (e) => console.warn("[Tilawa] Sheikh error", e),
+      };
+      const ov = (lang) => ({ agent: { language: lang, firstMessage: want === "voice" ? t("shVoiceHi") : "" }, conversation: { textOnly: want === "text" } });
+      let c;
+      try { c = await sdk.Conversation.startSession({ ...base, overrides: ov(T.getLang()) }); }
+      catch (e) { console.warn("[Tilawa] retrying in English", e); c = await sdk.Conversation.startSession({ ...base, overrides: ov("en") }); }
+      conv = c; status = "connected";
+      try { c.sendContextualUpdate(ctxText(extra)); } catch (e) {}
+      if (want === "voice") levels();
+      renderVoice(); armIdle();
+      return c;
+    })();
+    try { return await starting; } catch (e) { kind = null; status = "disconnected"; renderVoice(); throw e; } finally { starting = null; }
+  }
+  async function stop() {
+    clearTimeout(idleTimer); cancelAnimationFrame(raf);
+    const c = conv; conv = null; kind = null; status = "disconnected";
+    if (c) { try { await c.endSession(); } catch (e) {} }
+    renderVoice();
+  }
+  async function sendText(text, extra) {
+    text = (text || "").trim(); if (!text) return;
+    if (!counter("shCount", DAILY_TEXT)) { msgs.push({ role: "user", text }, { role: "agent", text: t("shLimit"), err: true }); renderMsgs(); return; }
+    msgs.push({ role: "user", text, local: true }, { role: "agent", pending: true }); renderMsgs();
     try {
-      const reply = await ask(text, extra, (partial) => { bot.text = partial; renderMsgs(); });
-      bot.text = reply || t("shErr"); if (!reply) { bot.err = user.err = true; }
+      const c = conv || (await start("text", extra));
+      if (extra && conv === c) { try { c.sendContextualUpdate(ctxText(extra)); } catch (e) {} }
+      c.sendUserMessage(text);
+      clearTimeout(waitTimer);
+      waitTimer = setTimeout(() => { if (msgs.some((x) => x.pending)) { msgs = msgs.filter((x) => !x.pending); msgs.push({ role: "agent", text: t("shErr"), err: true }); renderMsgs(); } }, 35000);
+      armIdle();
     } catch (e) {
-      console.warn("[Tilawa] AI Sheikh error", e);
-      bot.text = t("shErr"); bot.err = user.err = true;
+      console.warn("[Tilawa] Sheikh text error", e);
+      msgs = msgs.filter((x) => !x.pending); msgs.push({ role: "agent", text: t("shErr"), err: true }); renderMsgs();
     }
-    bot.pending = false; busy = false; renderMsgs();
+  }
+  async function toggleVoice() {
+    if (kind === "voice") { stop(); return; }
+    if (!counter("shVoice", DAILY_VOICE)) { msgs.push({ role: "agent", text: t("shLimit"), err: true }); renderMsgs(); return; }
+    try { await start("voice"); }
+    catch (e) { console.warn("[Tilawa] voice start failed", e); msgs.push({ role: "agent", text: t("shVoiceErr"), err: true }); renderMsgs(); }
   }
 
   btn.addEventListener("click", () => (isOpen() ? close() : open()));
@@ -152,29 +190,32 @@ How to teach:
     if (a) {
       const act = a.dataset.act;
       if (act === "close") close();
-      else if (act === "new") { msgs = []; renderMsgs(); }
-      else if (act === "signin") { close(); window.dispatchEvent(new CustomEvent("tilawa:showsignin")); }
+      else if (act === "new") { stop(); msgs = []; renderMsgs(); }
+      else if (act === "voice") toggleVoice();
       return;
     }
-    const q = e.target.closest("[data-q]"); if (q) send(t(q.dataset.q));
+    const q = e.target.closest("[data-q]"); if (q) sendText(t(q.dataset.q));
   });
   panel.addEventListener("submit", (e) => {
     e.preventDefault();
-    const i = document.getElementById("shIn"); if (!i) return;
-    const v = i.value; i.value = ""; i.style.height = ""; send(v);
+    const i = panel.querySelector(".sh-form textarea"); if (!i) return;
+    const v = i.value; i.value = ""; i.style.height = ""; sendText(v);
   });
   panel.addEventListener("keydown", (e) => {
-    if (e.target.id === "shIn" && e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); panel.querySelector(".sh-form").requestSubmit(); }
+    if (e.target.matches(".sh-form textarea") && e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); panel.querySelector(".sh-form").requestSubmit(); }
   });
-  panel.addEventListener("input", (e) => { if (e.target.id === "shIn") { e.target.style.height = "auto"; e.target.style.height = Math.min(140, e.target.scrollHeight) + "px"; } });
+  panel.addEventListener("input", (e) => { if (e.target.matches(".sh-form textarea")) { e.target.style.height = "auto"; e.target.style.height = Math.min(140, e.target.scrollHeight) + "px"; } });
   window.addEventListener("tilawa:ask", (e) => {
     const d = e.detail || {};
     open();
     const q = t("shAskVerse").replace("{ref}", `${d.surah}:${d.ayah}`).replace("{surah}", d.name || "");
     const extra = d.ar ? `The verse ${d.surah}:${d.ayah} in Arabic: ${d.ar}${d.tr ? ` | Translation shown in the app: ${d.tr}` : ""}` : "";
-    send(q, extra);
+    sendText(q, extra);
   });
-  window.addEventListener("tilawa:authchange", () => { if (isOpen() && gateKey() !== lastGate) render(); });
-  window.addEventListener("tilawa:langchange", () => { label(); model = null; if (isOpen()) render(); });
+  window.addEventListener("tilawa:sheikhsay", (e) => { const d = e.detail || {}; open(); sendText(d.text, d.extra); });
+  window.addEventListener("tilawa:sheikh", () => (isOpen() ? close() : open()));
+  window.addEventListener("tilawa:closeall", () => { if (isOpen()) close(); });
+  window.addEventListener("tilawa:langchange", () => { label(); if (panel.innerHTML) render(); if (conv) stop(); });
+  window.addEventListener("pagehide", () => { if (conv) conv.endSession().catch(() => {}); });
   label();
 }
