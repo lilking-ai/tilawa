@@ -64,9 +64,20 @@ firebase.json         Optional: deploy to Firebase Hosting instead (`firebase de
 ```
 
 ## About the AI Sheikh
-It is an AI, not a real scholar, and can make mistakes — the app says so clearly. It is instructed to be gentle,
-cite Quran references, admit uncertainty, avoid sectarian disputes, and send people to a qualified scholar for
-personal rulings. Each person can ask up to 40 questions a day (change `dailyLimit` in `firebase-config.js`).
+The AI Sheikh runs on an ElevenLabs agent called **Tilawa AI Sheikh** (agent id `agent_8601m7ddnakpfdqv57gk9n1w6pfz`),
+so it works without Firebase. You can type to it or tap the microphone and talk; it listens and answers out loud.
+It uses your ElevenLabs credits. Limits are set on the agent: calls end after 5 minutes, at most 3 at once and
+60 a day; each phone is also limited to 40 messages and 8 voice chats a day (change these in `docs/sheikh.js`).
+Voice recordings are not kept and transcripts are deleted after 30 days. Edit the agent's prompt, voice or limits
+at https://elevenlabs.io/app/agents.
+
+It is an AI, not a real scholar, and can make mistakes - the app says so clearly.
+
+## Recitation checker
+Tap the microphone on any verse (or "Check my recitation" under the surah title), recite, and each word is marked
+green (correct), red (wrong - tap to see what was heard) or crossed out (missed). It uses the phone's built-in speech
+recognition (Safari on iPhone, Chrome on Android/computer), checks words rather than every tajweed rule, and can
+send your mistakes to the AI Sheikh for help.
 
 ## Data sources
 Quran text & translations: api.alquran.cloud (fallback api.quran.com) · Reciters: mp3quran.net ·
