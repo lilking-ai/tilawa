@@ -64,6 +64,9 @@ firebase.json         Optional: deploy to Firebase Hosting instead (`firebase de
 ```
 
 ## About the AI Sheikh
+
+**Closed until December (in shaa Allah).** The app shows a "closed for upgrades" message and the ElevenLabs agent is archived,
+so no credits are used. To reopen: set `const OPEN = true` in `docs/sheikh.js` and unarchive the agent in ElevenLabs.
 The AI Sheikh runs on an ElevenLabs agent called **Tilawa AI Sheikh** (agent id `agent_8601m7ddnakpfdqv57gk9n1w6pfz`),
 so it works without Firebase. You can type to it or tap the microphone and talk; it listens and answers out loud.
 It uses your ElevenLabs credits. Limits are set on the agent: calls end after 5 minutes, at most 3 at once and

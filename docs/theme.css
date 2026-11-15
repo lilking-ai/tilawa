@@ -188,3 +188,5 @@ aside{background:var(--paper)}
 .num{font-size:12px}
 .banner h1::before,.banner h1::after{transform:translateY(.28em)}
 @media (max-width:520px){.brand>span:not(.sub){display:inline;font-size:20px}}
+.sh-closed p{color:var(--ink);font-size:16px;line-height:1.6;max-width:300px}
+.sh-closed svg{color:var(--gold)}

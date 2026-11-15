@@ -3,6 +3,7 @@
 const AGENT_ID = "agent_8601m7ddnakpfdqv57gk9n1w6pfz";
 const SDK_URL = "https://cdn.jsdelivr.net/npm/@elevenlabs/client@1.36.1/+esm";
 const DAILY_TEXT = 40, DAILY_VOICE = 8;
+  const OPEN = false; // AI Sheikh closed until December. Set to true to switch it back on.
 
 const T = window.Tilawa;
 if (T) init();
@@ -83,6 +84,7 @@ function init() {
   }
   function render() {
     panel.dir = T.dir();
+    if (!OPEN) { panel.innerHTML = `<div class="sh-head"><div class="sh-av">${I.chat}</div><div class="t"><b>${esc(t("shTitle"))}</b><span class="muted">${esc(t("shSub"))}</span></div><button class="iconbtn" data-act="close" aria-label="Close">${I.x}</button></div><div class="sh-gate sh-closed">${I.chat}<p>${esc(t("shClosed"))}</p></div>`; return; }
     panel.innerHTML = `<div class="sh-head"><div class="sh-av">${I.chat}</div><div class="t"><b>${esc(t("shTitle"))}</b><span class="muted">${esc(t("shSub"))}</span></div>
       <button class="iconbtn" data-act="new" title="${esc(t("shNew"))}" aria-label="${esc(t("shNew"))}">${I.plus}</button>
       <button class="iconbtn" data-act="close" aria-label="Close">${I.x}</button></div>
@@ -160,6 +162,7 @@ function init() {
     renderVoice();
   }
   async function sendText(text, extra) {
+    if (!OPEN) return;
     text = (text || "").trim(); if (!text) return;
     if (!counter("shCount", DAILY_TEXT)) { msgs.push({ role: "user", text }, { role: "agent", text: t("shLimit"), err: true }); renderMsgs(); return; }
     msgs.push({ role: "user", text, local: true }, { role: "agent", pending: true }); renderMsgs();
@@ -176,6 +179,7 @@ function init() {
     }
   }
   async function toggleVoice() {
+    if (!OPEN) return;
     if (kind === "voice") { stop(); return; }
     if (!counter("shVoice", DAILY_VOICE)) { msgs.push({ role: "agent", text: t("shLimit"), err: true }); renderMsgs(); return; }
     try { await start("voice"); }
