@@ -27,15 +27,15 @@ In the Firebase console (works in Safari on iPad):
 4. Build → **Firestore Database** → Create database → *Production mode* → **Rules** tab → paste everything from
    `firestore.rules` → **Publish**. This keeps each person's bookmarks and favourites.
 
-## "Thank you for joining" email (free, optional)
-1. Create a free account at https://www.emailjs.com (200 emails/month free).
-2. **Email Services** → Add service → connect a Gmail you make for the app (e.g. `tilawa.noreply@gmail.com`).
-3. **Email Templates** → Create → set **Subject** `{{subject}}`, **To Email** `{{to_email}}`, **From Name** `Tilawa` →
-   in Content choose the code editor and paste `emails/welcome.html` → Save.
+## "Thank you for joining" email (free, EmailJS)
+Every new account (email sign-up or Google) gets one no-reply thank-you email, in the language they pick.
+Firebase's free plan can't send custom emails, so this goes through EmailJS (free: 200 emails a month).
+Until EmailJS is set up, new accounts are remembered on their device and get the email once it's switched on.
+1. Make a Gmail just for the app, e.g. `tilawa.noreply@gmail.com`.
+2. Create a free account at https://www.emailjs.com → **Email Services** → Add service → Gmail → connect that Gmail.
+3. **Email Templates** → Create → Subject `{{subject}}`, To Email `{{to_email}}`, From Name `Tilawa`,
+   Reply To `noreply@tilawa.app` → Content → code editor → paste `emails/welcome.html` → Save.
 4. Put the **Service ID**, **Template ID** and **Public Key** (Account → General) into `docs/firebase-config.js` (section 2).
-5. Account → Security: allow only `lilking-ai.github.io`.
-
-The no-reply thank-you email is sent once, only to new accounts, after they pick their language, written in that language.
 
 ## How sign-in works
 1. After the opening animation, the sign-in screen shows **Sign up** for new people and **Log in** for people who have

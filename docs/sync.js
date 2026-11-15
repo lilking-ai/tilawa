@@ -106,7 +106,8 @@ async function start() {
   window.addEventListener("tilawa:signout", () => signOut(auth));
 
   // ---------- "thank you for joining" email (sent once, only for new accounts) ----------
-  let welcomed = true, welcomeBusy = false;
+  // Every new account gets it - even if the database isn't reachable - but never twice.
+  let welcomed = false, welcomeBusy = false;
   async function sendWelcome(user) {
     const c = emailjsConfig || {};
     if (!c.publicKey || !c.serviceId || !c.templateId || String(c.publicKey).startsWith("YOUR_")) return false;
@@ -126,10 +127,13 @@ async function start() {
   }
   async function maybeWelcome() {
     const u = auth.currentUser;
-    if (!u || !u.email || !ref || welcomed || welcomeBusy || !LS.get("langChosen") || !LS.get("newAccount")) return;
+    if (!u || !u.email || welcomed || welcomeBusy || !LS.get("langChosen") || LS.get("newAccount") !== u.uid && LS.get("newAccount") !== "1") return;
     welcomeBusy = true;
     try {
-      if (await sendWelcome(u)) { welcomed = true; LS.del("newAccount"); LS.del("pendingName"); await setDoc(ref, { welcomedAt: serverTimestamp() }, { merge: true }); }
+      if (await sendWelcome(u)) {
+        welcomed = true; LS.del("newAccount"); LS.del("pendingName");
+        if (ref) { try { await setDoc(ref, { welcomedAt: serverTimestamp() }, { merge: true }); } catch (_) {} }
+      }
     } catch (e) { console.warn("[Tilawa] welcome email error", e); }
     welcomeBusy = false;
   }
@@ -153,8 +157,10 @@ async function start() {
 
   onAuthStateChanged(auth, (user) => {
     if (unsub) { unsub(); unsub = null; }
-    ref = null; firstSnap = true; welcomed = true;
+    ref = null; firstSnap = true; welcomed = false;
     if (!user) { T.setAuth({ user: null, sync: "ok", ready: true }); return; }
+    if (LS.get("newAccount") === "1") LS.set("newAccount", user.uid);
+    setTimeout(maybeWelcome, 0);
     T.setAuth({ user: userInfo(user), sync: "busy", ready: true });
     ref = doc(db, "users", user.uid);
     unsub = onSnapshot(ref, async (snap) => {
@@ -186,6 +192,7 @@ async function start() {
       T.setAuth({ sync: "ok" });
     }, (err) => {
       console.warn("[Tilawa] sync listen failed", err);
+      maybeWelcome();
       T.setAuth({ sync: "err" });
     });
   });
