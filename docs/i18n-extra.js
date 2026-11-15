@@ -150,7 +150,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "እያዳመጥኩ ነው። ማንኛውንም ጥያቄ ይጠይቁኝ፣ ወይም አያን ይቅሩልኝ።",
 "shAskMistakes": "{surah} {ref} ቀርቻለሁ። ስህተቶቼ፦ {list}። እባክዎ በረጋ መንፈስ እንዳስተካክላቸው ይርዱኝ።",
 "tabRead": "ንባብ",
-"tabSheikh": "ሸይኽ"
+"tabSheikh": "ሸይኽ",
+"shClosed": "የAI ሼክ በአሁኑ ጊዜ ለማሻሻያ ሥራዎች ተዘግቷል። ኢንሻ አላህ፣ በዲሴምበር እንደገና ይከፈታል።"
 },
 "az": {
 "surahs": "Surələr",
@@ -302,7 +303,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Sizi dinləyirəm. İstənilən sualı verin və ya mənə bir ayə tilavət edin.",
 "shAskMistakes": "{surah} surəsinin {ref} ayəsini tilavət etdim. Səhvlərim: {list}. Xahiş edirəm, onları incəliklə düzəltməyimə kömək edin.",
 "tabRead": "Oxu",
-"tabSheikh": "Şeyx"
+"tabSheikh": "Şeyx",
+"shClosed": "AI şeyx hazırda yenilənmə işləri ilə əlaqədar bağlıdır. İnşallah, dekabr ayında yenidən açılacaq."
 },
 "ber": {
 "surahs": "Tisura",
@@ -454,7 +456,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Sflidɣ-ak. Steqsi-yi ɣef wayen tebɣiḍ, neɣ ɣer-iyi laya.",
 "shAskMistakes": "Ɣriɣ {surah} {ref}. Tuccḍiwin-iw: {list}. Ma ulac aɣilif, ɛawen-iyi ad tent ṣṣeḥḥeɣ s talɣa yelhan.",
 "tabRead": "Ɣer",
-"tabSheikh": "Cciḵ"
+"tabSheikh": "Cciḵ",
+"shClosed": "Cciḫ n AI ur yeldi ara tura, acku yettwaseggem. Ad yeldi tikelt-nniḍen deg Dujember, ma yebɣa Rebbi."
 },
 "bg": {
 "surahs": "Сури",
@@ -606,7 +609,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Слушам Ви. Попитайте ме за каквото пожелаете или ми рецитирайте аят.",
 "shAskMistakes": "Рецитирах {surah} {ref}. Грешките ми: {list}. Моля, помогнете ми внимателно да ги поправя.",
 "tabRead": "Четене",
-"tabSheikh": "Шейх"
+"tabSheikh": "Шейх",
+"shClosed": "AI шейхът временно не е на разположение заради подобрения. Ще бъде отново на разположение през декември, иншаАллах."
 },
 "bn": {
 "surahs": "সূরাসমূহ",
@@ -758,7 +762,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "আমি শুনছি। যেকোনো কিছু জিজ্ঞেস করুন, অথবা আমাকে একটি আয়াত তিলাওয়াত করে শোনান।",
 "shAskMistakes": "আমি {surah} {ref} তিলাওয়াত করেছি। আমার ভুলগুলো: {list}। দয়া করে ধীরে-সুস্থে সেগুলো শুধরে দিতে সাহায্য করুন।",
 "tabRead": "পড়ুন",
-"tabSheikh": "শায়খ"
+"tabSheikh": "শায়খ",
+"shClosed": "আপগ্রেডের জন্য এআই শায়খ আপাতত বন্ধ রয়েছে। ইনশাআল্লাহ, ডিসেম্বর মাসে আবার চালু হবে।"
 },
 "bs": {
 "surahs": "Sure",
@@ -910,7 +915,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Slušam. Pitajte me šta god želite ili mi proučite ajet.",
 "shAskMistakes": "Proučio/la sam {surah} {ref}. Moje greške: {list}. Molim vas, pomozite mi da ih ispravim na blag način.",
 "tabRead": "Čitanje",
-"tabSheikh": "Šejh"
+"tabSheikh": "Šejh",
+"shClosed": "AI šejh je trenutno nedostupan zbog nadogradnje. Ponovo će biti dostupan u decembru, inšallah."
 },
 "ce": {
 "surahs": "Сураш",
@@ -1062,7 +1068,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Со ладогӀуш ву. ХӀумма а дехьа, я суна аят деша.",
 "shAskMistakes": "Со {surah} {ref} дешира. Сан гӀалаташ: {list}. Дика хьеха, хьажа, суна царех цӀена хила гӀо де.",
 "tabRead": "Деша",
-"tabSheikh": "Шейх"
+"tabSheikh": "Шейх",
+"shClosed": "AI Шейх хӀинца кхиамаш бан дӀакъовлина ву. Декабрехь, ин шаа Аллах, кхин а пайда эца мегар."
 },
 "cs": {
 "surahs": "Súry",
@@ -1214,7 +1221,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Naslouchám. Zeptejte se mě na cokoli nebo mi zarecitujte verš.",
 "shAskMistakes": "Zarecitoval(a) jsem {surah} {ref}. Udělal(a) jsem tyto chyby: {list}. Prosím, pomozte mi je laskavě napravit.",
 "tabRead": "Číst",
-"tabSheikh": "Šejch"
+"tabSheikh": "Šejch",
+"shClosed": "AI šejch je právě mimo provoz kvůli vylepšením. Znovu bude dostupný v prosinci, inšá Alláh."
 },
 "de": {
 "surahs": "Suren",
@@ -1366,7 +1374,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Ich höre zu. Frag mich, was du möchtest, oder rezitiere mir einen Vers.",
 "shAskMistakes": "Ich habe {surah} {ref} rezitiert. Meine Fehler: {list}. Bitte hilf mir, sie behutsam zu korrigieren.",
 "tabRead": "Lesen",
-"tabSheikh": "Scheich"
+"tabSheikh": "Scheich",
+"shClosed": "Der KI-Scheich ist derzeit wegen Aktualisierungen nicht verfügbar. Er wird im Dezember wieder verfügbar sein, in schā’ Allāh."
 },
 "dv": {
 "surahs": "ސޫރަތައް",
@@ -1518,7 +1527,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "އަޑުއަހަނީ. އެންމެހެން އެއްޗެއް އަހާ، ނުވަތަ އާޔަތެއް ކިޔާދީ.",
 "shAskMistakes": "އަހަން {surah} {ref} ކިޔައިފިން. އަހަރެންގެ ކުށްތައް: {list}. މަޑުން ރަނގަޅުކޮށްދެއްވާ.",
 "tabRead": "ކިޔާ",
-"tabSheikh": "ޝައިޚު"
+"tabSheikh": "ޝައިޚު",
+"shClosed": "AI ޝެއިޚް މިވަގުތު އަޕްގްރޭޑްތަކަށް ބަންދުކޮށްފައިވޭ. އިންޝާ ﷲ، ޑިސެމްބަރުގައި އަލުން ހުޅުވޭނެ."
 },
 "es": {
 "surahs": "Suras",
@@ -1670,7 +1680,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Te escucho. Pregúntame lo que quieras o recítame un versículo.",
 "shAskMistakes": "He recitado {surah} {ref}. Mis errores: {list}. Ayúdame a corregirlos con delicadeza, por favor.",
 "tabRead": "Leer",
-"tabSheikh": "Jeque"
+"tabSheikh": "Jeque",
+"shClosed": "El sheij con IA no está disponible ahora mismo debido a unas mejoras. Volverá a estar disponible en diciembre, in sha Allah."
 },
 "fa": {
 "surahs": "سوره‌ها",
@@ -1822,7 +1833,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "گوش می‌دهم. هر پرسشی دارید بپرسید یا آیه‌ای برایم تلاوت کنید.",
 "shAskMistakes": "سورهٔ {surah}، آیهٔ {ref} را تلاوت کردم. اشتباه‌هایم: {list}. لطفاً کمکم کنید آن‌ها را با مهربانی اصلاح کنم.",
 "tabRead": "خواندن",
-"tabSheikh": "شیخ"
+"tabSheikh": "شیخ",
+"shClosed": "شیخ هوش مصنوعی فعلاً برای ارتقا در دسترس نیست. ان‌شاءالله در ماه دسامبر دوباره فعال خواهد شد."
 },
 "fr": {
 "surahs": "Sourates",
@@ -1974,7 +1986,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Je vous écoute. Posez-moi vos questions ou récitez-moi un verset.",
 "shAskMistakes": "J’ai récité {surah} {ref}. Mes erreurs : {list}. Aidez-moi à les corriger avec bienveillance, s’il vous plaît.",
 "tabRead": "Lire",
-"tabSheikh": "Cheikh"
+"tabSheikh": "Cheikh",
+"shClosed": "Le cheikh IA est temporairement indisponible pour des mises à niveau. Il rouvrira en décembre, inch’Allah."
 },
 "ha": {
 "surahs": "Surori",
@@ -2126,7 +2139,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Ina sauraro. Yi mini kowace tambaya, ko karanta mini aya.",
 "shAskMistakes": "Na karanta {surah} {ref}. Ga kurakuraina: {list}. Don Allah ka taimaka mini in gyara su a hankali.",
 "tabRead": "Karatu",
-"tabSheikh": "Sheikh"
+"tabSheikh": "Sheikh",
+"shClosed": "An rufe malamin AI na ɗan lokaci domin ƙarin ingantawa. Za a sake buɗe shi a watan Disamba, in sha Allah."
 },
 "hi": {
 "surahs": "सूरहें",
@@ -2278,7 +2292,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "मैं सुन रहा हूँ। मुझसे कुछ भी पूछें या मुझे कोई आयत सुनाएँ।",
 "shAskMistakes": "मैंने {surah} {ref} की तिलावत की। मुझसे ये गलतियाँ हुईं: {list}। कृपया प्यार से इन्हें सुधारने में मेरी मदद करें।",
 "tabRead": "पढ़ें",
-"tabSheikh": "शेख"
+"tabSheikh": "शेख",
+"shClosed": "एआई शेख अभी अपग्रेड के लिए बंद है। यह दिसंबर में फिर से खुलेगा, इंशाअल्लाह।"
 },
 "id": {
 "surahs": "Surah",
@@ -2430,7 +2445,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Saya mendengarkan. Silakan bertanya atau bacakan ayat untuk saya.",
 "shAskMistakes": "Saya membaca {surah} {ref}. Kesalahan saya: {list}. Mohon bantu saya memperbaikinya dengan lembut.",
 "tabRead": "Baca",
-"tabSheikh": "Syekh"
+"tabSheikh": "Syekh",
+"shClosed": "Layanan Syekh AI sedang ditutup sementara untuk peningkatan. Layanan ini akan dibuka kembali pada bulan Desember, insya Allah."
 },
 "it": {
 "surahs": "Sure",
@@ -2582,7 +2598,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Ti ascolto. Chiedimi pure qualsiasi cosa o recitami un versetto.",
 "shAskMistakes": "Ho recitato {surah} {ref}. I miei errori: {list}. Aiutami a correggerli con gentilezza, per favore.",
 "tabRead": "Leggi",
-"tabSheikh": "Sheikh"
+"tabSheikh": "Sheikh",
+"shClosed": "Lo Sheikh IA è temporaneamente non disponibile per aggiornamenti. Riaprirà a dicembre, in shaa Allah."
 },
 "ja": {
 "surahs": "スーラ",
@@ -2734,7 +2751,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "お聞きしています。何でもお尋ねください。節を朗読していただいても結構です。",
 "shAskMistakes": "{surah} {ref}を朗読しました。間違えた箇所：{list}。やさしく直し方を教えてください。",
 "tabRead": "読む",
-"tabSheikh": "シェイク"
+"tabSheikh": "シェイク",
+"shClosed": "AIシェイクは現在、アップグレードのため休止中です。インシャーアッラー、12月に再開する予定です。"
 },
 "ko": {
 "surahs": "수라",
@@ -2886,7 +2904,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "듣고 있어요. 무엇이든 물어보시거나 구절을 암송해 주세요.",
 "shAskMistakes": "{surah} {ref}을 암송했어요. 제가 틀린 부분은 {list}예요. 부드럽게 고칠 수 있도록 도와주세요.",
 "tabRead": "읽기",
-"tabSheikh": "셰이크"
+"tabSheikh": "셰이크",
+"shClosed": "AI 셰이크는 현재 업그레이드 작업으로 이용하실 수 없습니다. 인샤알라, 12월에 다시 이용하실 수 있습니다."
 },
 "ku": {
 "surahs": "سورەتەکان",
@@ -3038,7 +3057,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "گوێ دەگرم. هەر شتێکت دەوێت بپرسە، یان ئایەتێکم بۆ بخوێنەوە.",
 "shAskMistakes": "من {surah} {ref}م خوێندەوە. هەڵەکانم: {list}. تکایە بە نەرمی یارمەتیم بدە ڕاستیان بکەمەوە.",
 "tabRead": "خوێندنەوە",
-"tabSheikh": "شێخ"
+"tabSheikh": "شێخ",
+"shClosed": "شێخی زیرەکی دەستکرد ئێستا بۆ نوێکردنەوە داخراوە. لە مانگی کانوونی یەکەمدا دەکرێتەوە، ئین‌شاء‌الله."
 },
 "ml": {
 "surahs": "സൂറത്തുകൾ",
@@ -3190,7 +3210,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "ഞാൻ കേൾക്കുകയാണ്. എന്തും ചോദിക്കാം, അല്ലെങ്കിൽ ഒരു ആയത്ത് പാരായണം ചെയ്യാം.",
 "shAskMistakes": "ഞാൻ {surah} {ref} പാരായണം ചെയ്തു. എന്റെ തെറ്റുകൾ: {list}. ദയവായി സൗമ്യമായി തിരുത്താൻ സഹായിക്കണം.",
 "tabRead": "വായിക്കുക",
-"tabSheikh": "ശൈഖ്"
+"tabSheikh": "ശൈഖ്",
+"shClosed": "എഐ ശൈഖ് നിലവിൽ നവീകരണത്തിനായി ലഭ്യമല്ല. ഇൻഷാ അല്ലാഹ്, ഡിസംബറിൽ വീണ്ടും ലഭ്യമാകും."
 },
 "ms": {
 "surahs": "Surah",
@@ -3342,7 +3363,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Saya sedang mendengar. Tanyakan apa-apa kepada saya, atau bacakan satu ayat kepada saya.",
 "shAskMistakes": "Saya telah membaca {surah} {ref}. Kesilapan saya: {list}. Tolong bantu saya membetulkannya dengan lembut.",
 "tabRead": "Baca",
-"tabSheikh": "Syeikh"
+"tabSheikh": "Syeikh",
+"shClosed": "Syeikh AI ditutup buat sementara waktu untuk kerja-kerja naik taraf. Ia akan dibuka semula pada bulan Disember, insya-Allah."
 },
 "my": {
 "surahs": "စူရဟ်များ",
@@ -3494,7 +3516,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "နားထောင်နေပါတယ်။ မေးချင်တာ မေးပါ၊ ဒါမှမဟုတ် အာယတ်တစ်ပိုဒ် ရွတ်ပြပါ။",
 "shAskMistakes": "{surah} {ref} ကို ရွတ်ဖတ်ခဲ့ပါတယ်။ ကျွန်ုပ်မှားခဲ့တာတွေက {list} ပါ။ ကျေးဇူးပြု၍ နူးညံ့စွာ ပြင်ဆင်ပေးပါ။",
 "tabRead": "ဖတ်ရန်",
-"tabSheikh": "ရှိတ်ခ်ဆရာ"
+"tabSheikh": "ရှိတ်ခ်ဆရာ",
+"shClosed": "AI ရှိတ်ခ်ကို ယခု အဆင့်မြှင့်တင်မှုများ ပြုလုပ်နေသောကြောင့် ယာယီပိတ်ထားပါသည်။ အင်ရှာအလ္လာဟ်၊ ဒီဇင်ဘာလတွင် ပြန်လည်ဖွင့်လှစ်ပါမည်။"
 },
 "nl": {
 "surahs": "Surahs",
@@ -3646,7 +3669,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Ik luister. Stel me gerust een vraag of reciteer een vers voor me.",
 "shAskMistakes": "Ik heb {surah} {ref} gereciteerd. Mijn fouten: {list}. Help me alstublieft om ze rustig te verbeteren.",
 "tabRead": "Lezen",
-"tabSheikh": "Sheikh"
+"tabSheikh": "Sheikh",
+"shClosed": "De AI-sheikh is momenteel gesloten voor upgrades. In december is hij weer beschikbaar, in shaa Allah."
 },
 "no": {
 "surahs": "Suraer",
@@ -3798,7 +3822,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Jeg lytter. Spør meg om hva som helst, eller resiter et vers for meg.",
 "shAskMistakes": "Jeg resiterte {surah} {ref}. Feilene mine: {list}. Hjelp meg gjerne med å rette dem.",
 "tabRead": "Les",
-"tabSheikh": "Sheikh"
+"tabSheikh": "Sheikh",
+"shClosed": "AI-sjeiken er midlertidig utilgjengelig på grunn av oppgraderinger. Den åpner igjen i desember, inshaAllah."
 },
 "pl": {
 "surahs": "Sury",
@@ -3950,7 +3975,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Słucham. Zapytaj mnie o cokolwiek albo wyrecytuj mi werset.",
 "shAskMistakes": "Recytacja: {surah} {ref}. Błędy: {list}. Proszę, pomóż mi je łagodnie poprawić.",
 "tabRead": "Czytaj",
-"tabSheikh": "Szejk"
+"tabSheikh": "Szejk",
+"shClosed": "Szejk AI jest obecnie niedostępny z powodu aktualizacji. Ponownie będzie dostępny w grudniu, in shaa Allah."
 },
 "ps": {
 "surahs": "سورتونه",
@@ -4102,7 +4128,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "زه غوږ یم. هر څه چې غواړئ، پوښتنه وکړئ، یا یو آیت راته تلاوت کړئ.",
 "shAskMistakes": "ما {surah} {ref} تلاوت کړل. تېروتنې مې: {list}. مهرباني وکړئ، په نرمه توګه یې د سمولو مرسته راسره وکړئ.",
 "tabRead": "لوستل",
-"tabSheikh": "شیخ"
+"tabSheikh": "شیخ",
+"shClosed": "د AI شیخ خدمت دا مهال د نوو پرمختګونو لپاره بند دی. په دسمبر کې به بېرته فعال شي، ان شاء الله."
 },
 "pt": {
 "surahs": "Suratas",
@@ -4254,7 +4281,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Estou ouvindo. Pergunte o que quiser ou recite um versículo para mim.",
 "shAskMistakes": "Recitei {surah} {ref}. Meus erros: {list}. Por favor, ajude-me a corrigi-los com gentileza.",
 "tabRead": "Ler",
-"tabSheikh": "Xeique"
+"tabSheikh": "Xeique",
+"shClosed": "O Sheikh de IA está temporariamente indisponível para atualizações. Reabrirá em dezembro, in shaa Allah."
 },
 "ro": {
 "surahs": "Sure",
@@ -4406,7 +4434,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Te ascult. Întreabă-mă orice sau recită-mi un verset.",
 "shAskMistakes": "Am recitat {surah} {ref}. Greșelile mele: {list}. Te rog să mă ajuți să le corectez cu blândețe.",
 "tabRead": "Citește",
-"tabSheikh": "Șeicul"
+"tabSheikh": "Șeicul",
+"shClosed": "Șeicul AI nu este disponibil momentan, fiind în curs de actualizare. Se va redeschide în decembrie, inshallah."
 },
 "ru": {
 "surahs": "Суры",
@@ -4558,7 +4587,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Я слушаю. Спросите о чём угодно или прочитайте мне аят.",
 "shAskMistakes": "В чтении {surah} {ref} я допустил(а) ошибки: {list}. Помогите, пожалуйста, исправить их бережно.",
 "tabRead": "Чтение",
-"tabSheikh": "Шейх"
+"tabSheikh": "Шейх",
+"shClosed": "ИИ-шейх временно недоступен в связи с обновлением. Он снова будет доступен в декабре, ин ша Аллах."
 },
 "sd": {
 "surahs": "سورتون",
@@ -4710,7 +4740,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "مان ٻڌي رهيو آهيان. ڪجهه به پڇو، يا مون کي ڪا آيت پڙهي ٻڌايو.",
 "shAskMistakes": "مون {surah} {ref} جي تلاوت ڪئي. منهنجون غلطيون: {list}. مهرباني ڪري نرميءَ سان درست ڪرڻ ۾ مدد ڪريو.",
 "tabRead": "پڙهو",
-"tabSheikh": "شيخ"
+"tabSheikh": "شيخ",
+"shClosed": "اي آءِ شيخ هن وقت اپگريڊ لاءِ بند آهي. ان شاءَ الله، ڊسمبر ۾ ٻيهر کلي ويندو."
 },
 "si": {
 "surahs": "සූරා",
@@ -4862,7 +4893,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "මම සවන් දෙමින් සිටිනවා. කැමති දෙයක් අසන්න, නැත්නම් ආයතයක් මට පාරායනය කරන්න.",
 "shAskMistakes": "මම {surah} {ref} පාරායනය කළා. මගේ වැරදි: {list}. කරුණාකර ඒවා මෘදු ලෙස නිවැරදි කරගැනීමට මට උදව් කරන්න.",
 "tabRead": "කියවන්න",
-"tabSheikh": "ෂෙයික්"
+"tabSheikh": "ෂෙයික්",
+"shClosed": "වැඩිදියුණු කිරීම් කටයුතු සඳහා AI ෂෙයික් සේවාව මේ මොහොතේ තාවකාලිකව වසා ඇත. ඉන්ෂා අල්ලාහ්, එය දෙසැම්බර් මාසයේදී නැවත විවෘත වනු ඇත."
 },
 "sq": {
 "surahs": "Suret",
@@ -5014,7 +5046,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Po ju dëgjoj. Më pyesni çfarë të dëshironi, ose më recitoni një ajet.",
 "shAskMistakes": "Recitova {surah} {ref}. Gabimet e mia: {list}. Ju lutem, më ndihmoni t’i korrigjoj me butësi.",
 "tabRead": "Lexo",
-"tabSheikh": "Shejhu"
+"tabSheikh": "Shejhu",
+"shClosed": "Shejhu i IA-së është përkohësisht i mbyllur për përmirësime. Do të rihapet në dhjetor, inshallah."
 },
 "sv": {
 "surahs": "Suror",
@@ -5166,7 +5199,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Jag lyssnar. Fråga mig vad du vill eller recitera en vers för mig.",
 "shAskMistakes": "Jag reciterade {surah} {ref}. Mina misstag: {list}. Hjälp mig gärna att rätta dem.",
 "tabRead": "Läs",
-"tabSheikh": "Shejken"
+"tabSheikh": "Shejken",
+"shClosed": "AI-shejkens tjänst är stängd för uppgraderingar just nu. Den öppnar igen i december, in shaa Allah."
 },
 "sw": {
 "surahs": "Sura",
@@ -5318,7 +5352,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Ninasikiliza. Niulize chochote, au nisomee aya.",
 "shAskMistakes": "Nimesoma {surah} {ref}. Makosa yangu: {list}. Tafadhali nisaidie kuyarekebisha kwa upole.",
 "tabRead": "Soma",
-"tabSheikh": "Sheikh"
+"tabSheikh": "Sheikh",
+"shClosed": "Huduma ya Sheikh wa AI haipatikani kwa sasa kwa sababu ya maboresho. Itafunguliwa tena mwezi Desemba, Inshaallah."
 },
 "ta": {
 "surahs": "ஸூராக்கள்",
@@ -5470,7 +5505,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "நான் கேட்கிறேன். எதையும் கேளுங்கள் அல்லது ஒரு வசனத்தை ஓதுங்கள்.",
 "shAskMistakes": "நான் {surah} {ref} ஓதினேன். என் தவறுகள்: {list}. அவற்றை மென்மையாகத் திருத்த உதவுங்கள்.",
 "tabRead": "ஓதல்",
-"tabSheikh": "ஷேக்"
+"tabSheikh": "ஷேக்",
+"shClosed": "AI ஷேக் தற்போது மேம்படுத்தல்களுக்காக மூடப்பட்டுள்ளது. இன்ஷா அல்லாஹ், டிசம்பரில் மீண்டும் திறக்கப்படும்."
 },
 "tg": {
 "surahs": "Сураҳо",
@@ -5622,7 +5658,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Гӯш мекунам. Ҳар чизе мехоҳед, пурсед ё бароям оят бихонед.",
 "shAskMistakes": "Ман {surah} {ref}-ро қироат кардам. Хатоҳои ман: {list}. Лутфан, барои бо нармӣ ислоҳ кардани онҳо кӯмак кунед.",
 "tabRead": "Хондан",
-"tabSheikh": "Шайх"
+"tabSheikh": "Шайх",
+"shClosed": "Шайхи зеҳни сунъӣ ҳоло барои такмил муваққатан дастрас нест. Он моҳи декабр, иншоаллоҳ, боз дастрас мешавад."
 },
 "th": {
 "surahs": "ซูเราะฮ์",
@@ -5774,7 +5811,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "ผมกำลังฟังอยู่ ถามอะไรก็ได้ หรืออ่านอายะฮ์ให้ผมฟังก็ได้",
 "shAskMistakes": "ฉันอ่าน {surah} {ref} และอ่านผิดตรงนี้: {list} โปรดช่วยแนะนำวิธีแก้ให้ฉันอย่างอ่อนโยน",
 "tabRead": "อ่าน",
-"tabSheikh": "ท่านเชค"
+"tabSheikh": "ท่านเชค",
+"shClosed": "เชค AI ปิดให้บริการชั่วคราวเพื่อปรับปรุงระบบ และจะกลับมาเปิดให้บริการอีกครั้งในเดือนธันวาคม อินชาอัลลอฮ์"
 },
 "tr": {
 "surahs": "Sureler",
@@ -5926,7 +5964,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Sizi dinliyorum. Bana dilediğinizi sorabilir veya bir ayet okuyabilirsiniz.",
 "shAskMistakes": "{surah} {ref} okudum. Hatalarım: {list}. Lütfen düzeltmeme nazikçe yardımcı olun.",
 "tabRead": "Oku",
-"tabSheikh": "Şeyh"
+"tabSheikh": "Şeyh",
+"shClosed": "Yapay Zekâ Şeyhimiz şu anda iyileştirme çalışmaları nedeniyle hizmet veremiyor. İnşallah aralık ayında yeniden hizmete açılacak."
 },
 "tt": {
 "surahs": "Сүрәләр",
@@ -6078,7 +6117,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Тыңлыйм. Нәрсә булса да сорагыз яки миңа аять укыгыз.",
 "shAskMistakes": "Мин {surah} {ref} укыдым. Хаталарым: {list}. Зинһар, аларны йомшак кына төзәтергә ярдәм итегез.",
 "tabRead": "Уку",
-"tabSheikh": "Шәех"
+"tabSheikh": "Шәех",
+"shClosed": "AI-шәех хәзер яңарту эшләре сәбәпле вакытлыча эшләми. Ул декабрьдә, ин шәә Аллаһ, яңадан ачылачак."
 },
 "ug": {
 "surahs": "سۈرىلەر",
@@ -6230,7 +6270,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "ئاڭلاۋاتىمەن. خالىغان نەرسىنى سوراڭ ياكى ماڭا ئايەت تىلاۋەت قىلىڭ.",
 "shAskMistakes": "مەن {surah} {ref} نى تىلاۋەت قىلدىم. خاتالىقلىرىم: {list}. ئۇلارنى مۇلايىملىق بىلەن تۈزىتىشىمگە ياردەم قىلىڭ.",
 "tabRead": "ئوقۇش",
-"tabSheikh": "شەيخ"
+"tabSheikh": "شەيخ",
+"shClosed": "سۈنئىي ئەقىل شەيخى ھازىر يېڭىلاش ئۈچۈن ۋاقىتلىق تاقالدى. ئىنشائاللاھ، دېكابىردا قايتا ئېچىۋېتىلىدۇ."
 },
 "ur": {
 "surahs": "سورتیں",
@@ -6382,7 +6423,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "میں سن رہا ہوں۔ مجھ سے کچھ بھی پوچھیں، یا مجھے کوئی آیت سنائیں۔",
 "shAskMistakes": "میں نے {surah} {ref} کی تلاوت کی۔ میری غلطیاں: {list}۔ براہِ کرم نرمی سے انہیں درست کرنے میں میری مدد کریں۔",
 "tabRead": "پڑھیں",
-"tabSheikh": "شیخ"
+"tabSheikh": "شیخ",
+"shClosed": "اے آئی شیخ کی سروس فی الحال اپ گریڈ کے لیے بند ہے۔ ان شاء اللہ دسمبر میں دوبارہ دستیاب ہوگی۔"
 },
 "uz": {
 "surahs": "Suralar",
@@ -6534,7 +6576,8 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "Tinglayapman. Istalgan savolingizni bering yoki menga oyat tilovat qiling.",
 "shAskMistakes": "Men {surah} {ref}ni tilovat qildim. Xatolarim: {list}. Iltimos, ularni muloyimlik bilan tuzatishga yordam bering.",
 "tabRead": "O‘qish",
-"tabSheikh": "Shayx"
+"tabSheikh": "Shayx",
+"shClosed": "AI Shayx hozirda yangilanish ishlari sababli vaqtincha yopiq. In shaa Alloh, dekabr oyida qayta ochiladi."
 },
 "zh": {
 "surahs": "苏拉",
@@ -6686,6 +6729,7 @@ Object.assign(window.TILAWA_I18N,{
 "shVoiceHi": "我在聆听。您可以随时提问，也可以为我诵读一节经文。",
 "shAskMistakes": "我诵读了{surah} {ref}，读错的地方有：{list}。请温和地帮我纠正。",
 "tabRead": "阅读",
-"tabSheikh": "谢赫"
+"tabSheikh": "谢赫",
+"shClosed": "AI谢赫目前正在升级，暂时无法使用。若真主意欲，将于十二月重新开放。"
 }
 });
