@@ -53,11 +53,10 @@ async function start() {
       // Firebase's own no-reply email to every new email sign-up (free): "Thank you for joining Tilawa"
       // is set as its subject in the console (Authentication -> Templates -> Email address verification).
       auth.languageCode = T.getLang();
-      try { await sendEmailVerification(res.user, { url: appUrl() }); }
-      catch (err) {
-        if (/unauthorized-continue-uri|invalid-continue-uri/.test(err.code || "")) { try { await sendEmailVerification(res.user); } catch (_) {} }
-        else console.warn("[Tilawa] welcome email from Firebase failed", err);
-      }
+      // Sent without a "continue" link: a link to a site Firebase hasn't allowed makes it refuse the email,
+      // and an immediate retry is then blocked as "too many attempts".
+      try { await sendEmailVerification(res.user); }
+      catch (err) { console.warn("[Tilawa] welcome email from Firebase failed", err); }
     } catch (err) {
       LS.del("newAccount");
       console.warn("[Tilawa] sign-up failed", err);
