@@ -9,9 +9,9 @@ if(sp){
   if(seen){sp.remove()}
   else{
     var gone=false;
-    var hide=function(){if(gone)return;gone=true;sp.classList.add("out");setTimeout(function(){sp.remove()},600)};
+    var hide=function(){if(gone)return;gone=true;sp.classList.add("out");setTimeout(function(){sp.remove()},950)};
     sp.addEventListener("click",hide);
-    setTimeout(hide,reduce?900:3000);
+    setTimeout(hide,reduce?1400:6500);
   }
 }
 var T=window.Tilawa; if(!T) return;
