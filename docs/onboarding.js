@@ -29,7 +29,7 @@ var I={
 I.arch='<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true"><path stroke-width="1.5" d="M5 22.5V11.2c0-3.7 3.1-6.5 7-8.8 3.9 2.3 7 5.1 7 8.8v11.3"/><path stroke-width="1" d="M8.6 22.5V11.8c0-2.2 1.5-3.9 3.4-5.2 1.9 1.3 3.4 3 3.4 5.2v10.7"/></svg>';
 /* mode: "signup" | "login" | "forgot" | "resetsent" */
 var st={mode:LS.get("hadAccount")?"login":"signup",email:"",sentTo:"",error:"",busy:false,showPw:false,acted:false};
-var prevUser=null,prevConfigured=false,lpFirst=false;
+var prevUser=null,prevConfigured=false,lpFirst=false,gateShown=false;
 var SS={get:function(k){try{return sessionStorage.getItem("tilawa."+k)}catch(e){return null}},set:function(k,v){try{sessionStorage.setItem("tilawa."+k,v)}catch(e){}}};
 
 var ob=document.createElement("div");ob.id="ob";ob.className="ob";ob.hidden=true;ob.setAttribute("role","dialog");ob.setAttribute("aria-modal","true");
@@ -214,7 +214,8 @@ window.addEventListener("tilawa:authchange",function(e){
     st.acted=false;
   }else if(!uid&&prevUser){prevUser=null;if(pfOpen())renderPf()}
   else if(uid&&pfOpen())renderPf();
-  if(A.configured&&A.ready&&!uid&&!SS.get("gate")&&ob.hidden&&lp.hidden&&!pfOpen())openOb(false);
+  /* signed out: the sign-in screen waits under the opening animation every time the app opens (once per page load) */
+  if(A.configured&&A.ready&&!uid&&!gateShown&&ob.hidden&&lp.hidden&&!pfOpen()){gateShown=true;openOb(false)}
 });
 window.addEventListener("tilawa:langchange",function(){if(!ob.hidden)renderOb();if(pfOpen())renderPf()});
 window.addEventListener("hashchange",function(){if(location.hash==="#welcome")openOb(true)});
