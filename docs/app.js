@@ -140,6 +140,7 @@ const hasSurah=n=>{const m=curMoshaf();return !!m&&m.set.has(n)};
 /* ---------- render: chrome ---------- */
 function applyChrome(){
   document.documentElement.dataset.theme=S.theme;
+  {const m=document.querySelector('meta[name="theme-color"]');if(m)m.content=S.theme==="dark"?"#0C1815":"#F4EFE3";}
   document.documentElement.lang=S.lang;
   document.documentElement.dir=langInfo(S.lang).dir==="rtl"?"rtl":"ltr";
   document.documentElement.style.setProperty("--qs",S.qs?S.qs+"px":"");
