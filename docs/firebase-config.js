@@ -16,9 +16,9 @@ export const firebaseConfig = {
 //    Email Services -> your Service ID; Email Templates -> your Template ID; Account -> General -> Public Key.
 //    Leave as is to skip the welcome email.
 export const emailjsConfig = {
-  serviceId: "YOUR_SERVICE_ID",
-  templateId: "YOUR_TEMPLATE_ID",
-  publicKey: "YOUR_PUBLIC_KEY",
+  serviceId: "service_qem9y1o",
+  templateId: "template_orz4g0w",
+  publicKey: "EULgU8hGHmUXasbOo",
 };
 
 // 3) AI Sheikh - Firebase console -> AI Logic -> Get started -> Gemini Developer API (free plan).
