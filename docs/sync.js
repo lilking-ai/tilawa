@@ -27,7 +27,7 @@ async function start() {
     getApp(),
   ]);
   const { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, onAuthStateChanged, signOut,
-    createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, getAdditionalUserInfo, updateProfile } = authMod;
+    createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, sendEmailVerification, getAdditionalUserInfo, updateProfile } = authMod;
   const { initializeFirestore, persistentLocalCache, persistentMultipleTabManager, doc, onSnapshot, setDoc, serverTimestamp } = fsMod;
 
   const auth = getAuth(app);
@@ -50,6 +50,14 @@ async function start() {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       if (name) { try { await updateProfile(res.user, { displayName: name }); T.setAuth({ user: userInfo(res.user) }); } catch (_) {} }
       result({ ok: true, mode: "signup" });
+      // Firebase's own no-reply email to every new email sign-up (free): "Thank you for joining Tilawa"
+      // is set as its subject in the console (Authentication -> Templates -> Email address verification).
+      auth.languageCode = T.getLang();
+      try { await sendEmailVerification(res.user, { url: appUrl() }); }
+      catch (err) {
+        if (/unauthorized-continue-uri|invalid-continue-uri/.test(err.code || "")) { try { await sendEmailVerification(res.user); } catch (_) {} }
+        else console.warn("[Tilawa] welcome email from Firebase failed", err);
+      }
     } catch (err) {
       LS.del("newAccount");
       console.warn("[Tilawa] sign-up failed", err);
