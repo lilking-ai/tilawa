@@ -51,7 +51,7 @@ const store={get(k,d){try{const v=localStorage.getItem("tilawa."+k);return v==nu
   set(k,v){try{localStorage.setItem("tilawa."+k,JSON.stringify(v))}catch(e){}if(SYNC_KEYS.has(k))emitChange()}};
 const S={
   lang:store.get("lang",(()=>{const n=(navigator.language||"en").slice(0,2).toLowerCase();return (window.TILAWA_LANGS||[]).some(l=>l.code===n)?n:"en"})()),
-  theme:store.get("theme",matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"),
+  theme:store.get("theme","dark"),
   qs:store.get("qs",0),tr:store.get("tr","en.sahih"),layout:store.get("layout","cards"),follow:store.get("follow",true),
   surah:store.get("surah",1),reciterId:store.get("reciterId",null),moshafId:store.get("moshafId",null),
   favs:new Set(store.get("favs",[])),verseEd:store.get("verseEd","ar.alafasy"),
@@ -224,9 +224,9 @@ function renderReader(){
   const n=S.surah,el=$("reader");
   const type=MEDINAN.has(n)?t("medinan"):t("meccan");
   const rec=curReciter(),avail=hasSurah(n);
-  const meaning=MEANINGS[n]&&S.lang!=="ar"?` · ${esc(MEANINGS[n])}`:"";
+  const meaning=MEANINGS[n]&&S.lang!=="ar"?`<span>${esc(MEANINGS[n])}</span>`:"";
   let head=`<section class="banner">${ICON.pattern}<h1>سورة ${AR_NAMES[n-1]}</h1><h2>${esc(S.lang==="ar"?"":EN_NAMES[n-1])}</h2>
-    <div class="meta">${locNum(n)} · ${type} · ${locNum(COUNTS[n-1])} ${t("ayahs")}${meaning}</div>
+    <div class="meta"><span>${type}</span><span>${locNum(COUNTS[n-1])} ${t("ayahs")}</span>${meaning}</div>
     <div class="actions"><button class="btn primary" id="playSurahBtn"${rec&&!avail?" disabled":""}>${ICON.play}${t("playSurah")}</button>
     <button class="btn ghost" id="playVersesBtn">${ICON.list}${t("playVerses")}</button>
     <button class="btn ghost" id="reciteBtn">${ICON.mic}${t("rcBtn")}</button></div>
@@ -267,7 +267,7 @@ async function openSurah(n,opt={}){
   if(!opt.initial)S.navigated=true;
   S.surah=n;store.set("surah",n);
   S.textState="loading";S.text=null;
-  renderSurahs();renderReader();closeDrawers();
+  renderSurahs();renderReader();closeDrawers();updateNP();
   if(!opt.keepScroll)$("main").scrollTop=0;
   const active=document.querySelector(".s-item.on");if(active)active.scrollIntoView({block:"nearest"});
   try{const d=await loadText(n);if(S.surah!==n)return;S.text=d;S.textState="ok"}
