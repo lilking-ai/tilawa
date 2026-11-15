@@ -26,8 +26,11 @@ var I={
  search:svg('<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>',16),
  google:'<svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>'
 };
-var st={form:"email",email:LS.get("emailForSignIn")||"",sentTo:"",error:"",busy:false};
+I.arch='<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true"><path stroke-width="1.5" d="M5 22.5V11.2c0-3.7 3.1-6.5 7-8.8 3.9 2.3 7 5.1 7 8.8v11.3"/><path stroke-width="1" d="M8.6 22.5V11.8c0-2.2 1.5-3.9 3.4-5.2 1.9 1.3 3.4 3 3.4 5.2v10.7"/></svg>';
+/* mode: "signup" | "login" | "forgot" | "resetsent" */
+var st={mode:LS.get("hadAccount")?"login":"signup",email:"",sentTo:"",error:"",busy:false,showPw:false,acted:false};
 var prevUser=null,prevConfigured=false,lpFirst=false;
+var SS={get:function(k){try{return sessionStorage.getItem("tilawa."+k)}catch(e){return null}},set:function(k,v){try{sessionStorage.setItem("tilawa."+k,v)}catch(e){}}};
 
 var ob=document.createElement("div");ob.id="ob";ob.className="ob";ob.hidden=true;ob.setAttribute("role","dialog");ob.setAttribute("aria-modal","true");
 var lp=document.createElement("div");lp.id="lp";lp.className="lp";lp.hidden=true;lp.setAttribute("role","dialog");lp.setAttribute("aria-modal","true");
@@ -39,26 +42,46 @@ document.body.appendChild(ob);document.body.appendChild(lp);document.body.append
 var acct=document.getElementById("acctBtn"),setBtn=document.getElementById("settingsBtn");
 if(acct&&setBtn&&setBtn.parentNode)setBtn.parentNode.insertBefore(acct,setBtn.nextSibling);
 
-/* ---------- sign-in form (welcome page and profile) ---------- */
+/* ---------- sign-in form: Log in / Sign up / Forgot password (welcome page and profile) ---------- */
+function field(f,type,ph,val,ac,extra){return '<label class="ob-field'+(extra||"")+'"><input data-f="'+f+'" type="'+type+'"'+(type==="email"?' inputmode="email"':'')+' autocomplete="'+ac+'" placeholder="'+esc(ph)+'" aria-label="'+esc(ph)+'" value="'+esc(val||"")+'">'}
+function pwField(ph,ac){return field("password",st.showPw?"text":"password",ph,"",ac," pw")+'<button type="button" class="pw-toggle" data-act="pwshow">'+esc(st.showPw?t("authHide"):t("authShow"))+'</button></label>'}
 function signHTML(P){
-  var A=T.authState();
+  var A=T.authState(),m=st.mode;
   var err=st.error?'<div class="ob-err" role="alert">'+esc(st.error)+'</div>':'';
   function wrap(h){return P?'<div class="pf-sign">'+h+'</div>':'<div class="ob-sign-card">'+h+'</div>'}
   if(A.user&&!P) return '<div class="ob-sign-card"><div class="ob-sent"><div class="ob-ic">'+I.check+'</div><h2>'+esc(t("obSignedIn"))+'</h2></div><button class="ob-btn primary" data-act="continue">'+esc(t("obStart"))+'</button></div>';
-  if(st.form==="confirm") return wrap('<h2>'+esc(t("obConfirmEmail"))+'</h2>'+err+
-    '<label class="ob-field"><input data-f="confirm" type="email" inputmode="email" autocomplete="email" placeholder="'+esc(t("obEmail"))+'" value="'+esc(st.email)+'"></label>'+
-    '<button class="ob-btn primary" data-act="confirm">'+esc(t("obPasteBtn"))+'</button>');
-  if(st.form==="sent") return wrap('<div class="ob-sent"><div class="ob-ic">'+I.mail+'</div><p>'+esc(t("obSent")).replace("{email}","<b>"+esc(st.sentTo)+"</b>")+'</p></div>'+err+
-    '<button class="ob-btn ghost" data-act="resend">'+esc(t("obResend"))+'</button>'+
-    '<div class="ob-paste"><b>'+esc(t("obPasteTitle"))+'</b><label class="ob-field"><input data-f="paste" type="url" inputmode="url" autocomplete="off" placeholder="'+esc(t("obPaste"))+'"></label>'+
-    '<button class="ob-btn primary" data-act="paste">'+esc(t("obPasteBtn"))+'</button></div>');
-  return wrap((P?'':'<h2>'+esc(t("obSignTitle"))+'</h2><p class="sub">'+esc(t("obSignSub"))+'</p>')+err+
-    '<label class="ob-field"><input data-f="name" type="text" autocomplete="name" placeholder="'+esc(t("obName"))+'" value="'+esc(LS.get("pendingName")||"")+'"></label>'+
-    '<label class="ob-field"><input data-f="email" type="email" inputmode="email" autocomplete="email" placeholder="'+esc(t("obEmail"))+'" value="'+esc(st.email)+'"></label>'+
-    '<button class="ob-btn primary" data-act="send"'+(st.busy?' disabled':'')+'>'+esc(st.busy?t("obSending"):t("obSend"))+'</button>'+
+  if(m==="resetsent") return wrap('<div class="ob-sent"><div class="ob-ic">'+I.mail+'</div><p>'+esc(t("authResetSent")).replace("{email}","<b>"+esc(st.sentTo)+"</b>")+'</p></div>'+
+    '<button class="ob-btn primary" data-act="tologin">'+esc(t("authBack"))+'</button>');
+  if(m==="forgot") return wrap('<h2>'+esc(t("authResetTitle"))+'</h2><p class="sub">'+esc(t("authResetSub"))+'</p>'+err+
+    field("email","email",t("obEmail"),st.email,"email")+'</label>'+
+    '<button class="ob-btn primary" data-act="reset"'+(st.busy?' disabled':'')+'>'+esc(st.busy?t("authWait"):t("authResetBtn"))+'</button>'+
+    '<button class="ob-link" data-act="tologin">'+esc(t("authBack"))+'</button>');
+  var up=m==="signup";
+  var tabs='<div class="auth-tabs" role="tablist"><button type="button" role="tab" aria-selected="'+!up+'" class="'+(up?'':'on')+'" data-act="tologin">'+esc(t("authLogin"))+'</button>'+
+    '<button type="button" role="tab" aria-selected="'+up+'" class="'+(up?'on':'')+'" data-act="tosignup">'+esc(t("authSignup"))+'</button></div>';
+  var head=P?'':'<h2>'+esc(t(up?"authSignupTitle":"authLoginTitle"))+'</h2><p class="sub">'+esc(t(up?"authSignupSub":"authLoginSub"))+'</p>';
+  var body=up
+    ? field("name","text",t("obName"),LS.get("pendingName")||"","name")+'</label>'+field("email","email",t("obEmail"),st.email,"email")+'</label>'+pwField(t("authPassword"),"new-password")+'<p class="pw-hint">'+esc(t("authWeak"))+'</p>'+
+      '<button class="ob-btn primary" data-act="signup"'+(st.busy?' disabled':'')+'>'+esc(st.busy?t("authWait"):t("authCreate"))+'</button>'
+    : field("email","email",t("obEmail"),st.email,"email")+'</label>'+pwField(t("authPassword"),"current-password")+
+      '<button type="button" class="auth-forgot" data-act="toforgot">'+esc(t("authForgot"))+'</button>'+
+      '<button class="ob-btn primary" data-act="login"'+(st.busy?' disabled':'')+'>'+esc(st.busy?t("authWait"):t("authLogin"))+'</button>';
+  return wrap(tabs+head+err+body+
     '<div class="ob-or">'+esc(t("obOr"))+'</div>'+
     '<button class="ob-btn ghost" data-act="google">'+I.google+esc(t("obGoogle"))+'</button>'+
     (P?'':'<button class="ob-link" data-act="guest">'+esc(t("obGuest"))+'</button>'));
+}
+function authErr(code){
+  code=String(code||"").replace("auth/","");
+  if(/invalid-credential|wrong-password|user-not-found|invalid-login/.test(code))return t("authWrong");
+  if(code==="email-already-in-use")return t("authInUse");
+  if(code==="weak-password")return t("authWeak");
+  if(code==="invalid-email")return t("obBadEmail");
+  if(code==="missing-password")return t("authNoPw");
+  if(code==="too-many-requests")return t("authTooMany");
+  if(code==="network-request-failed")return t("authOffline");
+  if(code==="operation-not-allowed"||code==="configuration-not-found")return t("obSoon");
+  return t("signInErr")+(code?" ("+code+")":"");
 }
 
 /* ---------- welcome page ---------- */
@@ -68,10 +91,9 @@ function renderOb(){
     return '<div class="ob-card"><div class="ob-ic">'+I[f[0]]+'</div><h3>'+esc(t(f[1]+"Title"))+'</h3><p>'+esc(t(f[1]))+'</p></div>'}).join("");
   ob.innerHTML='<div class="ob-progress"><span id="obBar"></span></div>'+
    '<div class="ob-scroll" id="obScroll" tabindex="-1">'+
-    '<section class="ob-hero"><div class="ob-logo">'+I.star+'</div><h1>Tilawa <span>تلاوة</span></h1><p class="ob-tag">'+esc(t("obTag"))+'</p>'+
-     '<div class="ob-bism">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div><button class="ob-cue" data-act="down">'+esc(t("obScroll"))+I.down+'</button></section>'+
-    '<section class="ob-feats" id="obFeat">'+feats+'</section>'+
+    '<section class="ob-hero ob-top"><div class="ob-logo">'+I.arch+'</div><h1>Tilawa <span>تلاوة</span></h1><p class="ob-tag">'+esc(t("obTag"))+'</p></section>'+
     '<section class="ob-sign" id="obSign">'+signHTML(false)+'</section>'+
+    '<section class="ob-feats" id="obFeat">'+feats+'</section>'+
     '<footer class="ob-foot">Tilawa</footer></div>'+
    '<button class="ob-down" id="obDown" aria-label="'+esc(t("obScroll"))+'">'+I.down+'</button>';
   var sc=document.getElementById("obScroll"),bar=document.getElementById("obBar"),down=document.getElementById("obDown");
@@ -81,7 +103,7 @@ function renderOb(){
 }
 function refresh(){var s=document.getElementById("obSign");if(s&&!ob.hidden)s.innerHTML=signHTML(false);if(pfOpen())renderPf()}
 function toSign(){var s=document.getElementById("obSign");if(s)setTimeout(function(){s.scrollIntoView({behavior:"smooth",block:"start"})},60)}
-function openOb(sign){if(ob.hidden){ob.hidden=false;document.body.classList.add("ob-open");renderOb()}else refresh();if(sign)toSign()}
+function openOb(sign){SS.set("gate","1");if(ob.hidden){ob.hidden=false;document.body.classList.add("ob-open");renderOb()}else refresh();if(sign)toSign()}
 function closeOb(){ob.hidden=true;document.body.classList.remove("ob-open");if(location.hash==="#welcome")history.replaceState(null,"",location.pathname+location.search)}
 function finish(){LS.set("onboarded","1");closeOb();if(!LS.get("langChosen"))openLp(true)}
 function validEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)}
@@ -112,7 +134,7 @@ function renderPf(){
     (u?'<div class="pf-list"><button class="pf-row danger" data-act="signout">'+esc(t("signOut"))+'</button></div>':'')+
     '<p class="pf-about"><b>'+esc(t("prAbout"))+'</b><br>'+esc(t("prAboutText"))+'</p></div>';
 }
-function openPf(){if(st.form!=="sent"&&st.form!=="confirm")st.form="email";renderPf();pf.classList.add("open");pfScrim.classList.add("open")}
+function openPf(){if(st.mode==="resetsent")st.mode="login";st.error="";renderPf();pf.classList.add("open");pfScrim.classList.add("open")}
 function closePf(){pf.classList.remove("open");pfScrim.classList.remove("open")}
 pfScrim.addEventListener("click",closePf);
 
@@ -122,15 +144,18 @@ function onAct(e){
   var root=e.currentTarget,b=e.target.closest("[data-act]");if(!b||!root.contains(b))return;var a=b.dataset.act;
   if(a==="down"){document.getElementById("obFeat").scrollIntoView({behavior:"smooth"});return}
   if(a==="guest"||a==="continue"){finish();return}
-  if(a==="google"){if(!T.authState().configured){st.error=t("obSoon");refresh();return}emit("tilawa:signin");return}
-  if(a==="resend"){st.form="email";st.error="";refresh();return}
-  if(a==="send"){
-    var email=fv(root,"email"),name=fv(root,"name");st.email=email;if(name)LS.set("pendingName",name);
+  if(a==="google"){if(!T.authState().configured){st.error=t("obSoon");refresh();return}st.acted=true;emit("tilawa:signin");return}
+  if(a==="tologin"||a==="tosignup"||a==="toforgot"){var keep=fv(root,"email");if(keep)st.email=keep;st.mode=a.slice(2);st.error="";st.busy=false;refresh();focusFirst(root);return}
+  if(a==="pwshow"){var pv=fv(root,"password");st.showPw=!st.showPw;var em0=fv(root,"email"),nm0=fv(root,"name");if(em0)st.email=em0;if(nm0)LS.set("pendingName",nm0);refresh();var pe=root.querySelector('[data-f="password"]');if(pe){pe.value=pv;pe.focus()}return}
+  if(a==="signup"||a==="login"||a==="reset"){
+    var email=fv(root,"email"),pw=(root.querySelector('[data-f="password"]')||{}).value||"",name=fv(root,"name");
+    st.email=email;if(name)LS.set("pendingName",name);
     if(!validEmail(email)){st.error=t("obBadEmail");refresh();return}
+    if(a!=="reset"&&!pw){st.error=t("authNoPw");refresh();return}
+    if(a==="signup"&&pw.length<6){st.error=t("authWeak");refresh();return}
     if(!T.authState().configured){st.error=t("obSoon");refresh();return}
-    st.error="";st.busy=true;refresh();emit("tilawa:emaillink",{email:email,name:name});return}
-  if(a==="paste"){var link=fv(root,"paste");if(!link)return;st.error="";emit("tilawa:pastelink",{email:st.sentTo||st.email,link:link});return}
-  if(a==="confirm"){var em=fv(root,"confirm");if(!validEmail(em)){st.error=t("obBadEmail");refresh();return}st.email=em;st.error="";emit("tilawa:confirmemail",{email:em});return}
+    st.error="";st.busy=true;st.acted=true;refresh();
+    emit(a==="signup"?"tilawa:pwsignup":a==="login"?"tilawa:pwlogin":"tilawa:pwreset",{email:email,password:pw,name:name});return}
   if(a==="pfclose"){closePf();return}
   if(a==="lang"){openLp(false);return}
   if(a==="theme"){T.toggleTheme();renderPf();return}
@@ -140,6 +165,7 @@ function onAct(e){
   if(a==="signout"){emit("tilawa:signout");return}
 }
 function onKey(e){if(e.key==="Enter"&&e.target.tagName==="INPUT"){var c=e.target.closest(".ob-sign-card,.pf-sign");var b=c&&c.querySelector(".ob-btn.primary");if(b){e.preventDefault();b.click()}}}
+function focusFirst(root){setTimeout(function(){var c=root.querySelector(".ob-sign-card input,.pf-sign input");if(c&&window.innerWidth>700)c.focus()},30)}
 ob.addEventListener("click",onAct);pf.addEventListener("click",onAct);
 ob.addEventListener("keydown",onKey);pf.addEventListener("keydown",onKey);
 
@@ -175,22 +201,22 @@ document.addEventListener("keydown",function(e){
 window.addEventListener("tilawa:profile",function(){pfOpen()?closePf():openPf()});
 window.addEventListener("tilawa:showsignin",function(){openPf()});
 window.addEventListener("tilawa:langpicker",function(){openLp(false)});
-window.addEventListener("tilawa:needemail",function(){st.form="confirm";st.error="";openOb(true)});
-window.addEventListener("tilawa:linkerror",function(){st.error=t("obLinkErr");if(st.form!=="confirm")st.form=st.sentTo?"sent":"email";if(pfOpen())refresh();else openOb(true)});
-window.addEventListener("tilawa:emaillink-result",function(e){
+window.addEventListener("tilawa:auth-result",function(e){
   var d=e.detail||{};st.busy=false;
-  if(d.ok){st.form="sent";st.sentTo=d.email;st.error=""}
-  else st.error=/invalid-email/.test(d.code||"")?t("obBadEmail"):t("signInErr")+(d.code?" ("+d.code+")":"");
+  if(d.ok){st.error="";if(d.mode==="reset"){st.mode="resetsent";st.sentTo=d.email}}
+  else{st.acted=false;st.error=d.code?authErr(d.code):"";if(d.code&&/email-already-in-use/.test(d.code))st.mode="login"}
   refresh();
 });
 window.addEventListener("tilawa:authchange",function(e){
   var A=e.detail||T.authState(),uid=A.user?A.user.uid:null;
   if(A.configured!==prevConfigured){prevConfigured=A.configured;refresh()}
-  if(uid&&uid!==prevUser){prevUser=uid;st.form="email";st.error="";
-    if(!ob.hidden){refresh();setTimeout(finish,900)}
+  if(uid&&uid!==prevUser){prevUser=uid;LS.set("hadAccount","1");st.mode="login";st.error="";st.busy=false;
+    if(!ob.hidden){if(st.acted){refresh();setTimeout(finish,900)}else finish()}
     else{LS.set("onboarded","1");if(pfOpen())renderPf();if(!LS.get("langChosen")&&lp.hidden)openLp(true)}
+    st.acted=false;
   }else if(!uid&&prevUser){prevUser=null;if(pfOpen())renderPf()}
   else if(uid&&pfOpen())renderPf();
+  if(A.configured&&A.ready&&!uid&&!SS.get("gate")&&ob.hidden&&lp.hidden&&!pfOpen())openOb(false);
 });
 window.addEventListener("tilawa:langchange",function(){if(!ob.hidden)renderOb();if(pfOpen())renderPf()});
 window.addEventListener("hashchange",function(){if(location.hash==="#welcome")openOb(true)});

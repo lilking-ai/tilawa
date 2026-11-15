@@ -13,24 +13,21 @@ Open the link in **Safari** → **Share** → **Add to Home Screen**. On Android
 Reading, translations in 47 languages, all reciters, verse-by-verse audio, bookmarks, the long welcome page
 and the language chooser. Sign-in, sync, the welcome email and the AI Sheikh switch on after the setup below.
 
-## Switch on sign-in, sync and the AI Sheikh (Firebase, free Spark plan, ~15 minutes)
-You can do all of this from a phone browser. Edit files right on GitHub (open the file → pencil icon → *Commit changes*).
+## Sign-in (Firebase, free Spark plan)
+Firebase project: **tilwa-d7b7d** (its settings are already in `docs/firebase-config.js`).
+People see a sign-in screen right after the opening animation, with **Log in**, **Sign up** and **Forgot password?**
+(email + password), plus Google. They can also continue without an account.
 
-1. **Create a project** at https://console.firebase.google.com → *Add project* (Analytics optional).
-2. **Add a web app**: Project overview → `</>` → name it Tilawa → copy the `firebaseConfig` values into
-   `docs/firebase-config.js` (section 1).
-3. **Email-link sign-in**: Build → Authentication → Get started → Sign-in method →
-   enable **Email/Password**, then also enable **Email link (passwordless sign-in)** → Save.
-   (Optional: enable **Google** too.)
-4. **Allow this site**: Authentication → Settings → Authorized domains → Add `lilking-ai.github.io`.
-5. **Sender name**: Authentication → Templates → edit the sender name to `Tilawa`. Sign-in emails come from
-   `noreply@YOUR_PROJECT_ID.firebaseapp.com` — a no-reply address.
-6. **Database**: Build → Firestore Database → Create database → *Production mode* → then the **Rules** tab →
-   paste everything from `firestore.rules` → **Publish**.
-7. **AI Sheikh**: Build → **AI Logic** → Get started → choose **Gemini Developer API** (free, no card needed).
-   Recommended: also turn on **App Check** so others can't use your free AI quota.
+In the Firebase console (works in Safari on iPad):
+1. Build → **Authentication** → Get started → Sign-in method → turn on **Email/Password** (not "Email link").
+   Optional: turn on **Google**.
+2. Authentication → **Settings** → Authorized domains → add `lilking-ai.github.io`.
+3. Authentication → **Templates** → set the sender name to `Tilawa`. Password-reset emails come from
+   `noreply@tilwa-d7b7d.firebaseapp.com`, a no-reply address.
+4. Build → **Firestore Database** → Create database → *Production mode* → **Rules** tab → paste everything from
+   `firestore.rules` → **Publish**. This keeps each person's bookmarks and favourites.
 
-## Lovely welcome email (free, optional)
+## "Thank you for joining" email (free, optional)
 1. Create a free account at https://www.emailjs.com (200 emails/month free).
 2. **Email Services** → Add service → connect a Gmail you make for the app (e.g. `tilawa.noreply@gmail.com`).
 3. **Email Templates** → Create → set **Subject** `{{subject}}`, **To Email** `{{to_email}}`, **From Name** `Tilawa` →
@@ -38,13 +35,13 @@ You can do all of this from a phone browser. Edit files right on GitHub (open th
 4. Put the **Service ID**, **Template ID** and **Public Key** (Account → General) into `docs/firebase-config.js` (section 2).
 5. Account → Security: allow only `lilking-ai.github.io`.
 
-The email is sent once, after a new person signs up and picks their language, written in that language.
+The no-reply thank-you email is sent once, only to new accounts, after they pick their language, written in that language.
 
 ## How sign-in works
-1. Someone enters their email on the welcome page → Firebase emails them a sign-in link from the no-reply address.
-2. Tapping the link signs them in. If it opens in a different browser than the app (common on iPhone with the
-   home-screen app), they can long-press the link, copy it, and paste it into the app's “Paste the sign-in link” box.
-3. They choose their language (Somali first, then English, Arabic and 44 more), and the welcome email goes out.
+1. After the opening animation, the sign-in screen shows **Sign up** for new people and **Log in** for people who have
+   had an account on this device. Signed-in people go straight to the app.
+2. **Forgot password?** sends Firebase's reset email (no-reply) in the person's language where Firebase has it.
+3. After signing up they choose their language (Somali first, then English, Arabic and 44 more), and the thank-you email goes out.
 
 ## Files
 ```
@@ -53,12 +50,12 @@ docs/                 The app (GitHub Pages serves this folder)
   i18n.js             Languages + Somali/English/Arabic text (hand-written)
   i18n-extra.js       44 more languages (machine-translated - corrections welcome)
   onboarding.js       Long welcome/sign-up page + language chooser
-  sync.js             Email-link & Google sign-in, sync, welcome email
+  sync.js             Email + password & Google sign-in, sync, thank-you email
   sheikh.js           AI Sheikh (Firebase AI Logic / Gemini)
   fb.js               Shared Firebase setup
   firebase-config.js  ← your keys go here
   sw.js, manifest.webmanifest, icons/
-emails/welcome.html   Welcome email template for EmailJS
+emails/welcome.html   Thank-you email template for EmailJS
 firestore.rules       Database security rules
 firebase.json         Optional: deploy to Firebase Hosting instead (`firebase deploy`)
 ```

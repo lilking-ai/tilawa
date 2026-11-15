@@ -2,14 +2,14 @@
 
 // 1) Firebase web app config
 //    Firebase console -> Project settings -> General -> Your apps -> Web app -> "SDK setup and configuration" -> Config.
-//    Until you replace these, the app still works - just without sign-in, sync and the AI Sheikh.
+//    Project: tilwa-d7b7d (Firebase console). These values are safe to be public.
 export const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyCdKVHc6rEuW4_HyNcAuXbIOFevAF6-OEo",
+  authDomain: "tilwa-d7b7d.firebaseapp.com",
+  projectId: "tilwa-d7b7d",
+  storageBucket: "tilwa-d7b7d.firebasestorage.app",
+  messagingSenderId: "52386063681",
+  appId: "1:52386063681:web:2f359e27f490a903c5edc0",
 };
 
 // 2) Lovely welcome email (free) - https://www.emailjs.com

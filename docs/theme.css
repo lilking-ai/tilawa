@@ -190,3 +190,22 @@ aside{background:var(--paper)}
 @media (max-width:520px){.brand>span:not(.sub){display:inline;font-size:20px}}
 .sh-closed p{color:var(--ink);font-size:16px;line-height:1.6;max-width:300px}
 .sh-closed svg{color:var(--gold)}
+/* sign-in screen right after the opening animation: Log in / Sign up / Forgot password */
+.ob-hero.ob-top{min-height:0;padding:44px 24px 14px}
+.ob-top .ob-logo{width:72px;height:72px;margin-bottom:14px}
+.ob-top h1{font-size:34px}
+.ob-top .ob-tag{margin:6px 0 0;font-size:16px}
+.ob-sign{padding-top:14px}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:4px;margin:0 0 20px}
+.auth-tabs button{height:40px;border-radius:9px;color:var(--muted);font-weight:600;font-size:15px}
+.auth-tabs button.on{background:var(--raise);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.ob-field.pw input{padding-inline-end:76px}
+.pw-toggle{position:absolute;inset-inline-end:6px;top:50%;transform:translateY(-50%);height:36px;padding:0 10px;border-radius:8px;font-size:13.5px;font-weight:600;color:var(--gold)}
+.pw-toggle:hover{background:var(--hl)}
+.auth-forgot{display:block;margin:-4px 0 14px auto;padding:4px 2px;font-size:14px;color:var(--gold);font-weight:500}
+[dir=rtl] .auth-forgot{margin:-4px auto 14px 0}
+.pf-sign .auth-tabs{margin-bottom:14px}
+.ob-feats{padding-top:8px}
+@media (max-height:700px){.ob-hero.ob-top{padding-top:26px}.ob-top .ob-logo{width:58px;height:58px}.ob-top h1{font-size:30px}}
+.ob-down{display:none}
+.pw-hint{margin:-6px 2px 14px;font-size:13px;color:var(--muted)}

@@ -1,5 +1,5 @@
-// Tilawa - Firebase sign-in (email link from a no-reply address, or Google), Firestore sync,
-// and a lovely welcome email (EmailJS) after a new person signs up and picks a language.
+// Tilawa - Firebase sign-in (email + password with "forgot password", or Google), Firestore sync,
+// and a no-reply "thank you for joining" email (EmailJS) after a new person signs up and picks a language.
 // The app (app.js) works without this file.
 import { emailjsConfig } from "./firebase-config.js";
 import { SDK, configured, getApp } from "./fb.js";
@@ -27,7 +27,7 @@ async function start() {
     getApp(),
   ]);
   const { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, onAuthStateChanged, signOut,
-    sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink, getAdditionalUserInfo, updateProfile } = authMod;
+    createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, getAdditionalUserInfo, updateProfile } = authMod;
   const { initializeFirestore, persistentLocalCache, persistentMultipleTabManager, doc, onSnapshot, setDoc, serverTimestamp } = fsMod;
 
   const auth = getAuth(app);
@@ -39,65 +39,73 @@ async function start() {
   }
   T.setAuth({ configured: true });
 
-  // ---------- email link (passwordless) ----------
-  async function finishLink(email, link) {
+  // ---------- email + password ----------
+  // Firebase sends the "reset your password" email itself, from noreply@<project>.firebaseapp.com.
+  const result = (detail) => emit("tilawa:auth-result", detail);
+  window.addEventListener("tilawa:pwsignup", async (e) => {
+    const { email, password, name } = e.detail || {};
     try {
-      const res = await signInWithEmailLink(auth, email, link);
-      LS.del("emailForSignIn");
-      const name = LS.get("pendingName");
-      if (name && !res.user.displayName) { try { await updateProfile(res.user, { displayName: name }); } catch (e) {} }
-      LS.del("pendingName");
-      if (location.search) history.replaceState(null, "", location.pathname + location.hash);
-      T.setAuth({ user: userInfo(auth.currentUser) });
-      emit("tilawa:signedin", { isNew: !!(getAdditionalUserInfo(res) || {}).isNewUser });
-    } catch (e) {
-      console.warn("[Tilawa] email link sign-in failed", e);
-      emit("tilawa:linkerror", { code: e.code });
-    }
-  }
-  if (isSignInWithEmailLink(auth, location.href)) {
-    const email = LS.get("emailForSignIn");
-    if (email) finishLink(email, location.href);
-    else emit("tilawa:needemail", {});
-  }
-  window.addEventListener("tilawa:confirmemail", (e) => finishLink(e.detail.email, location.href));
-  window.addEventListener("tilawa:pastelink", (e) => {
-    const { email, link } = e.detail || {};
-    if (!link || !isSignInWithEmailLink(auth, link)) { emit("tilawa:linkerror", { code: "invalid-link" }); return; }
-    finishLink(email, link);
-  });
-  window.addEventListener("tilawa:emaillink", async (e) => {
-    const { email, name } = e.detail || {};
-    try {
-      auth.languageCode = T.getLang(); // Firebase's sign-in email in the person's language where available
-      await sendSignInLinkToEmail(auth, email, { url: appUrl(), handleCodeInApp: true });
-      LS.set("emailForSignIn", email);
       if (name) LS.set("pendingName", name);
-      emit("tilawa:emaillink-result", { ok: true, email });
+      LS.set("newAccount", "1");
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+      if (name) { try { await updateProfile(res.user, { displayName: name }); T.setAuth({ user: userInfo(res.user) }); } catch (_) {} }
+      result({ ok: true, mode: "signup" });
     } catch (err) {
-      console.warn("[Tilawa] sending sign-in link failed", err);
-      emit("tilawa:emaillink-result", { ok: false, code: err.code });
+      LS.del("newAccount");
+      console.warn("[Tilawa] sign-up failed", err);
+      result({ ok: false, mode: "signup", code: err.code });
+    }
+  });
+  window.addEventListener("tilawa:pwlogin", async (e) => {
+    const { email, password } = e.detail || {};
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      result({ ok: true, mode: "login" });
+    } catch (err) {
+      console.warn("[Tilawa] log-in failed", err);
+      result({ ok: false, mode: "login", code: err.code });
+    }
+  });
+  window.addEventListener("tilawa:pwreset", async (e) => {
+    const { email } = e.detail || {};
+    try {
+      auth.languageCode = T.getLang(); // the reset email in the person's language where Firebase has it
+      try { await sendPasswordResetEmail(auth, email, { url: appUrl() }); }
+      catch (err) {
+        // If this site isn't in Firebase's authorized domains yet, send the plain reset email instead.
+        if (/unauthorized-continue-uri|invalid-continue-uri/.test(err.code || "")) await sendPasswordResetEmail(auth, email);
+        else throw err;
+      }
+      result({ ok: true, mode: "reset", email });
+    } catch (err) {
+      // Don't reveal whether an account exists: treat "no such user" like success.
+      if (/user-not-found/.test(err.code || "")) { result({ ok: true, mode: "reset", email }); return; }
+      console.warn("[Tilawa] password reset failed", err);
+      result({ ok: false, mode: "reset", code: err.code });
     }
   });
 
   // ---------- Google (optional) ----------
   const provider = new GoogleAuthProvider();
   provider.setCustomParameters({ prompt: "select_account" });
-  getRedirectResult(auth).catch(() => {});
+  getRedirectResult(auth).then((res) => { if (res && (getAdditionalUserInfo(res) || {}).isNewUser) { LS.set("newAccount", "1"); maybeWelcome(); } }).catch(() => {});
   window.addEventListener("tilawa:signin", async () => {
     try {
-      await signInWithPopup(auth, provider);
+      const res = await signInWithPopup(auth, provider);
+      if ((getAdditionalUserInfo(res) || {}).isNewUser) { LS.set("newAccount", "1"); maybeWelcome(); }
+      result({ ok: true, mode: "google" });
     } catch (e) {
-      if (e && /popup-blocked|operation-not-supported|cancelled-popup/.test(e.code || "")) {
-        try { await signInWithRedirect(auth, provider); } catch (_) { T.toast("signInErr"); }
-      } else if (!e || e.code !== "auth/popup-closed-by-user") {
-        T.toast("signInErr");
+      const code = (e && e.code) || "";
+      if (/popup-blocked|operation-not-supported|cancelled-popup/.test(code)) {
+        try { await signInWithRedirect(auth, provider); return; } catch (err) { result({ ok: false, mode: "google", code: err.code || code }); return; }
       }
+      // Closing the Google window isn't an error worth showing.
+      result({ ok: false, mode: "google", code: code === "auth/popup-closed-by-user" ? "" : code || "unknown" });
     }
   });
   window.addEventListener("tilawa:signout", () => signOut(auth));
 
-  // ---------- welcome email ----------
+  // ---------- "thank you for joining" email (sent once, only for new accounts) ----------
   let welcomed = true, welcomeBusy = false;
   async function sendWelcome(user) {
     const c = emailjsConfig || {};
@@ -106,7 +114,7 @@ async function start() {
     const params = {
       to_email: user.email, to_name: name,
       subject: T.t("emSubject"), title: T.t("emTitle"), greeting: T.t("emGreeting").replace("{name}", name),
-      message: T.t("emBody"), cta: T.t("emCta"), signature: T.t("emSign"),
+      message: T.t("emBody"), cta: T.t("emCta"), signature: T.t("emSign"), noreply: T.t("emNoReply"),
       app_url: appUrl(), dir: T.dir(), lang: T.getLang(),
     };
     const r = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
@@ -118,10 +126,10 @@ async function start() {
   }
   async function maybeWelcome() {
     const u = auth.currentUser;
-    if (!u || !u.email || !ref || welcomed || welcomeBusy || !LS.get("langChosen")) return;
+    if (!u || !u.email || !ref || welcomed || welcomeBusy || !LS.get("langChosen") || !LS.get("newAccount")) return;
     welcomeBusy = true;
     try {
-      if (await sendWelcome(u)) { welcomed = true; await setDoc(ref, { welcomedAt: serverTimestamp() }, { merge: true }); }
+      if (await sendWelcome(u)) { welcomed = true; LS.del("newAccount"); LS.del("pendingName"); await setDoc(ref, { welcomedAt: serverTimestamp() }, { merge: true }); }
     } catch (e) { console.warn("[Tilawa] welcome email error", e); }
     welcomeBusy = false;
   }
@@ -146,8 +154,8 @@ async function start() {
   onAuthStateChanged(auth, (user) => {
     if (unsub) { unsub(); unsub = null; }
     ref = null; firstSnap = true; welcomed = true;
-    if (!user) { T.setAuth({ user: null, sync: "ok" }); return; }
-    T.setAuth({ user: userInfo(user), sync: "busy" });
+    if (!user) { T.setAuth({ user: null, sync: "ok", ready: true }); return; }
+    T.setAuth({ user: userInfo(user), sync: "busy", ready: true });
     ref = doc(db, "users", user.uid);
     unsub = onSnapshot(ref, async (snap) => {
       if (snap.metadata.hasPendingWrites) return;
