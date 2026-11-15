@@ -20,6 +20,7 @@ function t(k){return T.t(k)}
 function svg(p){return '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>'}
 var tabs=[
   {id:"read",k:"tabRead",i:svg('<path d="M2 5.5C4.5 4 8 4 12 6c4-2 7.5-2 10-.5V19c-2.5-1.5-6-1.5-10 .5-4-2-7.5-2-10-.5z"/><path d="M12 6v13.5"/>')},
+  {id:"prayer",k:"tabPrayer",i:svg('<path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z"/>')},
   {id:"surahs",k:"surahs",i:svg('<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>')},
   {id:"reciters",k:"reciters",i:svg('<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 17v5"/>')},
   {id:"sheikh",k:"tabSheikh",i:svg('<path d="M21 12a8 8 0 01-11.6 7.1L4 20l1.1-4.6A8 8 0 1121 12z"/>')},
@@ -33,13 +34,14 @@ function render(){
 }
 function isOpen(id){var el=document.getElementById(id);return !!el&&el.classList.contains("open")}
 function sync(){
-  var cur=isOpen("profile")?"profile":isOpen("sheikh")?"sheikh":isOpen("right")?"reciters":isOpen("left")?"surahs":"read";
+  var cur=isOpen("profile")?"profile":isOpen("prayer")?"prayer":isOpen("sheikh")?"sheikh":isOpen("right")?"reciters":isOpen("left")?"surahs":"read";
   bar.querySelectorAll("[data-tab]").forEach(function(b){b.classList.toggle("on",b.dataset.tab===cur)});
 }
 function closeAll(except){
   if(except!=="surahs"&&except!=="reciters")T.closeDrawers();
   if(except!=="sheikh"&&isOpen("sheikh"))window.dispatchEvent(new CustomEvent("tilawa:sheikh"));
   if(except!=="profile"&&isOpen("profile"))window.dispatchEvent(new CustomEvent("tilawa:profile"));
+  if(except!=="prayer"&&isOpen("prayer"))window.dispatchEvent(new CustomEvent("tilawa:prayer"));
 }
 bar.addEventListener("click",function(e){
   var b=e.target.closest("[data-tab]");if(!b)return;var id=b.dataset.tab;
@@ -47,6 +49,7 @@ bar.addEventListener("click",function(e){
   else if(id==="surahs"){closeAll("surahs");T.closeDrawers();T.openSurahs();}
   else if(id==="reciters"){closeAll("reciters");T.closeDrawers();T.openReciters();}
   else if(id==="sheikh"){closeAll("sheikh");if(!isOpen("sheikh"))window.dispatchEvent(new CustomEvent("tilawa:sheikh"));}
+  else if(id==="prayer"){closeAll("prayer");if(!isOpen("prayer"))window.dispatchEvent(new CustomEvent("tilawa:prayer"));}
   else if(id==="profile"){closeAll("profile");if(!isOpen("profile"))window.dispatchEvent(new CustomEvent("tilawa:profile"));}
   setTimeout(sync,30);
 });
@@ -54,7 +57,7 @@ if("MutationObserver" in window){
   var mo=new MutationObserver(sync);
   ["left","right"].forEach(function(id){var el=document.getElementById(id);if(el)mo.observe(el,{attributes:true,attributeFilter:["class"]})});
   /* panels are created by other scripts; watch them once they exist */
-  var watch=function(){["sheikh","profile"].forEach(function(id){var el=document.getElementById(id);if(el&&!el.dataset.tw){el.dataset.tw="1";mo.observe(el,{attributes:true,attributeFilter:["class"]})}})};
+  var watch=function(){["sheikh","profile","prayer"].forEach(function(id){var el=document.getElementById(id);if(el&&!el.dataset.tw){el.dataset.tw="1";mo.observe(el,{attributes:true,attributeFilter:["class"]})}})};
   watch();setTimeout(watch,500);setTimeout(watch,2000);
 }
 window.addEventListener("tilawa:langchange",render);

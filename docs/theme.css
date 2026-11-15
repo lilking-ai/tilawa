@@ -209,3 +209,51 @@ aside{background:var(--paper)}
 @media (max-height:700px){.ob-hero.ob-top{padding-top:26px}.ob-top .ob-logo{width:58px;height:58px}.ob-top h1{font-size:30px}}
 .ob-down{display:none}
 .pw-hint{margin:-6px 2px 14px;font-size:13px;color:var(--muted)}
+/* prayer times + athan */
+.pt-chip{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.pt-chip svg{color:var(--gold);width:17px;height:17px}
+@media (max-width:900px){.pt-chip{display:none}}
+.pt-hero{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 18px 20px;margin-bottom:16px;text-align:center}
+.pt-loc{display:flex;align-items:center;justify-content:center;gap:6px;color:var(--muted);font-size:14px;margin-bottom:12px;flex-wrap:wrap}
+.pt-loc svg{color:var(--gold)}
+.pt-change{color:var(--gold);font-weight:600;font-size:14px;margin-inline-start:4px;padding:4px}
+.pt-next-l{font-size:13px;color:var(--muted)}
+.pt-next{display:flex;flex-direction:column;align-items:center;margin:2px 0 6px}
+.pt-next .pt-ar{font-family:"Amiri Quran",Amiri,serif;color:var(--gold);font-size:34px;line-height:1.5}
+.pt-next b{font-family:"Marcellus",serif;font-weight:400;font-size:24px;color:var(--ink)}
+.pt-at{font-size:16px;color:var(--ink);font-variant-numeric:tabular-nums}
+.pt-cd{color:var(--gold);font-weight:600}
+.pt-list{margin-bottom:24px}
+.pt-row{display:flex;align-items:center;gap:10px;padding:10px 10px 10px 14px;border-bottom:1px solid var(--line)}
+[dir=rtl] .pt-row{padding:10px 14px 10px 10px}
+.pt-row:last-child{border-bottom:0}
+.pt-n{flex:1;display:flex;align-items:baseline;gap:10px;min-width:0}
+.pt-n b{font-weight:600;font-size:15.5px}
+.pt-n .pt-ar{font-family:"Amiri Quran",Amiri,serif;color:var(--muted);font-size:17px}
+.pt-t{font-variant-numeric:tabular-nums;font-size:15.5px}
+.pt-row.past{opacity:.5}
+.pt-row.next{background:var(--hl)}
+.pt-row.next .pt-n b,.pt-row.next .pt-t{color:var(--gold)}
+.pt-bell{width:36px;height:36px;border-radius:9px;display:grid;place-items:center;color:var(--muted);flex:none}
+.pt-bell.on{color:var(--gold)}
+.pt-bell:hover{background:var(--hl)}
+.pt-bell-sp{width:36px;flex:none}
+.pt-voices{gap:8px;flex-wrap:wrap}
+.pt-v{width:36px;height:36px;border-radius:9px;border:1px solid var(--line);font-weight:600;color:var(--ink)}
+.pt-v.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.pt-listen{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:9px;border:1px solid var(--line);color:var(--gold);font-weight:600}
+.pt-note{font-size:13px;color:var(--muted);line-height:1.55;margin:-12px 4px 14px}
+.pt-intro{margin:0 0 14px;color:var(--muted);line-height:1.55}
+.pt-lbl{display:block;font-size:13px;color:var(--muted);margin-bottom:12px}
+.pt-lbl select,.pt-lbl input{display:block;width:100%;height:46px;margin-top:6px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:0 12px;font-size:16px}
+.pt-lbl select:focus,.pt-lbl input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--hl)}
+.pt-geo{margin-top:10px}
+.pt-geo svg{color:var(--gold)}
+.pt-wait{display:grid;place-items:center;padding:60px 0}
+.pt-banner{position:fixed;left:50%;top:calc(12px + env(safe-area-inset-top));transform:translateX(-50%);z-index:95;display:flex;align-items:center;gap:14px;width:min(520px,calc(100% - 24px));padding:12px 12px 12px 18px;border-radius:18px;background:#0C1815;color:#EBDCAE;border:1px solid rgba(212,178,106,.35);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.pt-banner[hidden]{display:none}
+.pt-banner .pt-ar{font-family:"Amiri Quran",Amiri,serif;font-size:28px;color:#D4B26A}
+.pt-bt{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+.pt-bt b{font-size:16px}
+.pt-bt span{font-size:13px;color:rgba(235,220,174,.75)}
+.pt-bstop{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:12px;background:#D4B26A;color:#13201C;font-weight:600;flex:none}

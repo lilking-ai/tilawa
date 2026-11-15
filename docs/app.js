@@ -482,7 +482,7 @@ window.Tilawa={
     }finally{applyingRemote=false}
   },
   setAuth(patch){Object.assign(S.auth,patch);renderAccount();window.dispatchEvent(new CustomEvent("tilawa:authchange",{detail:S.auth}))},
-  toast:k=>toast(t(k)),
+  toast:k=>toast(t(k)),pauseAudio:()=>{try{audio.pause()}catch(e){}},
   t:k=>t(k),getLang:()=>S.lang,dir:()=>langInfo(S.lang).dir==="rtl"?"rtl":"ltr",langName:()=>langInfo(S.lang).en||"English",
   setLang:(c,o)=>setLang(c,o),authState:()=>S.auth,
   playVerse:(n,i)=>playAyah(n,i),openSurahs:()=>{setLeftTab("surahs");openLeft()},openReciters:()=>{$("right").classList.add("open");$("scrim").classList.add("open")},
