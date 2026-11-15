@@ -1,12 +1,13 @@
 /* Tilawa - opening animation ("تلاوة", by Yaqub) and the bottom tab bar on phones. Classic script. */
 (function(){
 "use strict";
-/* ---------- opening animation: once each time the app is opened ---------- */
+/* ---------- opening animation ("تلاوة", by Yaqub): every time the app is opened ---------- */
 var sp=document.getElementById("splash");
 if(sp){
-  var seen=false;try{seen=sessionStorage.getItem("tilawa.splash")==="1";sessionStorage.setItem("tilawa.splash","1")}catch(e){}
+  /* plays every time the app opens; tap to skip */
+  var skip=false;try{skip=sessionStorage.getItem("tilawa.splash")==="test"}catch(e){}
   var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if(seen){sp.remove()}
+  if(skip){sp.remove()}
   else{
     var gone=false;
     var hide=function(){if(gone)return;gone=true;sp.classList.add("out");setTimeout(function(){sp.remove()},950)};
