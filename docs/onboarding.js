@@ -67,7 +67,7 @@ function signHTML(P){
       '<button type="button" class="auth-forgot" data-act="toforgot">'+esc(t("authForgot"))+'</button>'+
       '<button class="ob-btn primary" data-act="login"'+(st.busy?' disabled':'')+'>'+esc(st.busy?t("authWait"):t("authLogin"))+'</button>';
   return wrap(tabs+head+err+body+
-    (P?'':'<button class="ob-link" data-act="guest">'+esc(t("obGuest"))+'</button>'));
+    (P?'':'<div class="ob-or">'+esc(t("obOr"))+'</div><button class="ob-btn ghost ob-guest" data-act="guest">'+esc(t("obGuest"))+'</button>'));
 }
 function authErr(code){
   code=String(code||"").replace("auth/","");

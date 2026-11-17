@@ -20,7 +20,10 @@ var I={
 };
 var PRAYERS=["Fajr","Dhuhr","Asr","Maghrib","Isha"], ROWS=["Fajr","Sunrise","Dhuhr","Asr","Maghrib","Isha"];
 var AR={Fajr:"الفجر",Sunrise:"الشروق",Dhuhr:"الظهر",Asr:"العصر",Maghrib:"المغرب",Isha:"العشاء"};
-var VOICES=[{src:"athan/athan-1.mp3"},{src:"athan/athan-2.mp3"}];
+var VOICES=[{src:"athan/athan-1.mp3"},{src:"athan/athan-2.mp3"},{src:"athan/athan-3.mp3",early:true}];
+function isEarly(){return !!(window.TilawaEarly&&TilawaEarly.isEarly())}
+function canUse(i){return !!VOICES[i]&&(!VOICES[i].early||isEarly())}
+function curVoice(){return canUse(P.voice)?P.voice:0}
 var REGIONS="AE SA QA KW BH OM YE IQ JO SY LB PS EG SD LY TN DZ MA MR SO DJ ET ER KE TZ UG NG GH SN ML NE TD CM GM GN SL CI BF TR IR AF PK IN BD LK MV NP MM TH MY SG ID BN PH CN JP KR MN KZ UZ KG TJ TM AZ GE AM RU UA BY PL DE FR GB IE NL BE LU CH AT IT ES PT SE NO DK FI IS EE LV LT CZ SK HU RO BG GR CY MT AL XK BA RS ME MK HR SI MD US CA MX GT HN SV NI CR PA CU DO JM TT BR AR CL CO PE VE EC BO PY UY AU NZ FJ ZA NA BW ZW ZM MZ MW MG MU KM SC RW BI CD CG GA GQ AO BJ TG LR GW CV ST".split(" ");
 
 /* ---------- state ---------- */
@@ -112,9 +115,9 @@ function render(){
     body=hero+'<div class="pf-list pt-list">'+rows+'</div>'+
       '<div class="pf-label">'+esc(t("ptAthan"))+'</div><div class="pf-list">'+
         '<button class="pf-row" data-act="athan"><span class="ic">'+I.bell+'</span><span class="lbl">'+esc(t("ptAthanOn"))+'</span><span class="switch'+(P.athan?" on":"")+'" role="switch" aria-checked="'+!!P.athan+'"></span></button>'+
-        '<div class="pf-row pt-voices"><span class="lbl">'+esc(t("ptVoice"))+'</span>'+VOICES.map(function(v,i){return '<button class="pt-v'+(P.voice===i?' on':'')+'" data-act="voice" data-i="'+i+'">'+(i+1)+'</button>'}).join("")+
+        '<div class="pf-row pt-voices"><span class="lbl">'+esc(t("ptVoice"))+'</span>'+VOICES.map(function(v,i){var lock=v.early&&!isEarly();return '<button class="pt-v'+(curVoice()===i?' on':'')+(v.early?' pt-vx':'')+(lock?' lock':'')+'" data-act="voice" data-i="'+i+'"'+(v.early?' aria-label="'+esc(t("ptEarlyVoice"))+'"':'')+'>'+(v.early?'✦':(i+1))+'</button>'}).join("")+
           '<button class="pt-listen" data-act="'+(playing?"stop":"listen")+'">'+(playing?I.stop:I.play)+'<span>'+esc(playing?t("ptStop"):t("ptTest"))+'</span></button></div>'+
-      '</div><p class="pt-note">'+esc(t("ptKeepOpen"))+'</p>'+
+      '</div>'+(curVoice()===2?'<p class="pt-note pt-ea">✦ '+esc(t("ptEarlyVoice"))+' · <a href="https://commons.wikimedia.org/wiki/File:Azan.ogg" target="_blank" rel="noopener">Andrewler, CC BY-SA 4.0</a></p>':'')+'<p class="pt-note">'+esc(t("ptKeepOpen"))+'</p>'+
       (meta&&meta.method?'<p class="pt-note">'+esc(t("ptMethod").replace("{method}",meta.method))+'</p>':'');
   }
   panel.innerHTML='<div class="pf-head"><b>'+esc(t("ptTitle"))+'</b><button class="iconbtn" data-act="close" aria-label="Close">'+I.x+'</button></div><div class="pf-body">'+body+'</div>';
@@ -133,7 +136,7 @@ panel.addEventListener("click",function(e){
       function(){err=t("ptLocErr");render()},{timeout:15000,maximumAge:3600000});return}
   if(a==="bell"){var k=b.dataset.k;if(!P.athan){P.athan=true;P.off={};P.off[k]=false;PRAYERS.forEach(function(x){if(x!==k)P.off[x]=true})}else P.off[k]=!P.off[k];save();askNotify();render();return}
   if(a==="athan"){P.athan=!P.athan;save();if(P.athan)askNotify();render();return}
-  if(a==="voice"){P.voice=+b.dataset.i;save();if(playing)stopAthan();render();return}
+  if(a==="voice"){if(!canUse(+b.dataset.i)){T.toast("ptEarlyOnly");return}P.voice=+b.dataset.i;save();if(playing)stopAthan();render();return}
   if(a==="listen"){playAthan(null);return}
   if(a==="stop"){stopAthan();return}
 });
@@ -144,11 +147,11 @@ var athan=new Audio();athan.preload="none";
 athan.addEventListener("ended",function(){playing=null;hideBanner();if(isOpen())render()});
 // Phones only let a page play sound later if it has played sound after a tap: "unlock" on the first tap.
 var unlocked=false;
-function unlock(){if(unlocked||!P.athan)return;unlocked=true;try{athan.src=VOICES[P.voice].src;athan.muted=true;var p=athan.play();if(p&&p.then)p.then(function(){athan.pause();athan.currentTime=0;athan.muted=false}).catch(function(){athan.muted=false;unlocked=false})}catch(e){unlocked=false}}
+function unlock(){if(unlocked||!P.athan)return;unlocked=true;try{athan.src=VOICES[curVoice()].src;athan.muted=true;var p=athan.play();if(p&&p.then)p.then(function(){athan.pause();athan.currentTime=0;athan.muted=false}).catch(function(){athan.muted=false;unlocked=false})}catch(e){unlocked=false}}
 document.addEventListener("click",unlock,true);document.addEventListener("touchend",unlock,true);
 function playAthan(k){
   try{T.pauseAudio&&T.pauseAudio()}catch(e){}
-  athan.src=VOICES[P.voice].src;athan.muted=false;athan.currentTime=0;playing=k||"test";
+  athan.src=VOICES[curVoice()].src;athan.muted=false;athan.currentTime=0;playing=k||"test";
   var p=athan.play();if(p&&p.catch)p.catch(function(){playing=null;if(isOpen())render()});
   if(isOpen())render();
 }

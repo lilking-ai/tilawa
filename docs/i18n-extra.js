@@ -75,7 +75,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "መግባትን ለማጠናቀቅ ኢሜይልህን አረጋግጥ",
 "obOr": "ወይም",
 "obGoogle": "በGoogle ቀጥል",
-"obGuest": "ያለ መለያ ቀጥል",
+"obGuest": "እንደ እንግዳ ቀጥል",
 "obStart": "ማንበብ ጀምር",
 "obBadEmail": "እባክህ ትክክለኛ ኢሜይል አስገባ።",
 "obLinkErr": "ይህ ሊንክ አልሰራም ወይም ጊዜው አልፎበታል። እባክህ አዲስ ጠይቅ።",
@@ -219,7 +219,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "በመገለጫዎ ላይ የቅድመ መዳረሻ ምልክት",
 "eaP3": "AI Sheikh በዲሴምበር ሲከፈት፣ ኢንሻአላህ፣ ከሁሉ በፊት የመጠቀም ዕድል",
 "eaStart": "ማንበብ ይጀምሩ",
-"eaSkin": "የኪስዋ ገጽታ"
+"eaSkin": "የኪስዋ ገጽታ",
+"ptEarlyVoice": "ልዩ ቅድመ መዳረሻ አዛን",
+"ptEarlyOnly": "ይህ አዛን ለቅድመ መዳረሻ ብቻ ነው።"
 },
 "az": {
 "surahs": "Surələr",
@@ -296,7 +298,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Daxil olmağı tamamlamaq üçün e-poçt ünvanınızı təsdiqləyin",
 "obOr": "və ya",
 "obGoogle": "Google ilə davam et",
-"obGuest": "Hesabsız davam et",
+"obGuest": "Qonaq kimi davam et",
 "obStart": "Oxumağa başla",
 "obBadEmail": "Düzgün e-poçt ünvanı daxil edin.",
 "obLinkErr": "Bu link işləmir və ya müddəti bitib. Yenidən link istəyin.",
@@ -440,7 +442,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Profilinizdə erkən giriş nişanı",
 "eaP3": "AI Sheikh dekabrda istifadəyə veriləndə ilk sıralarda olun, inşallah",
 "eaStart": "Oxumağa başlayın",
-"eaSkin": "Kisvə mövzusu"
+"eaSkin": "Kisvə mövzusu",
+"ptEarlyVoice": "Erkən Giriş üçün Eksklüziv azan",
+"ptEarlyOnly": "Bu azan yalnız Erkən Giriş üçün nəzərdə tutulub."
 },
 "ber": {
 "surahs": "Tisura",
@@ -517,7 +521,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Sentem email-inek akken ad tfakkeḍ anekcum",
 "obOr": "neɣ",
 "obGoogle": "Kemmel s Google",
-"obGuest": "Kemmel war amiḍan",
+"obGuest": "Kemmel d ameqqran",
 "obStart": "Bdu tɣuri",
 "obBadEmail": "Ma ulac aɣilif, sekcem email ameɣtu.",
 "obLinkErr": "Aseɣwen-a ur yedda ara neɣ yemmut. Ma ulac aɣilif, suter wayeḍ.",
@@ -661,7 +665,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Tabzimt n unekcum azwar deg profil-inek",
 "eaP3": "Ad tiliḍ gar imezwura i AI Sheikh mi ara yeldi deg duǧanbir, ma yexs Rebbi",
 "eaStart": "Bdu taɣuri",
-"eaSkin": "Asentel n l-Kiswa"
+"eaSkin": "Asentel n l-Kiswa",
+"ptEarlyVoice": "Azan s tuddsa tamezwarut kan",
+"ptEarlyOnly": "Azan-agi igan i tuddsa tamezwarut kan."
 },
 "bg": {
 "surahs": "Сури",
@@ -738,7 +744,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Потвърдете имейла си, за да завършите влизането",
 "obOr": "или",
 "obGoogle": "Продължете с Google",
-"obGuest": "Продължете без профил",
+"obGuest": "Продължи като гост",
 "obStart": "Започнете да четете",
 "obBadEmail": "Въведете валиден имейл адрес.",
 "obLinkErr": "Линкът не работи или е изтекъл. Заявете нов.",
@@ -882,7 +888,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Значка за ранен достъп в профила ти",
 "eaP3": "Ще си сред първите с достъп до AI шейх, когато стане достъпен през декември, ин шаа Аллах",
 "eaStart": "Започни да четеш",
-"eaSkin": "Тема „Кисва“"
+"eaSkin": "Тема „Кисва“",
+"ptEarlyVoice": "Ексклузивен азан с ранен достъп",
+"ptEarlyOnly": "Този азан е само за ранен достъп."
 },
 "bn": {
 "surahs": "সূরাসমূহ",
@@ -959,7 +967,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "সাইন ইন সম্পন্ন করতে আপনার ইমেইল নিশ্চিত করুন",
 "obOr": "অথবা",
 "obGoogle": "Google দিয়ে চালিয়ে যান",
-"obGuest": "অ্যাকাউন্ট ছাড়া চালিয়ে যান",
+"obGuest": "অতিথি হিসেবে চালিয়ে যান",
 "obStart": "পড়া শুরু করুন",
 "obBadEmail": "সঠিক ইমেইল ঠিকানা লিখুন।",
 "obLinkErr": "লিংকটি কাজ করেনি অথবা মেয়াদ শেষ হয়েছে। অনুগ্রহ করে নতুন লিংক চান।",
@@ -1103,7 +1111,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "আপনার প্রোফাইলে আগাম অ্যাক্সেস ব্যাজ",
 "eaP3": "ডিসেম্বরে AI Sheikh চালু হলে সবার আগে ব্যবহার করতে পারবেন, ইনশাআল্লাহ",
 "eaStart": "পড়া শুরু করুন",
-"eaSkin": "কাবার গিলাফের থিম"
+"eaSkin": "কাবার গিলাফের থিম",
+"ptEarlyVoice": "এক্সক্লুসিভ আর্লি অ্যাক্সেস আযান",
+"ptEarlyOnly": "এই আযানটি শুধুমাত্র আর্লি অ্যাক্সেসের জন্য।"
 },
 "bs": {
 "surahs": "Sure",
@@ -1180,7 +1190,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Potvrdite svoju e-mail adresu da biste dovršili prijavu",
 "obOr": "ili",
 "obGoogle": "Nastavite s Google",
-"obGuest": "Nastavite bez računa",
+"obGuest": "Nastavi kao gost",
 "obStart": "Počnite čitati",
 "obBadEmail": "Unesite ispravnu e-mail adresu.",
 "obLinkErr": "Link nije ispravan ili je istekao. Zatražite novi.",
@@ -1324,7 +1334,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Oznaka ranog pristupa na vašem profilu",
 "eaP3": "Bit ćete prvi na redu za AI Sheikh kada bude dostupan u decembru, ako Bog da",
 "eaStart": "Počnite učiti",
-"eaSkin": "Tema Kisve"
+"eaSkin": "Tema Kisve",
+"ptEarlyVoice": "Ekskluzivni rani pristup ezan",
+"ptEarlyOnly": "Ovaj ezan je dostupan samo za rani pristup."
 },
 "ce": {
 "surahs": "Сураш",
@@ -1401,7 +1413,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Аккаунт чу гӀар чаккхе яккха, электронан почта тӀедилла",
 "obOr": "я",
 "obGoogle": "Googleца тӀаьхьа дӀадахьа",
-"obGuest": "Аккаунт доцуш тӀаьхьа дӀадахьа",
+"obGuest": "Гостана дала",
 "obStart": "Дешар дӀадола",
 "obBadEmail": "Бакъдерг электронан почтан адрес язде.",
 "obLinkErr": "ХӀара линк йиш яц я цун заман чаккхина. Кхин линк деха.",
@@ -1545,7 +1557,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Хьалха пайдаэца йолу значок хьан профилехь",
 "eaP3": "Декабрехь AI Sheikh дӀахоьцу хенахь, Аллах лаахь, хьо хьалха болуш лелайо",
 "eaStart": "Деша дӀахоьца",
-"eaSkin": "Кисван тема"
+"eaSkin": "Кисван тема",
+"ptEarlyVoice": "Эксклюзивный ерриг кхетар азан",
+"ptEarlyOnly": "Иза азан ерриг кхетаран бен ду."
 },
 "cs": {
 "surahs": "Súry",
@@ -1622,7 +1636,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Dokončete přihlášení potvrzením e-mailu",
 "obOr": "nebo",
 "obGoogle": "Pokračovat přes Google",
-"obGuest": "Pokračovat bez účtu",
+"obGuest": "Pokračovat jako host",
 "obStart": "Začít číst",
 "obBadEmail": "Zadejte prosím platnou e-mailovou adresu.",
 "obLinkErr": "Odkaz nefunguje nebo jeho platnost vypršela. Požádejte prosím o nový.",
@@ -1766,7 +1780,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Odznak předběžného přístupu na vašem profilu",
 "eaP3": "Budete mezi prvními, kdo získají přístup k AI šejchovi, až bude v prosinci spuštěn, dá-li Alláh",
 "eaStart": "Začít číst",
-"eaSkin": "Motiv Kiswah"
+"eaSkin": "Motiv Kiswah",
+"ptEarlyVoice": "Exkluzivní adhán – předběžný přístup",
+"ptEarlyOnly": "Tento adhán je pouze pro předběžný přístup."
 },
 "de": {
 "surahs": "Suren",
@@ -1843,7 +1859,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Bestätige deine E-Mail-Adresse, um die Anmeldung abzuschließen",
 "obOr": "oder",
 "obGoogle": "Mit Google fortfahren",
-"obGuest": "Ohne Konto fortfahren",
+"obGuest": "Als Gast fortfahren",
 "obStart": "Mit dem Lesen beginnen",
 "obBadEmail": "Bitte gib eine gültige E-Mail-Adresse ein.",
 "obLinkErr": "Der Link funktioniert nicht oder ist abgelaufen. Bitte fordere einen neuen an.",
@@ -1987,7 +2003,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Ein Frühzugang-Abzeichen auf deinem Profil",
 "eaP3": "Du bist ganz vorne mit dabei, wenn der AI Sheikh im Dezember verfügbar wird, so Gott will",
 "eaStart": "Mit dem Lesen beginnen",
-"eaSkin": "Kiswa-Design"
+"eaSkin": "Kiswa-Design",
+"ptEarlyVoice": "Exklusiver Frühzugang Adhan",
+"ptEarlyOnly": "Dieser Adhan ist nur für den Frühzugang verfügbar."
 },
 "dv": {
 "surahs": "ސޫރަތައް",
@@ -2064,7 +2082,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "ސައިން އިން ނިންމުމަށް ތިބާގެ އީމެއިލް ކޮންފާމް ކުރޭ",
 "obOr": "ނުވަތަ",
 "obGoogle": "Google އާއެކު ކުރިއަށް",
-"obGuest": "އެކައުންޓެއް ނެތި ކުރިއަށް",
+"obGuest": "ގެސްޓް ގޮތުން ކުރިއަށް",
 "obStart": "ކިޔަން ފަށާ",
 "obBadEmail": "ރަނގަޅު އީމެއިލް އެޑްރެހެއް ލިޔުއްވާ.",
 "obLinkErr": "އެ ލިންކުން ކަން ނުކުރި، ނުވަތަ އެއްޗެހި މުއްދަތު ހަމަވެއްޖެ. އަލުން އެއް އެދުން ކުރޭ.",
@@ -2208,7 +2226,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "ތިބާގެ ޕްރޮފައިލްގައި ކުރިން ލިބުނު ފުރުޞަތުގެ ބެޖެއް",
 "eaP3": "ޑިސެމްބަރުގައި AI Sheikh ފެށޭއިރު، އިންޝާއަﷲ، އެއަށް ފުރަތަމަ ފުރުޞަތު ލިބޭނީ ތިބާއަށެވެ",
 "eaStart": "ކިޔަން ފަށާ",
-"eaSkin": "ކިސްވާ ތީމް"
+"eaSkin": "ކިސްވާ ތީމް",
+"ptEarlyVoice": "ޚާއްޞަ ކުރީގެ އެކްސެސްގެ އަޛާން",
+"ptEarlyOnly": "މި އަޛާން ހުންނަނީ ކުރީގެ އެކްސެސް ލިބިފައިވާ މީހުންނަށް ބަހައްޓާފައެވެ."
 },
 "es": {
 "surahs": "Suras",
@@ -2285,7 +2305,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Confirma tu correo electrónico para terminar de iniciar sesión",
 "obOr": "o",
 "obGoogle": "Continuar con Google",
-"obGuest": "Continuar sin cuenta",
+"obGuest": "Continuar como invitado",
 "obStart": "Empezar a leer",
 "obBadEmail": "Introduce un correo electrónico válido.",
 "obLinkErr": "El enlace no funciona o ha caducado. Solicita uno nuevo.",
@@ -2429,7 +2449,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Una insignia de acceso anticipado en tu perfil",
 "eaP3": "Tendrás prioridad para usar AI Sheikh cuando esté disponible en diciembre, si Dios quiere",
 "eaStart": "Empezar a leer",
-"eaSkin": "Tema de la Kiswa"
+"eaSkin": "Tema de la Kiswa",
+"ptEarlyVoice": "Adhán de acceso anticipado exclusivo",
+"ptEarlyOnly": "Este adhán es solo para el acceso anticipado."
 },
 "fa": {
 "surahs": "سوره‌ها",
@@ -2506,7 +2528,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "برای تکمیل ورود، ایمیلتان را تأیید کنید",
 "obOr": "یا",
 "obGoogle": "ادامه با Google",
-"obGuest": "ادامه بدون حساب",
+"obGuest": "ادامه به عنوان مهمان",
 "obStart": "شروع مطالعه",
 "obBadEmail": "لطفاً یک ایمیل معتبر وارد کنید.",
 "obLinkErr": "این پیوند کار نمی‌کند یا منقضی شده است. لطفاً پیوند تازه‌ای درخواست کنید.",
@@ -2650,7 +2672,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "نشان دسترسی زودهنگام در نمایهٔ شما",
 "eaP3": "برای دسترسی به شیخ هوش مصنوعی در دسامبر، ان‌شاءالله، در صف اول باشید",
 "eaStart": "شروع به تلاوت",
-"eaSkin": "پوستهٔ پردهٔ کعبه"
+"eaSkin": "پوستهٔ پردهٔ کعبه",
+"ptEarlyVoice": "اذان با دسترسی زودهنگام انحصاری",
+"ptEarlyOnly": "این اذان فقط برای دسترسی زودهنگام است."
 },
 "fr": {
 "surahs": "Sourates",
@@ -2727,7 +2751,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Confirmez votre adresse e-mail pour terminer la connexion",
 "obOr": "ou",
 "obGoogle": "Continuer avec Google",
-"obGuest": "Continuer sans compte",
+"obGuest": "Continuer en tant qu'invité",
 "obStart": "Commencer la lecture",
 "obBadEmail": "Veuillez saisir une adresse e-mail valide.",
 "obLinkErr": "Ce lien ne fonctionne pas ou a expiré. Veuillez en demander un nouveau.",
@@ -2871,7 +2895,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Un badge d’accès anticipé sur votre profil",
 "eaP3": "Vous serez parmi les premiers à accéder à AI Sheikh dès son lancement en décembre, si Dieu le veut",
 "eaStart": "Commencer la lecture",
-"eaSkin": "Thème de la kiswa"
+"eaSkin": "Thème de la kiswa",
+"ptEarlyVoice": "Accès anticipé exclusif à l'adhan",
+"ptEarlyOnly": "Cet adhan est réservé à l'accès anticipé."
 },
 "ha": {
 "surahs": "Surori",
@@ -2948,7 +2974,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Tabbatar da imel ɗinka don kammala shiga",
 "obOr": "ko",
 "obGoogle": "Ci gaba da Google",
-"obGuest": "Ci gaba ba tare da asusu ba",
+"obGuest": "Ci gaba a matsayin baƙo",
 "obStart": "Fara karatu",
 "obBadEmail": "Shigar da ingantaccen adireshin imel.",
 "obLinkErr": "Wannan hanyar ba ta yi aiki ba ko kuma ta ƙare. Nemi sabuwa.",
@@ -3092,7 +3118,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Alamar samun dama da wuri a bayanan martabarka",
 "eaP3": "Za ka kasance cikin na farko da za su samu AI Sheikh idan aka buɗe shi a watan Disamba, in Allah Ya so",
 "eaStart": "Fara karatu",
-"eaSkin": "Jigon Kiswar Ka'aba"
+"eaSkin": "Jigon Kiswar Ka'aba",
+"ptEarlyVoice": "Samun Kiran Sallah na Musamman Tun Farko",
+"ptEarlyOnly": "Wannan kiran sallah na Samun Tun Farko ne kawai."
 },
 "hi": {
 "surahs": "सूरहें",
@@ -3169,7 +3197,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "साइन इन पूरा करने के लिए अपना ईमेल पुष्टि करें",
 "obOr": "या",
 "obGoogle": "Google से जारी रखें",
-"obGuest": "खाते के बिना जारी रखें",
+"obGuest": "अतिथि के रूप में जारी रखें",
 "obStart": "पढ़ना शुरू करें",
 "obBadEmail": "कृपया सही ईमेल पता डालें।",
 "obLinkErr": "यह लिंक काम नहीं किया या इसकी समय-सीमा खत्म हो गई। कृपया नया लिंक मँगाएँ।",
@@ -3313,7 +3341,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "आपकी प्रोफ़ाइल पर शुरुआती पहुँच का बैज",
 "eaP3": "दिसंबर में AI Sheikh उपलब्ध होने पर सबसे पहले पहुँच पाने वालों में, इंशाअल्लाह",
 "eaStart": "पढ़ना शुरू करें",
-"eaSkin": "किस्वा थीम"
+"eaSkin": "किस्वा थीम",
+"ptEarlyVoice": "विशेष प्रारंभिक पहुँच अज़ान",
+"ptEarlyOnly": "यह अज़ान केवल प्रारंभिक पहुँच के लिए है।"
 },
 "id": {
 "surahs": "Surah",
@@ -3390,7 +3420,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Konfirmasi email Anda untuk menyelesaikan proses masuk",
 "obOr": "atau",
 "obGoogle": "Lanjutkan dengan Google",
-"obGuest": "Lanjutkan tanpa akun",
+"obGuest": "Lanjut sebagai tamu",
 "obStart": "Mulai membaca",
 "obBadEmail": "Masukkan alamat email yang valid.",
 "obLinkErr": "Tautan tersebut tidak berfungsi atau sudah kedaluwarsa. Silakan minta tautan baru.",
@@ -3534,7 +3564,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Lencana Akses Awal di profil Anda",
 "eaP3": "Jadilah yang pertama mendapatkan Syekh AI saat hadir pada bulan Desember, insya Allah",
 "eaStart": "Mulai membaca",
-"eaSkin": "Tema Kiswah"
+"eaSkin": "Tema Kiswah",
+"ptEarlyVoice": "Adzan Akses Awal Eksklusif",
+"ptEarlyOnly": "Adzan ini hanya untuk Akses Awal."
 },
 "it": {
 "surahs": "Sure",
@@ -3611,7 +3643,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Conferma la tua email per completare l'accesso",
 "obOr": "oppure",
 "obGoogle": "Continua con Google",
-"obGuest": "Continua senza account",
+"obGuest": "Continua come ospite",
 "obStart": "Inizia a leggere",
 "obBadEmail": "Inserisci un indirizzo email valido.",
 "obLinkErr": "Il link non funziona o è scaduto. Richiedine uno nuovo.",
@@ -3755,7 +3787,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Un distintivo di accesso anticipato sul tuo profilo",
 "eaP3": "Sarai tra i primi ad accedere all’AI Sheikh quando sarà disponibile a dicembre, in sha’ Allah",
 "eaStart": "Inizia a leggere",
-"eaSkin": "Tema Kiswah"
+"eaSkin": "Tema Kiswah",
+"ptEarlyVoice": "Adhan in Accesso Anticipato Esclusivo",
+"ptEarlyOnly": "Questo adhan è disponibile solo per l'Accesso Anticipato."
 },
 "ja": {
 "surahs": "スーラ",
@@ -3832,7 +3866,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "ログインを完了するにはメールアドレスを確認してください",
 "obOr": "または",
 "obGoogle": "Google で続ける",
-"obGuest": "アカウントなしで続ける",
+"obGuest": "ゲストとして続ける",
 "obStart": "読書を始める",
 "obBadEmail": "有効なメールアドレスを入力してください。",
 "obLinkErr": "リンクが無効か、有効期限が切れています。新しいリンクをリクエストしてください。",
@@ -3976,7 +4010,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "プロフィールに先行アクセスバッジが表示されます",
 "eaP3": "12月に公開されたら、AIシェイクをいち早くご利用いただけます。インシャーアッラー",
 "eaStart": "読書を始める",
-"eaSkin": "キスワのテーマ"
+"eaSkin": "キスワのテーマ",
+"ptEarlyVoice": "早期アクセス限定のアザーン",
+"ptEarlyOnly": "このアザーンは早期アクセス限定です。"
 },
 "ko": {
 "surahs": "수라",
@@ -4053,7 +4089,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "로그인을 완료하려면 이메일을 확인해 주세요",
 "obOr": "또는",
 "obGoogle": "Google로 계속하기",
-"obGuest": "계정 없이 계속하기",
+"obGuest": "게스트로 계속하기",
 "obStart": "읽기 시작",
 "obBadEmail": "올바른 이메일 주소를 입력해 주세요.",
 "obLinkErr": "링크가 유효하지 않거나 만료되었습니다. 새 링크를 요청해 주세요.",
@@ -4197,7 +4233,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "프로필에 표시되는 얼리 액세스 배지",
 "eaP3": "인샤알라, 12월에 AI 셰이크가 공개되면 가장 먼저 이용하실 수 있어요",
 "eaStart": "읽기 시작하기",
-"eaSkin": "키스와 테마"
+"eaSkin": "키스와 테마",
+"ptEarlyVoice": "독점 조기 액세스 아잔",
+"ptEarlyOnly": "이 아잔은 조기 액세스 회원만 이용할 수 있습니다."
 },
 "ku": {
 "surahs": "سورەتەکان",
@@ -4274,7 +4312,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "بۆ تەواوکردنی چوونەژوورەوە، ئیمەیڵەکەت پشتڕاست بکەرەوە",
 "obOr": "یان",
 "obGoogle": "بەردەوام بە لەگەڵ Google",
-"obGuest": "بەبێ هەژمار بەردەوام بە",
+"obGuest": "بەردەوام بە وەک میوان",
 "obStart": "دەست بە خوێندنەوە بکە",
 "obBadEmail": "تکایە ئیمەیڵێکی دروست بنووسە.",
 "obLinkErr": "ئەو بەستەرە کار ناکات یان ماوەکەی بەسەرچووە. تکایە داوای بەستەرێکی نوێ بکە.",
@@ -4418,7 +4456,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "نیشانی دەستگەیشتنی پێشوەختە لەسەر پرۆفایلەکەت",
 "eaP3": "کاتێک لە کانوونی یەکەمدا دەکرێتەوە، تۆ یەکەم کەس دەبیت بۆ بەکارهێنانی AI Sheikh، ئین‌شاءالله",
 "eaStart": "دەست بکە بە خوێندنەوە",
-"eaSkin": "شێوازی کەسوەی کەعبە"
+"eaSkin": "شێوازی کەسوەی کەعبە",
+"ptEarlyVoice": "بانگی تایبەتی دەستپێگەیشتنی پێشوەخت",
+"ptEarlyOnly": "ئەم بانگە تەنها بۆ دەستپێگەیشتنی پێشوەختە."
 },
 "ml": {
 "surahs": "സൂറത്തുകൾ",
@@ -4495,7 +4535,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "സൈൻ ഇൻ പൂർത്തിയാക്കാൻ ഇമെയിൽ സ്ഥിരീകരിക്കുക",
 "obOr": "അല്ലെങ്കിൽ",
 "obGoogle": "Google ഉപയോഗിച്ച് തുടരുക",
-"obGuest": "അക്കൗണ്ടില്ലാതെ തുടരുക",
+"obGuest": "അതിഥിയായി തുടരുക",
 "obStart": "വായന തുടങ്ങുക",
 "obBadEmail": "സാധുവായ ഇമെയിൽ നൽകുക.",
 "obLinkErr": "ഈ ലിങ്ക് പ്രവർത്തിക്കുന്നില്ല അല്ലെങ്കിൽ കാലാവധി കഴിഞ്ഞു. പുതിയ ലിങ്ക് അഭ്യർത്ഥിക്കുക.",
@@ -4639,7 +4679,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "നിങ്ങളുടെ പ്രൊഫൈലിൽ ആദ്യകാല ആക്സസ് ബാഡ്ജ്",
 "eaP3": "ഡിസംബറിൽ AI Sheikh ലഭ്യമാകുമ്പോൾ, ഇൻഷാ അല്ലാഹ്, ആദ്യം അവസരം ലഭിക്കുന്നവരിൽ നിങ്ങൾ ഉണ്ടാകും",
 "eaStart": "വായന തുടങ്ങുക",
-"eaSkin": "കിസ്‌വ തീം"
+"eaSkin": "കിസ്‌വ തീം",
+"ptEarlyVoice": "എക്സ്ക്ലൂസീവ് ആദ്യകാല ആക്സസ് ബാങ്ക്",
+"ptEarlyOnly": "ഈ ബാങ്ക് ആദ്യകാല ആക്സസ്സിന് മാത്രമുള്ളതാണ്."
 },
 "ms": {
 "surahs": "Surah",
@@ -4716,7 +4758,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Sahkan e-mel anda untuk melengkapkan log masuk",
 "obOr": "atau",
 "obGoogle": "Teruskan dengan Google",
-"obGuest": "Teruskan tanpa akaun",
+"obGuest": "Teruskan sebagai tetamu",
 "obStart": "Mula membaca",
 "obBadEmail": "Sila masukkan alamat e-mel yang sah.",
 "obLinkErr": "Pautan itu tidak berfungsi atau telah tamat tempoh. Sila minta pautan baharu.",
@@ -4860,7 +4902,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Lencana Akses Awal pada profil anda",
 "eaP3": "Anda akan berada di barisan hadapan untuk menggunakan AI Sheikh apabila ia dilancarkan pada bulan Disember, insya-Allah",
 "eaStart": "Mula membaca",
-"eaSkin": "Tema kelambu Kaabah"
+"eaSkin": "Tema kelambu Kaabah",
+"ptEarlyVoice": "Azan Akses Awal Eksklusif",
+"ptEarlyOnly": "Azan ini hanya untuk Akses Awal."
 },
 "my": {
 "surahs": "စူရဟ်များ",
@@ -4937,7 +4981,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "အကောင့်ဝင်ခြင်းပြီးဆုံးရန် သင့်အီးမေးလ်ကို အတည်ပြုပါ",
 "obOr": "သို့မဟုတ်",
 "obGoogle": "Google ဖြင့် ဆက်လုပ်ရန်",
-"obGuest": "အကောင့်မဖွင့်ဘဲ ဆက်လုပ်ရန်",
+"obGuest": "ဧည့်သည်အဖြစ် ဆက်လက်ရန်",
 "obStart": "စတင်ဖတ်ရှုရန်",
 "obBadEmail": "မှန်ကန်သော အီးမေးလ်လိပ်စာကို ထည့်ပါ။",
 "obLinkErr": "ဤလင့်ခ် အလုပ်မလုပ်ပါ သို့မဟုတ် သက်တမ်းကုန်သွားပါပြီ။ လင့်ခ်အသစ်တစ်ခု တောင်းဆိုပါ။",
@@ -5081,7 +5125,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "သင့်ပရိုဖိုင်မှာ အစောပိုင်းအသုံးပြုခွင့်ရသူတံဆိပ်",
 "eaP3": "ဒီဇင်ဘာလမှာ AI Sheikh စတင်အသုံးပြုနိုင်တဲ့အခါ အရင်ဆုံးအသုံးပြုခွင့်ရမယ့်သူတွေထဲမှာ ပါဝင်ပါမယ်၊ အင်ရှာအလ္လာဟ်",
 "eaStart": "စတင်ဖတ်ရှုရန်",
-"eaSkin": "ကစ်ဝါအပြင်အဆင်"
+"eaSkin": "ကစ်ဝါအပြင်အဆင်",
+"ptEarlyVoice": "အထူး အစောပိုင်း ဝင်ရောက်ခွင့် အဇာန်",
+"ptEarlyOnly": "ဤအဇာန်သည် အစောပိုင်း ဝင်ရောက်ခွင့်ရှိသူများအတွက်သာ ဖြစ်သည်။"
 },
 "nl": {
 "surahs": "Surahs",
@@ -5158,7 +5204,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Bevestig je e-mailadres om het inloggen af te ronden",
 "obOr": "of",
 "obGoogle": "Doorgaan met Google",
-"obGuest": "Doorgaan zonder account",
+"obGuest": "Doorgaan als gast",
 "obStart": "Begin met lezen",
 "obBadEmail": "Vul een geldig e-mailadres in.",
 "obLinkErr": "Deze link werkt niet of is verlopen. Vraag een nieuwe aan.",
@@ -5302,7 +5348,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Een badge voor vroege toegang op je profiel",
 "eaP3": "Vooraan in de rij voor de AI Sheikh, zodra die in december beschikbaar komt, in shaa Allah",
 "eaStart": "Begin met lezen",
-"eaSkin": "Kiswah-thema"
+"eaSkin": "Kiswah-thema",
+"ptEarlyVoice": "Exclusieve vroegtijdige toegang adhan",
+"ptEarlyOnly": "Deze adhan is alleen beschikbaar voor vroegtijdige toegang."
 },
 "no": {
 "surahs": "Suraer",
@@ -5379,7 +5427,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Bekreft e-postadressen din for å fullføre innloggingen",
 "obOr": "eller",
 "obGoogle": "Fortsett med Google",
-"obGuest": "Fortsett uten konto",
+"obGuest": "Fortsett som gjest",
 "obStart": "Begynn å lese",
 "obBadEmail": "Skriv inn en gyldig e-postadresse.",
 "obLinkErr": "Lenken fungerte ikke eller har utløpt. Be om en ny lenke.",
@@ -5523,7 +5571,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Et merke for tidlig tilgang på profilen din",
 "eaP3": "Først i køen til AI Sheikh når tjenesten åpner i desember, in shaa Allah",
 "eaStart": "Begynn å lese",
-"eaSkin": "Kiswa-tema"
+"eaSkin": "Kiswa-tema",
+"ptEarlyVoice": "Eksklusivt bønnekall med tidlig tilgang",
+"ptEarlyOnly": "Dette bønnekallet er kun for tidlig tilgang."
 },
 "pl": {
 "surahs": "Sury",
@@ -5600,7 +5650,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Potwierdź adres e-mail, aby dokończyć logowanie",
 "obOr": "lub",
 "obGoogle": "Kontynuuj z Google",
-"obGuest": "Kontynuuj bez konta",
+"obGuest": "Kontynuuj jako gość",
 "obStart": "Zacznij czytać",
 "obBadEmail": "Wpisz prawidłowy adres e-mail.",
 "obLinkErr": "Ten link nie działa lub wygasł. Poproś o nowy.",
@@ -5744,7 +5794,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Odznaka wczesnego dostępu na Twoim profilu",
 "eaP3": "Pierwszeństwo w dostępie do AI Sheikh, gdy pojawi się w grudniu, in shaa Allah",
 "eaStart": "Zacznij czytać",
-"eaSkin": "Motyw kiswa"
+"eaSkin": "Motyw kiswa",
+"ptEarlyVoice": "Ekskluzywny adhan we wczesnym dostępie",
+"ptEarlyOnly": "Ten adhan jest dostępny tylko we wczesnym dostępie."
 },
 "ps": {
 "surahs": "سورتونه",
@@ -5821,7 +5873,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "د ننوتلو د بشپړولو لپاره خپل برېښنالیک تایید کړئ",
 "obOr": "یا",
 "obGoogle": "له Google سره دوام ورکړئ",
-"obGuest": "له حساب پرته دوام ورکړئ",
+"obGuest": "د میلمه په توګه دوام ورکړئ",
 "obStart": "لوستل پیل کړئ",
 "obBadEmail": "مهرباني وکړئ یو سم برېښنالیک ولیکئ.",
 "obLinkErr": "دا لینک کار نه کوي یا یې وخت تېر شوی. مهرباني وکړئ نوی لینک وغواړئ.",
@@ -5965,7 +6017,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "ستاسو په پروفایل کې د لومړني لاسرسي نښه",
 "eaP3": "کله چې د AI شیخ په دسمبر کې پرانیستل شي، ان شاء الله، تاسو به د کارولو لپاره له لومړنیو کسانو څخه یاست",
 "eaStart": "لوستل پیل کړئ",
-"eaSkin": "د کعبې د غلاف بڼه"
+"eaSkin": "د کعبې د غلاف بڼه",
+"ptEarlyVoice": "د ځانګړي مخکنۍ لاسرسي اذان",
+"ptEarlyOnly": "دا اذان یوازې د مخکنۍ لاسرسي لپاره دی."
 },
 "pt": {
 "surahs": "Suratas",
@@ -6042,7 +6096,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Confirme o seu email para concluir o início de sessão",
 "obOr": "ou",
 "obGoogle": "Continuar com Google",
-"obGuest": "Continuar sem conta",
+"obGuest": "Continuar como convidado",
 "obStart": "Começar a ler",
 "obBadEmail": "Introduza um email válido.",
 "obLinkErr": "O link não funcionou ou expirou. Peça um novo.",
@@ -6186,7 +6240,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Um distintivo de Acesso antecipado no seu perfil",
 "eaP3": "Você estará entre os primeiros a ter acesso ao AI Sheikh quando ele for lançado em dezembro, inshaAllah",
 "eaStart": "Começar a ler",
-"eaSkin": "Tema da Kiswah"
+"eaSkin": "Tema da Kiswah",
+"ptEarlyVoice": "Adhan de Acesso Antecipado Exclusivo",
+"ptEarlyOnly": "Este adhan é apenas para o Acesso Antecipado."
 },
 "ro": {
 "surahs": "Sure",
@@ -6263,7 +6319,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Confirmă-ți adresa de e-mail pentru a finaliza conectarea",
 "obOr": "sau",
 "obGoogle": "Continuă cu Google",
-"obGuest": "Continuă fără cont",
+"obGuest": "Continuă ca oaspete",
 "obStart": "Începe să citești",
 "obBadEmail": "Introdu o adresă de e-mail validă.",
 "obLinkErr": "Linkul nu a funcționat sau a expirat. Solicită unul nou.",
@@ -6407,7 +6463,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "O insignă de acces anticipat pe profilul tău",
 "eaP3": "Prioritate la AI Sheikh când se lansează în decembrie, in shaa Allah",
 "eaStart": "Începe să citești",
-"eaSkin": "Tema Kiswah"
+"eaSkin": "Tema Kiswah",
+"ptEarlyVoice": "Adhan cu acces anticipat exclusiv",
+"ptEarlyOnly": "Acest adhan este disponibil doar pentru accesul anticipat."
 },
 "ru": {
 "surahs": "Суры",
@@ -6484,7 +6542,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Подтвердите адрес электронной почты, чтобы завершить вход",
 "obOr": "или",
 "obGoogle": "Продолжить с Google",
-"obGuest": "Продолжить без аккаунта",
+"obGuest": "Продолжить как гость",
 "obStart": "Начать чтение",
 "obBadEmail": "Введите корректный адрес электронной почты.",
 "obLinkErr": "Ссылка недействительна или срок её действия истёк. Запросите новую.",
@@ -6628,7 +6686,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Значок раннего доступа в вашем профиле",
 "eaP3": "Вы будете в числе первых, кто получит доступ к ИИ-шейху, когда он появится в декабре, иншаАллах",
 "eaStart": "Начать чтение",
-"eaSkin": "Тема «Кисва»"
+"eaSkin": "Тема «Кисва»",
+"ptEarlyVoice": "Эксклюзивный азан: ранний доступ",
+"ptEarlyOnly": "Этот азан доступен только в режиме раннего доступа."
 },
 "sd": {
 "surahs": "سورتون",
@@ -6705,7 +6765,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "سائن اِن مڪمل ڪرڻ لاءِ پنهنجي اي ميل جي تصديق ڪريو",
 "obOr": "يا",
 "obGoogle": "Google سان جاري رکو",
-"obGuest": "اڪائونٽ کان سواءِ جاري رکو",
+"obGuest": "مهمان طور جاري رکو",
 "obStart": "پڙهڻ شروع ڪريو",
 "obBadEmail": "مهرباني ڪري صحيح اي ميل داخل ڪريو.",
 "obLinkErr": "هي لنڪ ڪم نه ڪيو يا ان جي مُدت ختم ٿي وئي آهي. مهرباني ڪري نئون لنڪ گهرو.",
@@ -6849,7 +6909,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "توهان جي پروفائيل تي ابتدائي رسائي جو بيج",
 "eaP3": "ڊسمبر ۾ AI شيخ شروع ٿيڻ تي سڀ کان پهرين رسائي، ان شاءَ الله",
 "eaStart": "پڙهڻ شروع ڪريو",
-"eaSkin": "ڪعبي جي غلاف وارو ٿيم"
+"eaSkin": "ڪعبي جي غلاف وارو ٿيم",
+"ptEarlyVoice": "خاص ابتدائي رسائي اذان",
+"ptEarlyOnly": "هيءَ اذان صرف ابتدائي رسائي لاءِ آهي."
 },
 "si": {
 "surahs": "සූරා",
@@ -6926,7 +6988,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "පිවිසීම අවසන් කිරීමට ඔබේ ඊමේල් ලිපිනය තහවුරු කරන්න",
 "obOr": "හෝ",
 "obGoogle": "Google සමඟ ඉදිරියට යන්න",
-"obGuest": "ගිණුමක් නොමැතිව ඉදිරියට යන්න",
+"obGuest": "අමුත්තෙකු ලෙස දිගටම යන්න",
 "obStart": "කියවීම අරඹන්න",
 "obBadEmail": "වලංගු ඊමේල් ලිපිනයක් ඇතුළත් කරන්න.",
 "obLinkErr": "එම සබැඳිය ක්‍රියා නොකරයි හෝ කල් ඉකුත් වී ඇත. අලුත් සබැඳියක් ඉල්ලන්න.",
@@ -7070,7 +7132,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "ඔබගේ පැතිකඩේ පූර්ව ප්‍රවේශ ලාංඡනයක්",
 "eaP3": "ඉන්ෂා අල්ලාහ්, දෙසැම්බරයේ AI Sheikh විවෘත වූ විට ප්‍රමුඛතාව ලැබෙන පළමු අය අතර ඔබත් සිටිනවා",
 "eaStart": "කියවීම අරඹන්න",
-"eaSkin": "කිස්වා තේමාව"
+"eaSkin": "කිස්වා තේමාව",
+"ptEarlyVoice": "විශේෂ මුල් ප්‍රවේශ අධානය",
+"ptEarlyOnly": "මෙම අධානය මුල් ප්‍රවේශ සඳහා පමණි."
 },
 "sq": {
 "surahs": "Suret",
@@ -7147,7 +7211,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Konfirmo email-in për të përfunduar hyrjen",
 "obOr": "ose",
 "obGoogle": "Vazhdo me Google",
-"obGuest": "Vazhdo pa llogari",
+"obGuest": "Vazhdo si mysafir",
 "obStart": "Fillo të lexosh",
 "obBadEmail": "Shkruaj një adresë email-i të vlefshme.",
 "obLinkErr": "Kjo lidhje nuk funksionoi ose ka skaduar. Kërko një të re.",
@@ -7291,7 +7355,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Një distinktiv i Qasjes së hershme në profilin tënd",
 "eaP3": "I pari në radhë për AI Sheikh-un kur të hapet në dhjetor, në dashtë Allahu",
 "eaStart": "Fillo leximin",
-"eaSkin": "Tema e mbulesës së Qabes"
+"eaSkin": "Tema e mbulesës së Qabes",
+"ptEarlyVoice": "Ezan ekskluziv me qasje të hershme",
+"ptEarlyOnly": "Ky ezan është vetëm për qasje të hershme."
 },
 "sv": {
 "surahs": "Suror",
@@ -7368,7 +7434,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Bekräfta din e-postadress för att slutföra inloggningen",
 "obOr": "eller",
 "obGoogle": "Fortsätt med Google",
-"obGuest": "Fortsätt utan konto",
+"obGuest": "Fortsätt som gäst",
 "obStart": "Börja läsa",
 "obBadEmail": "Ange en giltig e-postadress.",
 "obLinkErr": "Länken fungerade inte eller har gått ut. Begär en ny länk.",
@@ -7512,7 +7578,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Ett märke för tidig åtkomst på din profil",
 "eaP3": "Först i kön till AI Sheikh när tjänsten lanseras i december, in shaa Allah",
 "eaStart": "Börja läsa",
-"eaSkin": "Kiswa-temat"
+"eaSkin": "Kiswa-temat",
+"ptEarlyVoice": "Exklusiv tidig åtkomst till adhan",
+"ptEarlyOnly": "Denna adhan är endast för tidig åtkomst."
 },
 "sw": {
 "surahs": "Sura",
@@ -7589,7 +7657,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Thibitisha barua pepe yako ili ukamilishe kuingia",
 "obOr": "au",
 "obGoogle": "Endelea na Google",
-"obGuest": "Endelea bila akaunti",
+"obGuest": "Endelea kama mgeni",
 "obStart": "Anza kusoma",
 "obBadEmail": "Tafadhali weka anwani sahihi ya barua pepe.",
 "obLinkErr": "Kiungo hicho hakikufanya kazi au muda wake umeisha. Tafadhali omba kiungo kipya.",
@@ -7733,7 +7801,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Beji ya Ufikiaji wa Mapema kwenye wasifu wako",
 "eaP3": "Utakuwa wa kwanza kupata AI Sheikh itakapozinduliwa mwezi Desemba, Inshaallah",
 "eaStart": "Anza kusoma",
-"eaSkin": "Mandhari ya Kiswa"
+"eaSkin": "Mandhari ya Kiswa",
+"ptEarlyVoice": "Adhana ya Ufikiaji wa Mapema wa Kipekee",
+"ptEarlyOnly": "Adhana hii ni kwa ajili ya Ufikiaji wa Mapema pekee."
 },
 "ta": {
 "surahs": "ஸூராக்கள்",
@@ -7810,7 +7880,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "உள்நுழைவை முடிக்க உங்கள் மின்னஞ்சலை உறுதிப்படுத்துங்கள்",
 "obOr": "அல்லது",
 "obGoogle": "Google மூலம் தொடருங்கள்",
-"obGuest": "கணக்கு இல்லாமல் தொடருங்கள்",
+"obGuest": "விருந்தினராகத் தொடரவும்",
 "obStart": "வாசிக்கத் தொடங்குங்கள்",
 "obBadEmail": "சரியான மின்னஞ்சல் முகவரியை உள்ளிடுங்கள்.",
 "obLinkErr": "இந்த இணைப்பு வேலை செய்யவில்லை அல்லது காலாவதியாகிவிட்டது. புதிய இணைப்பைக் கோருங்கள்.",
@@ -7954,7 +8024,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "உங்கள் சுயவிவரத்தில் முன்கூட்டிய அணுகல் அடையாளச் சின்னம்",
 "eaP3": "இன்ஷா அல்லாஹ், டிசம்பரில் AI ஷேக் அறிமுகமாகும்போது முதலில் அணுகுபவர்களில் நீங்களும் ஒருவர்",
 "eaStart": "வாசிக்கத் தொடங்கு",
-"eaSkin": "கிஸ்வா தீம்"
+"eaSkin": "கிஸ்வா தீம்",
+"ptEarlyVoice": "பிரத்தியேக ஆரம்ப அணுகல் அதான்",
+"ptEarlyOnly": "இந்த அதான் ஆரம்ப அணுகல் உள்ளவர்களுக்கு மட்டுமே."
 },
 "tg": {
 "surahs": "Сураҳо",
@@ -8031,7 +8103,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Барои анҷом додани воридшавӣ почтаи электронии худро тасдиқ кунед",
 "obOr": "ё",
 "obGoogle": "Идома бо Google",
-"obGuest": "Бе ҳисоб идома диҳед",
+"obGuest": "Ба ҳайси меҳмон идома додан",
 "obStart": "Ба хондан оғоз кунед",
 "obBadEmail": "Лутфан, суроғаи дурусти почтаи электрониро ворид кунед.",
 "obLinkErr": "Ин пайванд кор намекунад ё муҳлаташ гузаштааст. Лутфан, пайванди нав дархост кунед.",
@@ -8175,7 +8247,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Нишони дастрасии пешакӣ дар профили шумо",
 "eaP3": "Вақте ки AI Sheikh дар моҳи декабр дастрас мешавад, шумо аввалин шуда метавонед аз он истифода баред, иншоаллоҳ",
 "eaStart": "Ба қироат оғоз кунед",
-"eaSkin": "Мавзӯи Кисва"
+"eaSkin": "Мавзӯи Кисва",
+"ptEarlyVoice": "Дастрасии пешакии танҳо барои азъо",
+"ptEarlyOnly": "Ин азон танҳо барои дастрасии пешакӣ аст."
 },
 "th": {
 "surahs": "ซูเราะฮ์",
@@ -8252,7 +8326,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "ยืนยันอีเมลเพื่อเข้าสู่ระบบให้เสร็จสิ้น",
 "obOr": "หรือ",
 "obGoogle": "ดำเนินการต่อด้วย Google",
-"obGuest": "ดำเนินการต่อโดยไม่ใช้บัญชี",
+"obGuest": "ดำเนินการต่อในฐานะแขก",
 "obStart": "เริ่มอ่าน",
 "obBadEmail": "โปรดกรอกอีเมลที่ถูกต้อง",
 "obLinkErr": "ลิงก์นี้ใช้ไม่ได้หรือหมดอายุแล้ว โปรดขอลิงก์ใหม่",
@@ -8396,7 +8470,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "ตราสัญลักษณ์ผู้ได้สิทธิ์เข้าถึงก่อนใครบนโปรไฟล์ของคุณ",
 "eaP3": "ได้เข้าคิวเป็นคนแรก ๆ เพื่อใช้งาน AI Sheikh เมื่อเปิดให้บริการในเดือนธันวาคม อินชาอัลลอฮ์",
 "eaStart": "เริ่มอ่าน",
-"eaSkin": "ธีมผ้ากิสวะฮ์"
+"eaSkin": "ธีมผ้ากิสวะฮ์",
+"ptEarlyVoice": "อะซานพิเศษสำหรับการเข้าถึงล่วงหน้า",
+"ptEarlyOnly": "อะซานนี้มีไว้สำหรับการเข้าถึงล่วงหน้าเท่านั้น"
 },
 "tr": {
 "surahs": "Sureler",
@@ -8473,7 +8549,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Girişi tamamlamak için e-posta adresinizi doğrulayın",
 "obOr": "veya",
 "obGoogle": "Google ile devam et",
-"obGuest": "Hesap oluşturmadan devam et",
+"obGuest": "Misafir olarak devam et",
 "obStart": "Okumaya başla",
 "obBadEmail": "Lütfen geçerli bir e-posta adresi girin.",
 "obLinkErr": "Bu bağlantı çalışmadı veya süresi doldu. Lütfen yeni bir bağlantı isteyin.",
@@ -8617,7 +8693,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Profilinizde Erken Erişim rozeti",
 "eaP3": "AI Sheikh aralık ayında açıldığında ilk erişenlerden olun, inşallah",
 "eaStart": "Okumaya başlayın",
-"eaSkin": "Kâbe örtüsü teması"
+"eaSkin": "Kâbe örtüsü teması",
+"ptEarlyVoice": "Özel Erken Erişim ezanı",
+"ptEarlyOnly": "Bu ezan yalnızca Erken Erişim için geçerlidir."
 },
 "tt": {
 "surahs": "Сүрәләр",
@@ -8694,7 +8772,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Керүне тәмамлау өчен электрон почтагызны раслагыз",
 "obOr": "яки",
 "obGoogle": "Google белән дәвам итү",
-"obGuest": "Аккаунтсыз дәвам итү",
+"obGuest": "Кунак буларак дәвам итү",
 "obStart": "Укый башлау",
 "obBadEmail": "Дөрес электрон почта адресын кертегез.",
 "obLinkErr": "Сылтама эшләми яки вакыты чыккан. Яңасын сорагыз.",
@@ -8838,7 +8916,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Профилегездә иртә керү билгесе",
 "eaP3": "Аллаһ теләсә, декабрьдә ачылгач, AI Sheikh-ны беренчеләрдән булып кулланачаксыз",
 "eaStart": "Укый башлау",
-"eaSkin": "Кисва темасы"
+"eaSkin": "Кисва темасы",
+"ptEarlyVoice": "Эксклюзив алдан керү азаны",
+"ptEarlyOnly": "Бу азан бары тик алдан керү өчен генә."
 },
 "ug": {
 "surahs": "سۈرىلەر",
@@ -8915,7 +8995,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "كىرىشنى تاماملاش ئۈچۈن ئېلخەت ئادرېسىڭىزنى جەزملەشتۈرۈڭ",
 "obOr": "ياكى",
 "obGoogle": "Google بىلەن داۋاملاشتۇرۇش",
-"obGuest": "ھېساباتسىز داۋاملاشتۇرۇش",
+"obGuest": "مېھمان سۈپىتىدە داۋاملاشتۇرۇش",
 "obStart": "ئوقۇشنى باشلاش",
 "obBadEmail": "توغرا ئېلخەت ئادرېسىنى كىرگۈزۈڭ.",
 "obLinkErr": "بۇ ئۇلانما ئىشلىمىدى ياكى ۋاقتى ئۆتۈپ كەتتى. يېڭىسىنى تەلەپ قىلىڭ.",
@@ -9059,7 +9139,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "ئارخىپىڭىزدا دەسلەپكى زىيارەت بەلگىسى",
 "eaP3": "ئىنشائاللاھ، AI شەيخ دېكابىردا ئىشقا كىرىشتۈرۈلگەندە ئۇنى تۇنجى بولۇپ ئىشلىتىش پۇرسىتى",
 "eaStart": "ئوقۇشنى باشلاڭ",
-"eaSkin": "كىسۋە ئۇسلۇبى"
+"eaSkin": "كىسۋە ئۇسلۇبى",
+"ptEarlyVoice": "ئالدىن كىرىش ئالاھىدە ئەزان",
+"ptEarlyOnly": "بۇ ئەزان پەقەت ئالدىن كىرىش ئۈچۈنلا."
 },
 "ur": {
 "surahs": "سورتیں",
@@ -9136,7 +9218,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "سائن اِن مکمل کرنے کے لیے اپنے ای میل کی تصدیق کریں",
 "obOr": "یا",
 "obGoogle": "Google کے ساتھ جاری رکھیں",
-"obGuest": "اکاؤنٹ کے بغیر جاری رکھیں",
+"obGuest": "مہمان کے طور پر جاری رکھیں",
 "obStart": "پڑھنا شروع کریں",
 "obBadEmail": "درست ای میل درج کریں۔",
 "obLinkErr": "یہ لنک کام نہیں کرتا یا اس کی میعاد ختم ہو گئی ہے۔ نیا لنک منگوائیں۔",
@@ -9280,7 +9362,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "آپ کی پروفائل پر ابتدائی رسائی کا بیج",
 "eaP3": "دسمبر میں AI Sheikh کی سروس شروع ہوتے ہی سب سے پہلے رسائی حاصل کریں، ان شاء اللہ",
 "eaStart": "پڑھنا شروع کریں",
-"eaSkin": "غلافِ کعبہ کا تھیم"
+"eaSkin": "غلافِ کعبہ کا تھیم",
+"ptEarlyVoice": "خصوصی ابتدائی رسائی کی اذان",
+"ptEarlyOnly": "یہ اذان صرف ابتدائی رسائی کے لیے ہے۔"
 },
 "uz": {
 "surahs": "Suralar",
@@ -9357,7 +9441,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "Kirishni yakunlash uchun elektron pochtangizni tasdiqlang",
 "obOr": "yoki",
 "obGoogle": "Google orqali davom etish",
-"obGuest": "Hisobsiz davom etish",
+"obGuest": "Mehmon sifatida davom etish",
 "obStart": "O‘qishni boshlash",
 "obBadEmail": "Yaroqli elektron pochta manzilini kiriting.",
 "obLinkErr": "Bu havola ishlamaydi yoki muddati tugagan. Yangisini so‘rang.",
@@ -9501,7 +9585,9 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "Profilingizda ilk foydalanuvchi nishoni",
 "eaP3": "AI Sheikh dekabrda ishga tushganda, navbatda birinchi bo‘lasiz, inshaalloh",
 "eaStart": "O‘qishni boshlash",
-"eaSkin": "Kisva mavzusi"
+"eaSkin": "Kisva mavzusi",
+"ptEarlyVoice": "Erta kirish uchun maxsus azon",
+"ptEarlyOnly": "Bu azon faqat Erta kirish uchun."
 },
 "zh": {
 "surahs": "苏拉",
@@ -9578,7 +9664,7 @@ Object.assign(window.TILAWA_I18N,{
 "obConfirmEmail": "请确认电子邮箱以完成登录",
 "obOr": "或",
 "obGoogle": "使用 Google 继续",
-"obGuest": "不注册，继续使用",
+"obGuest": "以访客身份继续",
 "obStart": "开始阅读",
 "obBadEmail": "请输入有效的电子邮箱地址。",
 "obLinkErr": "链接无效或已过期，请重新获取。",
@@ -9722,6 +9808,8 @@ Object.assign(window.TILAWA_I18N,{
 "eaP2": "个人资料上的抢先体验徽章",
 "eaP3": "待 AI Sheikh 于 12 月开放时，你将优先体验，若真主意欲",
 "eaStart": "开始阅读",
-"eaSkin": "克尔白帷幕主题"
+"eaSkin": "克尔白帷幕主题",
+"ptEarlyVoice": "独家抢先体验宣礼",
+"ptEarlyOnly": "此宣礼仅限抢先体验用户使用。"
 }
 });

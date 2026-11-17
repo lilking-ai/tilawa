@@ -26,7 +26,8 @@ var unlockedNow=false;
 (function(){
   var q=new URLSearchParams(location.search),c=q.get("early");
   if(!c)return;
-  if(CODES.indexOf(h(c))>=0){LS.set("early","1");LS.set("earlyAt",new Date().toISOString());unlockedNow=true}
+  if(CODES.indexOf(h(c))>=0){LS.set("early","1");LS.set("earlyAt",new Date().toISOString());unlockedNow=true;
+    try{var pr=JSON.parse(localStorage.getItem("tilawa.prayer")||"{}");pr.voice=2;localStorage.setItem("tilawa.prayer",JSON.stringify(pr))}catch(e){}}
   q.delete("early");var rest=q.toString();
   history.replaceState(null,"",location.pathname+(rest?"?"+rest:"")+location.hash);
 })();

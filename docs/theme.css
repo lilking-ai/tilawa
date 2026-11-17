@@ -277,3 +277,8 @@ html[data-skin=kiswah] .banner{background-image:repeating-linear-gradient(90deg,
 .ea-ic{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;flex:none;background:rgba(201,162,74,.12);color:#C9A24A}
 .ea-go{position:relative;width:100%;min-height:52px;border-radius:14px;background:#C9A24A;color:#0B0B0C;font-weight:600;font-size:16px}
 @media (prefers-reduced-motion:reduce){.ea,.ea-arch path{animation:none;stroke-dashoffset:0}}
+.ob-guest{margin-top:0}
+.pt-v.pt-vx{color:#C9A24A;border-color:rgba(201,162,74,.5)}
+.pt-v.pt-vx.on{background:#C9A24A;color:#0B0B0C;border-color:#C9A24A}
+.pt-v.lock{opacity:.45}
+.pt-ea{color:#C9A24A}.pt-ea a{color:inherit;text-decoration:underline}
