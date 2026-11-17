@@ -27,8 +27,8 @@ async function start() {
     getApp(),
   ]);
   const { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, onAuthStateChanged, signOut,
-    createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, sendEmailVerification, getAdditionalUserInfo, updateProfile } = authMod;
-  const { initializeFirestore, persistentLocalCache, persistentMultipleTabManager, doc, onSnapshot, setDoc, serverTimestamp } = fsMod;
+    createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, sendEmailVerification, getAdditionalUserInfo, updateProfile, signInAnonymously } = authMod;
+  const { initializeFirestore, persistentLocalCache, persistentMultipleTabManager, doc, onSnapshot, setDoc, serverTimestamp, increment, arrayUnion } = fsMod;
 
   const auth = getAuth(app);
   let db;
@@ -162,10 +162,72 @@ async function start() {
   }
   window.addEventListener("tilawa:change", () => { clearTimeout(writeTimer); writeTimer = setTimeout(push, 300); });
 
+  // ---- Visitor log -------------------------------------------------------
+  // A stable per-device id so repeat visits from the same browser are counted
+  // as the same person (not a fingerprint, just a random tag we set once).
+  function deviceId() {
+    let id = LS.get("did");
+    if (!id) { id = "d-" + Math.random().toString(36).slice(2) + Date.now().toString(36); LS.set("did", id); }
+    return id;
+  }
+  // Country of the device, from its IP, via a free no-key service. Cached for
+  // the day so we don't look it up on every open.
+  async function country() {
+    const today = new Date().toISOString().slice(0, 10);
+    try {
+      const c = JSON.parse(LS.get("geo") || "null");
+      if (c && c.d === today) return c;
+    } catch (e) {}
+    try {
+      const r = await fetch("https://get.geojs.io/v1/ip/geo.json");
+      const j = await r.json();
+      const c = { d: today, name: j.country || "", cc: j.country_code || "" };
+      LS.set("geo", JSON.stringify(c));
+      return c;
+    } catch (e) { return { d: today, name: "", cc: "" }; }
+  }
+  // Write one log entry per app open (once per tab session, so a page that
+  // fires auth twice isn't double-counted).
+  let loggedGuest = false, loggedMember = false;
+  async function logVisitor(user) {
+    const guest = !user || user.isAnonymous;
+    // Log the viewer once per session; but always log once more when they turn
+    // into a real signed-in member, so the row gets their email and flips type.
+    if (guest) { if (loggedGuest) return; loggedGuest = true; }
+    else { if (loggedMember) return; loggedMember = true; }
+    const geo = await country();
+    const today = new Date().toISOString().slice(0, 10);
+    const entry = {
+      lastSeen: serverTimestamp(),
+      visits: increment(1),
+      days: arrayUnion(today),
+      country: geo.name, cc: geo.cc,
+      type: guest ? "guest" : "member",
+      ua: (navigator.userAgent || "").slice(0, 160),
+    };
+    if (!guest) { entry.email = user.email || ""; entry.uid = user.uid; entry.signedInEver = true; }
+    try {
+      await setDoc(doc(db, "visitors", deviceId()), entry, { merge: true });
+      await setDoc(doc(db, "stats", "global"), { views: increment(1), lastView: serverTimestamp() }, { merge: true });
+    } catch (e) { console.warn("[Tilawa] visitor log skipped", e); }
+  }
+
   onAuthStateChanged(auth, (user) => {
     if (unsub) { unsub(); unsub = null; }
     ref = null; firstSnap = true; welcomed = false;
-    if (!user) { T.setAuth({ user: null, sync: "ok", ready: true }); return; }
+    // Count this visitor (guest, anonymous viewer, or signed-in member).
+    logVisitor(user);
+    if (!user) {
+      T.setAuth({ user: null, sync: "ok", ready: true });
+      // Give every viewer a lightweight anonymous identity so even people who
+      // never sign up or tap "continue as guest" get logged. Harmless if the
+      // Anonymous provider isn't enabled yet — it just no-ops.
+      signInAnonymously(auth).catch(() => {});
+      return;
+    }
+    // Anonymous viewers are logged above but, for the app's UX, are treated as
+    // "not signed in" — the sign-in screen and guest mode behave exactly as before.
+    if (user.isAnonymous) { T.setAuth({ user: null, sync: "ok", ready: true }); return; }
     if (LS.get("newAccount") === "1") LS.set("newAccount", user.uid);
     setTimeout(maybeWelcome, 0);
     T.setAuth({ user: userInfo(user), sync: "busy", ready: true });

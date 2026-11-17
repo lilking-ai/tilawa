@@ -18,6 +18,27 @@ service cloud.firestore {
         && (!('last' in d) || d.last is map);
     }
 
+    // Visitor log: any signed-in client (including anonymous viewers) may add
+    // its own entry; only the owner may read the whole log.
+    match /visitors/{id} {
+      allow read: if isOwner();
+      allow write: if request.auth != null && validVisitor(request.resource.data);
+    }
+    function validVisitor(d) {
+      return d.keys().hasOnly(['lastSeen','visits','days','country','cc','type','ua','email','uid','signedInEver'])
+        && (!('days' in d) || (d.days is list && d.days.size() <= 400));
+    }
+
+    // Global counters (total views). Owner-only read.
+    match /stats/{id} {
+      allow read: if isOwner();
+      allow write: if request.auth != null;
+    }
+
+    function isOwner() {
+      return request.auth != null && request.auth.uid == 'OWNER_UID';
+    }
+
     // Everything else is closed.
     match /{document=**} {
       allow read, write: if false;

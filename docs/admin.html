@@ -1,0 +1,119 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tilawa — Admin</title>
+<style>
+:root{--bg:#0C1815;--card:#11201C;--ink:#ECE4CF;--muted:#93A59C;--gold:#D4B26A;--line:rgba(212,178,106,.18);--accent:#0F4A37}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(700px 500px at 50% -8%,#15352C,#0A1512 65%);color:var(--ink);font-family:system-ui,-apple-system,sans-serif;padding:22px 14px 60px;min-height:100vh}
+h1{font-family:Georgia,serif;font-weight:400;font-size:26px;text-align:center;margin:6px 0 2px}
+h1 span{color:var(--gold)}
+.sub{text-align:center;color:var(--muted);font-size:14px;margin:0 0 22px}
+.wrap{max-width:720px;margin:0 auto}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 10px;text-align:center}
+.stat b{display:block;font-family:Georgia,serif;font-size:34px;color:var(--gold);line-height:1}
+.stat span{font-size:12px;color:var(--muted)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:16px}
+.panel h2{font-family:Georgia,serif;font-weight:400;font-size:18px;margin:0 0 14px}
+.chart{display:flex;align-items:flex-end;gap:6px;height:130px}
+.chart .col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+.chart .bar{width:70%;max-width:26px;background:linear-gradient(180deg,#E8CE8A,#B8924A);border-radius:5px 5px 0 0;min-height:2px;transition:height .4s}
+.chart .v{font-size:11px;color:var(--gold);height:14px}
+.chart .d{font-size:10px;color:var(--muted);white-space:nowrap;transform:rotate(-40deg);transform-origin:center;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:start;padding:9px 8px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+td.e{font-weight:600}
+td.m{color:var(--muted);font-size:13px;white-space:nowrap}
+.state{text-align:center;color:var(--muted);padding:40px 16px;line-height:1.6}
+.in{max-width:360px;margin:30px auto;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+.in h2{font-family:Georgia,serif;font-weight:400;margin:0 0 6px}
+.in p{color:var(--muted);font-size:14px;margin:0 0 16px;line-height:1.5}
+.in input{width:100%;height:48px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:0 14px;font-size:16px;margin-bottom:10px;outline:none}
+.in input:focus{border-color:var(--gold)}
+.in button{width:100%;height:50px;border:none;border-radius:12px;background:var(--gold);color:#13201C;font-weight:600;font-size:16px;cursor:pointer}
+.err{color:#e0896f;font-size:14px;margin:8px 0 0;text-align:center}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.out{background:none;border:1px solid var(--line);color:var(--muted);border-radius:10px;padding:7px 12px;font-size:13px;cursor:pointer}
+.spin{width:30px;height:30px;border:3px solid var(--line);border-top-color:var(--gold);border-radius:50%;animation:s 1s linear infinite;margin:40px auto}
+@keyframes s{to{transform:rotate(360deg)}}
+</style></head><body>
+<div class="wrap">
+<h1>Tilawa <span>Admin</span></h1>
+<p class="sub">Private · who's viewing Tilawa</p>
+<div id="app"><div class="spin"></div></div>
+</div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
+import { getFirestore, collection, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
+import { firebaseConfig } from "./firebase-config.js";
+const app=initializeApp(firebaseConfig), auth=getAuth(app), db=getFirestore(app);
+const $=id=>document.getElementById(id), el=document.getElementById("app");
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const dayStr=d=>d.toISOString().slice(0,10);
+const fmtDate=s=>{try{return new Date(s).toLocaleDateString(undefined,{day:"numeric",month:"short"})}catch(e){return "—"}};
+
+function signinView(msg){
+  el.innerHTML=`<div class="in"><h2>Owner sign-in</h2><p>Sign in with your Tilawa account to see who's viewing the app.</p>
+    <input id="em" type="email" placeholder="Your email" autocomplete="email">
+    <input id="pw" type="password" placeholder="Password" autocomplete="current-password">
+    <button id="go">Sign in</button>${msg?`<p class="err">${esc(msg)}</p>`:""}</div>`;
+  $("go").onclick=async()=>{try{await signInWithEmailAndPassword(auth,$("em").value.trim(),$("pw").value)}catch(e){signinView("Wrong email or password.")}};
+  [$("em"),$("pw")].forEach(i=>i.addEventListener("keydown",e=>{if(e.key==="Enter")$("go").click()}));
+}
+function chart(title,counts){ // counts: array of {d,label,n}
+  const max=Math.max(1,...counts.map(c=>c.n));
+  return `<div class="panel"><h2>${title}</h2><div class="chart">${counts.map(c=>`
+    <div class="col"><div class="v">${c.n||""}</div><div class="bar" style="height:${Math.round(c.n/max*100)}%"></div><div class="d">${c.label}</div></div>`).join("")}</div></div>`;
+}
+const flag=cc=>{cc=String(cc||"").toUpperCase();return /^[A-Z]{2}$/.test(cc)?String.fromCodePoint(...[...cc].map(c=>127397+c.charCodeAt(0))):"🌐";};
+const lastDay=v=>v.days&&v.days.length?v.days[v.days.length-1]:"";
+async function dashboard(){
+  el.innerHTML='<div class="spin"></div>';
+  let snap, views=0;
+  try{
+    snap=await getDocs(collection(db,"visitors"));
+    try{ const g=await getDoc(doc(db,"stats","global")); if(g.exists()) views=g.data().views||0; }catch(e){}
+  }
+  catch(e){
+    el.innerHTML=`<div class="state">You're signed in, but not set as the owner yet.<br>Add your User ID to the database rules (I'll give you the steps), then reload.<br><br><button class="out" id="o">Sign out</button></div>`;
+    $("o").onclick=()=>signOut(auth); return;
+  }
+  const all=snap.docs.map(d=>d.data());
+  const members=all.filter(v=>v.type==="member"||v.signedInEver||v.email);
+  const guests=all.filter(v=>!(v.type==="member"||v.signedInEver||v.email));
+  const byRecent=(a,b)=>String(lastDay(b)).localeCompare(String(lastDay(a)));
+  members.sort(byRecent); guests.sort(byRecent);
+  const today=dayStr(new Date());
+  const onToday=all.filter(v=>(v.days||[]).includes(today)).length;
+  const totalVisits=all.reduce((s,v)=>s+(v.visits||0),0);
+  // last 14 days — unique devices seen each day
+  const days=[...Array(14)].map((_,i)=>dayStr(new Date(Date.now()-(13-i)*864e5)));
+  const seenByDay=days.map(d=>({label:fmtDate(d),n:all.filter(v=>(v.days||[]).includes(d)).length}));
+  const row=v=>`<tr><td class="e">${flag(v.cc)} ${esc(v.country||"Unknown")}</td><td class="m">${v.visits||0}×</td><td class="m">${fmtDate(lastDay(v))}</td></tr>`;
+  const mrow=v=>`<tr><td class="e">${esc(v.email||"—")}</td><td class="m">${flag(v.cc)} ${esc(v.country||"Unknown")}</td><td class="m">${v.visits||0}×</td><td class="m">${fmtDate(lastDay(v))}</td></tr>`;
+  el.innerHTML=`
+    <div class="top"><div style="color:var(--muted);font-size:13px">Signed in as ${esc(auth.currentUser.email||"owner")}</div><button class="out" id="o">Sign out</button></div>
+    <div class="cards">
+      <div class="stat"><b>${views.toLocaleString()}</b><span>total views</span></div>
+      <div class="stat"><b>${all.length}</b><span>people (devices)</span></div>
+      <div class="stat"><b>${onToday}</b><span>on it today</span></div>
+    </div>
+    <div class="cards">
+      <div class="stat"><b>${members.length}</b><span>signed up</span></div>
+      <div class="stat"><b>${guests.length}</b><span>guests</span></div>
+      <div class="stat"><b>${totalVisits.toLocaleString()}</b><span>total opens</span></div>
+    </div>
+    ${chart("People on it — last 14 days",seenByDay)}
+    <div class="panel"><h2>Signed up (${members.length})</h2>
+      <table><thead><tr><th>Email</th><th>Country</th><th>Opens</th><th>Last seen</th></tr></thead><tbody>
+      ${members.map(mrow).join("")||`<tr><td colspan="4" class="m">No sign-ups yet.</td></tr>`}
+      </tbody></table></div>
+    <div class="panel"><h2>Guests (${guests.length})</h2>
+      <table><thead><tr><th>Country</th><th>Opens</th><th>Last seen</th></tr></thead><tbody>
+      ${guests.map(row).join("")||`<tr><td colspan="3" class="m">No guests yet.</td></tr>`}
+      </tbody></table></div>`;
+  $("o").onclick=()=>signOut(auth);
+}
+onAuthStateChanged(auth,u=>{ u?dashboard():signinView(); });
+</script></body></html>
