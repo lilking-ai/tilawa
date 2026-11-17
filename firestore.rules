@@ -36,7 +36,7 @@ service cloud.firestore {
     }
 
     function isOwner() {
-      return request.auth != null && request.auth.uid == 'OWNER_UID';
+      return request.auth != null && request.auth.token.email == 'OWNER_EMAIL';
     }
 
     // Everything else is closed.
