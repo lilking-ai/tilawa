@@ -79,6 +79,13 @@ green (correct), red (wrong - tap to see what was heard) or crossed out (missed)
 recognition (Safari on iPhone, Chrome on Android/computer), checks words rather than every tajweed rule, and can
 send your mistakes to the AI Sheikh for help.
 
+## Athan recordings
+Prayer times from aladhan.com (the local calculation method is chosen automatically). Three athan voices:
+1. Saeed Hatamzadeh-Varmazyar — Wikimedia Commons, CC BY-SA 4.0
+2. Sabah Fakhri — Wikimedia Commons, public domain
+3. Ziyaad Patel (Early Access ✦) — "Azaan of World Mosques", Internet Archive, public domain
+The athan plays only while the app is open. See `docs/prayer.js` to change voices.
+
 ## Data sources
 Quran text & translations: api.alquran.cloud (fallback api.quran.com) · Reciters: mp3quran.net ·
 Verse audio: cdn.islamic.network

@@ -20,7 +20,11 @@ var I={
 };
 var PRAYERS=["Fajr","Dhuhr","Asr","Maghrib","Isha"], ROWS=["Fajr","Sunrise","Dhuhr","Asr","Maghrib","Isha"];
 var AR={Fajr:"الفجر",Sunrise:"الشروق",Dhuhr:"الظهر",Asr:"العصر",Maghrib:"المغرب",Isha:"العشاء"};
-var VOICES=[{src:"athan/athan-1.mp3"},{src:"athan/athan-2.mp3"},{src:"athan/athan-3.mp3",early:true}];
+var VOICES=[
+  {src:"athan/athan-1.mp3",credit:"Saeed Hatamzadeh-Varmazyar, CC BY-SA 4.0",url:"https://commons.wikimedia.org/wiki/File:AzaanMaahur.ogg"},
+  {src:"athan/athan-2.mp3",credit:"Sabah Fakhri, public domain",url:"https://commons.wikimedia.org/wiki/File:Call_to_prayer_by_Sabah_Fakhry.mp3"},
+  {src:"athan/athan-3.mp3",early:true,credit:"Ziyaad Patel · Azaan of World Mosques",url:"https://archive.org/details/azaan-of-world-mosques_202608"}
+];
 function isEarly(){return !!(window.TilawaEarly&&TilawaEarly.isEarly())}
 function canUse(i){return !!VOICES[i]&&(!VOICES[i].early||isEarly())}
 function curVoice(){return canUse(P.voice)?P.voice:0}
@@ -117,7 +121,7 @@ function render(){
         '<button class="pf-row" data-act="athan"><span class="ic">'+I.bell+'</span><span class="lbl">'+esc(t("ptAthanOn"))+'</span><span class="switch'+(P.athan?" on":"")+'" role="switch" aria-checked="'+!!P.athan+'"></span></button>'+
         '<div class="pf-row pt-voices"><span class="lbl">'+esc(t("ptVoice"))+'</span>'+VOICES.map(function(v,i){var lock=v.early&&!isEarly();return '<button class="pt-v'+(curVoice()===i?' on':'')+(v.early?' pt-vx':'')+(lock?' lock':'')+'" data-act="voice" data-i="'+i+'"'+(v.early?' aria-label="'+esc(t("ptEarlyVoice"))+'"':'')+'>'+(v.early?'✦':(i+1))+'</button>'}).join("")+
           '<button class="pt-listen" data-act="'+(playing?"stop":"listen")+'">'+(playing?I.stop:I.play)+'<span>'+esc(playing?t("ptStop"):t("ptTest"))+'</span></button></div>'+
-      '</div>'+(curVoice()===2?'<p class="pt-note pt-ea">✦ '+esc(t("ptEarlyVoice"))+' · <a href="https://commons.wikimedia.org/wiki/File:Azan.ogg" target="_blank" rel="noopener">Andrewler, CC BY-SA 4.0</a></p>':'')+'<p class="pt-note">'+esc(t("ptKeepOpen"))+'</p>'+
+      '</div>'+(VOICES[curVoice()].credit?'<p class="pt-note'+(curVoice()===2?' pt-ea':'')+'">'+(curVoice()===2?'✦ '+esc(t("ptEarlyVoice"))+' · ':'')+'<a href="'+esc(VOICES[curVoice()].url)+'" target="_blank" rel="noopener">'+esc(VOICES[curVoice()].credit)+'</a></p>':'')+'<p class="pt-note">'+esc(t("ptKeepOpen"))+'</p>'+
       (meta&&meta.method?'<p class="pt-note">'+esc(t("ptMethod").replace("{method}",meta.method))+'</p>':'');
   }
   panel.innerHTML='<div class="pf-head"><b>'+esc(t("ptTitle"))+'</b><button class="iconbtn" data-act="close" aria-label="Close">'+I.x+'</button></div><div class="pf-body">'+body+'</div>';
