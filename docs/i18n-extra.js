@@ -211,7 +211,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "የቦታ አጠቃቀም አልተፈቀደም። በምትኩ ከተማዎን ያስገቡ።",
 "ptCancel": "ሰርዝ",
 "ptRetry": "እንደገና ሞክር",
-"ptClose": "ዝጋ"
+"ptClose": "ዝጋ",
+"eaBadge": "ቅድመ መዳረሻ",
+"eaTitle": "ከመጀመሪያዎቹ አንዱ ነዎት",
+"eaSub": "የYaqub ልዩ ኮድን ስለቃኙ፣ Tilawa በዚህ መሣሪያ ላይ ጥቂት ተጨማሪ ባህሪያትን ከፍቶልዎታል።",
+"eaP1": "የኪስዋ ገጽታ፦ ጥቁርና ወርቃማ፣ ለቅድመ መዳረሻ ብቻ",
+"eaP2": "በመገለጫዎ ላይ የቅድመ መዳረሻ ምልክት",
+"eaP3": "AI Sheikh በዲሴምበር ሲከፈት፣ ኢንሻአላህ፣ ከሁሉ በፊት የመጠቀም ዕድል",
+"eaStart": "ማንበብ ይጀምሩ",
+"eaSkin": "የኪስዋ ገጽታ"
 },
 "az": {
 "surahs": "Surələr",
@@ -424,7 +432,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Məkan məlumatına icazə verilməyib. Əvəzində şəhərinizi yazın.",
 "ptCancel": "Ləğv et",
 "ptRetry": "Yenidən yoxla",
-"ptClose": "Bağla"
+"ptClose": "Bağla",
+"eaBadge": "Erkən giriş",
+"eaTitle": "İlk istifadəçilərdənsiniz",
+"eaSub": "Yaqubun xüsusi kodunu skan etdiniz, buna görə Tilawa bu cihazda sizin üçün bir neçə əlavə imkan açdı.",
+"eaP1": "Kisvə mövzusu: qara və qızılı, yalnız erkən giriş istifadəçiləri üçün",
+"eaP2": "Profilinizdə erkən giriş nişanı",
+"eaP3": "AI Sheikh dekabrda istifadəyə veriləndə ilk sıralarda olun, inşallah",
+"eaStart": "Oxumağa başlayın",
+"eaSkin": "Kisvə mövzusu"
 },
 "ber": {
 "surahs": "Tisura",
@@ -637,7 +653,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Asireg n useqdec n umḍiq ur yettwaqbel ara. Sekcem tamdint-ik.",
 "ptCancel": "Sefsex",
 "ptRetry": "Ɛreḍ tikkelt-nniḍen",
-"ptClose": "Mdel"
+"ptClose": "Mdel",
+"eaBadge": "Anekcum azwar",
+"eaTitle": "Tellaḍ gar imezwura",
+"eaSub": "Teskanneḍ tangalt tusligt n Yaqub, ɣef waya Tilawa teldi kra n tmerniwin deg allal-a.",
+"eaP1": "Asentel n l-Kiswa: aberkan d wureɣ, i wid n unekcum azwar kan",
+"eaP2": "Tabzimt n unekcum azwar deg profil-inek",
+"eaP3": "Ad tiliḍ gar imezwura i AI Sheikh mi ara yeldi deg duǧanbir, ma yexs Rebbi",
+"eaStart": "Bdu taɣuri",
+"eaSkin": "Asentel n l-Kiswa"
 },
 "bg": {
 "surahs": "Сури",
@@ -850,7 +874,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Достъпът до местоположението не е разрешен. Вместо това въведете града си.",
 "ptCancel": "Отказ",
 "ptRetry": "Опитай отново",
-"ptClose": "Затвори"
+"ptClose": "Затвори",
+"eaBadge": "Ранен достъп",
+"eaTitle": "Ти си сред първите",
+"eaSub": "Сканира специалния код на Yaqub и така Tilawa отключи няколко допълнителни неща на това устройство.",
+"eaP1": "Темата „Кисва“: черно и златно, само за ранния достъп",
+"eaP2": "Значка за ранен достъп в профила ти",
+"eaP3": "Ще си сред първите с достъп до AI шейх, когато стане достъпен през декември, ин шаа Аллах",
+"eaStart": "Започни да четеш",
+"eaSkin": "Тема „Кисва“"
 },
 "bn": {
 "surahs": "সূরাসমূহ",
@@ -1063,7 +1095,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "অবস্থানের অনুমতি দেওয়া হয়নি। এর বদলে আপনার শহরের নাম লিখুন।",
 "ptCancel": "বাতিল",
 "ptRetry": "আবার চেষ্টা করুন",
-"ptClose": "বন্ধ করুন"
+"ptClose": "বন্ধ করুন",
+"eaBadge": "আগাম অ্যাক্সেস",
+"eaTitle": "আপনি প্রথমদের একজন",
+"eaSub": "আপনি Yaqub-এর বিশেষ কোড স্ক্যান করেছেন, তাই এই ডিভাইসে Tilawa-তে কয়েকটি অতিরিক্ত সুবিধা চালু হয়েছে।",
+"eaP1": "কাবার গিলাফের থিম: কালো ও সোনালি, শুধু আগাম অ্যাক্সেসের জন্য",
+"eaP2": "আপনার প্রোফাইলে আগাম অ্যাক্সেস ব্যাজ",
+"eaP3": "ডিসেম্বরে AI Sheikh চালু হলে সবার আগে ব্যবহার করতে পারবেন, ইনশাআল্লাহ",
+"eaStart": "পড়া শুরু করুন",
+"eaSkin": "কাবার গিলাফের থিম"
 },
 "bs": {
 "surahs": "Sure",
@@ -1276,7 +1316,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Pristup lokaciji nije dozvoljen. Unesite svoj grad.",
 "ptCancel": "Otkaži",
 "ptRetry": "Pokušaj ponovo",
-"ptClose": "Zatvori"
+"ptClose": "Zatvori",
+"eaBadge": "Rani pristup",
+"eaTitle": "Među prvima ste",
+"eaSub": "Skenirali ste Yaqubov posebni kod, pa je Tilawa otključala nekoliko dodatnih mogućnosti na ovom uređaju.",
+"eaP1": "Tema Kisve: crna i zlatna, samo za korisnike ranog pristupa",
+"eaP2": "Oznaka ranog pristupa na vašem profilu",
+"eaP3": "Bit ćete prvi na redu za AI Sheikh kada bude dostupan u decembru, ako Bog da",
+"eaStart": "Počnite učiti",
+"eaSkin": "Tema Kisve"
 },
 "ce": {
 "surahs": "Сураш",
@@ -1489,7 +1537,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Меттиг лело йиш яц. Хьан гӀалан цӀе язде.",
 "ptCancel": "Юхадаккха",
 "ptRetry": "Юхахьажа",
-"ptClose": "ДӀакъовла"
+"ptClose": "ДӀакъовла",
+"eaBadge": "Хьалха пайдаэца",
+"eaTitle": "Хьо хьалха долчу адамашна юкъахь ду",
+"eaSub": "Хьо Якубан махсусан код сканироватий, цундела Tilawa цу устройстве хьанна цхьадолу кхин пайдаш а дӀахьаьржина.",
+"eaP1": "Кисван тема: йоӀа а, диллина а — хьалха пайдаэца йолчарна бен",
+"eaP2": "Хьалха пайдаэца йолу значок хьан профилехь",
+"eaP3": "Декабрехь AI Sheikh дӀахоьцу хенахь, Аллах лаахь, хьо хьалха болуш лелайо",
+"eaStart": "Деша дӀахоьца",
+"eaSkin": "Кисван тема"
 },
 "cs": {
 "surahs": "Súry",
@@ -1702,7 +1758,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Přístup k poloze není povolen. Zadejte místo ručně.",
 "ptCancel": "Zrušit",
 "ptRetry": "Zkusit znovu",
-"ptClose": "Zavřít"
+"ptClose": "Zavřít",
+"eaBadge": "Předběžný přístup",
+"eaTitle": "Jste mezi prvními",
+"eaSub": "Naskenovali jste speciální kód od Yaquba, a tak Tilawa na tomto zařízení odemkla několik bonusů.",
+"eaP1": "Motiv Kiswah: černý a zlatý, pouze pro uživatele s předběžným přístupem",
+"eaP2": "Odznak předběžného přístupu na vašem profilu",
+"eaP3": "Budete mezi prvními, kdo získají přístup k AI šejchovi, až bude v prosinci spuštěn, dá-li Alláh",
+"eaStart": "Začít číst",
+"eaSkin": "Motiv Kiswah"
 },
 "de": {
 "surahs": "Suren",
@@ -1915,7 +1979,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Der Standortzugriff ist nicht erlaubt. Gib stattdessen deine Stadt ein.",
 "ptCancel": "Abbrechen",
 "ptRetry": "Erneut versuchen",
-"ptClose": "Schließen"
+"ptClose": "Schließen",
+"eaBadge": "Frühzugang",
+"eaTitle": "Du gehörst zu den Ersten",
+"eaSub": "Du hast Yaqubs speziellen Code gescannt. Deshalb hat Tilawa auf diesem Gerät ein paar Extras freigeschaltet.",
+"eaP1": "Das Kiswa-Design: Schwarz und Gold, exklusiv für den Frühzugang",
+"eaP2": "Ein Frühzugang-Abzeichen auf deinem Profil",
+"eaP3": "Du bist ganz vorne mit dabei, wenn der AI Sheikh im Dezember verfügbar wird, so Gott will",
+"eaStart": "Mit dem Lesen beginnen",
+"eaSkin": "Kiswa-Design"
 },
 "dv": {
 "surahs": "ސޫރަތައް",
@@ -2128,7 +2200,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "ތަން ބެލުމަށް އިޖާޒަތެއް ނުލިބުނު. އެއްބަސްވަނީ ސިޓީ ލިޔުމަށް.",
 "ptCancel": "ބާތިލުކުރޭ",
 "ptRetry": "އަނެއްކާ ލަނޑާ",
-"ptClose": "ބަންދުކުރޭ"
+"ptClose": "ބަންދުކުރޭ",
+"eaBadge": "ކުރިން ލިބޭ ފުރުޞަތު",
+"eaTitle": "ތިބާ ފުރަތަމަ މީހުންގެ ތެރެއިން އެކެވެ",
+"eaSub": "ތިބާ Yaqub ގެ ޚާއްޞަ ކޯޑު ސްކޭން ކުރީތީ، މި ޑިވައިސްގައި Tilawa ގެ އިތުރު ޚާއްޞަ ފައިދާތައް ހުޅުވިއެވެ.",
+"eaP1": "ކިސްވާ ތީމް: ކަޅު އަދި ރަންކުލަ، ކުރިން ލިބޭ ފުރުޞަތު ލިބުނު މީހުންނަށް އެކަނި",
+"eaP2": "ތިބާގެ ޕްރޮފައިލްގައި ކުރިން ލިބުނު ފުރުޞަތުގެ ބެޖެއް",
+"eaP3": "ޑިސެމްބަރުގައި AI Sheikh ފެށޭއިރު، އިންޝާއަﷲ، އެއަށް ފުރަތަމަ ފުރުޞަތު ލިބޭނީ ތިބާއަށެވެ",
+"eaStart": "ކިޔަން ފަށާ",
+"eaSkin": "ކިސްވާ ތީމް"
 },
 "es": {
 "surahs": "Suras",
@@ -2341,7 +2421,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "No se permite acceder a tu ubicación. Escribe tu ciudad.",
 "ptCancel": "Cancelar",
 "ptRetry": "Reintentar",
-"ptClose": "Cerrar"
+"ptClose": "Cerrar",
+"eaBadge": "Acceso anticipado",
+"eaTitle": "Estás entre los primeros",
+"eaSub": "Has escaneado el código especial de Yaqub, así que Tilawa ha desbloqueado algunas funciones adicionales en este dispositivo.",
+"eaP1": "El tema de la Kiswa: negro y dorado, solo para quienes tienen acceso anticipado",
+"eaP2": "Una insignia de acceso anticipado en tu perfil",
+"eaP3": "Tendrás prioridad para usar AI Sheikh cuando esté disponible en diciembre, si Dios quiere",
+"eaStart": "Empezar a leer",
+"eaSkin": "Tema de la Kiswa"
 },
 "fa": {
 "surahs": "سوره‌ها",
@@ -2554,7 +2642,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "اجازهٔ دسترسی به موقعیت مکانی داده نشد. به‌جای آن نام شهرتان را وارد کنید.",
 "ptCancel": "لغو",
 "ptRetry": "تلاش دوباره",
-"ptClose": "بستن"
+"ptClose": "بستن",
+"eaBadge": "دسترسی زودهنگام",
+"eaTitle": "شما از اولین نفرات هستید",
+"eaSub": "کد ویژهٔ یعقوب را اسکن کردید، پس تلاوه چند امکان اضافی را در این دستگاه برایتان فعال کرده است.",
+"eaP1": "پوستهٔ پردهٔ کعبه: سیاه و طلایی، ویژهٔ دسترسی زودهنگام",
+"eaP2": "نشان دسترسی زودهنگام در نمایهٔ شما",
+"eaP3": "برای دسترسی به شیخ هوش مصنوعی در دسامبر، ان‌شاءالله، در صف اول باشید",
+"eaStart": "شروع به تلاوت",
+"eaSkin": "پوستهٔ پردهٔ کعبه"
 },
 "fr": {
 "surahs": "Sourates",
@@ -2767,7 +2863,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "L’accès à votre position n’est pas autorisé. Saisissez plutôt votre ville.",
 "ptCancel": "Annuler",
 "ptRetry": "Réessayer",
-"ptClose": "Fermer"
+"ptClose": "Fermer",
+"eaBadge": "Accès anticipé",
+"eaTitle": "Vous faites partie des premiers",
+"eaSub": "Vous avez scanné le code spécial de Yaqub, alors Tilawa a débloqué quelques options supplémentaires sur cet appareil.",
+"eaP1": "Le thème de la kiswa : noir et or, réservé à l’accès anticipé",
+"eaP2": "Un badge d’accès anticipé sur votre profil",
+"eaP3": "Vous serez parmi les premiers à accéder à AI Sheikh dès son lancement en décembre, si Dieu le veut",
+"eaStart": "Commencer la lecture",
+"eaSkin": "Thème de la kiswa"
 },
 "ha": {
 "surahs": "Surori",
@@ -2980,7 +3084,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Ba a ba da izinin amfani da wurinka ba. Rubuta sunan birninka maimakon haka.",
 "ptCancel": "Soke",
 "ptRetry": "Sake gwadawa",
-"ptClose": "Rufe"
+"ptClose": "Rufe",
+"eaBadge": "Samun dama da wuri",
+"eaTitle": "Kana cikin na farko",
+"eaSub": "Ka duba lambar musamman ta Yaqub, saboda haka Tilawa ta buɗe maka wasu ƙarin fasaloli a wannan na'urar.",
+"eaP1": "Jigon Kiswar Ka'aba: baƙi da zinariya, ga masu samun dama da wuri kawai",
+"eaP2": "Alamar samun dama da wuri a bayanan martabarka",
+"eaP3": "Za ka kasance cikin na farko da za su samu AI Sheikh idan aka buɗe shi a watan Disamba, in Allah Ya so",
+"eaStart": "Fara karatu",
+"eaSkin": "Jigon Kiswar Ka'aba"
 },
 "hi": {
 "surahs": "सूरहें",
@@ -3193,7 +3305,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "लोकेशन की अनुमति नहीं है। इसके बजाय अपने शहर का नाम लिखें।",
 "ptCancel": "रद्द करें",
 "ptRetry": "फिर कोशिश करें",
-"ptClose": "बंद करें"
+"ptClose": "बंद करें",
+"eaBadge": "शुरुआती पहुँच",
+"eaTitle": "आप शुरुआती लोगों में से हैं",
+"eaSub": "आपने याक़ूब का ख़ास कोड स्कैन किया है, इसलिए Tilawa ने इस डिवाइस पर कुछ अतिरिक्त सुविधाएँ उपलब्ध कराई हैं।",
+"eaP1": "किस्वा थीम: काला और सुनहरा, सिर्फ़ शुरुआती पहुँच वालों के लिए",
+"eaP2": "आपकी प्रोफ़ाइल पर शुरुआती पहुँच का बैज",
+"eaP3": "दिसंबर में AI Sheikh उपलब्ध होने पर सबसे पहले पहुँच पाने वालों में, इंशाअल्लाह",
+"eaStart": "पढ़ना शुरू करें",
+"eaSkin": "किस्वा थीम"
 },
 "id": {
 "surahs": "Surah",
@@ -3406,7 +3526,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Izin lokasi tidak diberikan. Ketik nama kota Anda.",
 "ptCancel": "Batal",
 "ptRetry": "Coba lagi",
-"ptClose": "Tutup"
+"ptClose": "Tutup",
+"eaBadge": "Akses Awal",
+"eaTitle": "Anda termasuk yang pertama",
+"eaSub": "Anda memindai kode khusus Yaqub, jadi Tilawa membuka beberapa fitur tambahan di perangkat ini.",
+"eaP1": "Tema Kiswah: hitam dan emas, khusus untuk Akses Awal",
+"eaP2": "Lencana Akses Awal di profil Anda",
+"eaP3": "Jadilah yang pertama mendapatkan Syekh AI saat hadir pada bulan Desember, insya Allah",
+"eaStart": "Mulai membaca",
+"eaSkin": "Tema Kiswah"
 },
 "it": {
 "surahs": "Sure",
@@ -3619,7 +3747,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "L’accesso alla posizione non è consentito. Inserisci la tua città.",
 "ptCancel": "Annulla",
 "ptRetry": "Riprova",
-"ptClose": "Chiudi"
+"ptClose": "Chiudi",
+"eaBadge": "Accesso anticipato",
+"eaTitle": "Sei tra i primi",
+"eaSub": "Hai scansionato il codice speciale di Yaqub, quindi Tilawa ha sbloccato alcune funzionalità extra su questo dispositivo.",
+"eaP1": "Il tema Kiswah: nero e oro, solo per l’accesso anticipato",
+"eaP2": "Un distintivo di accesso anticipato sul tuo profilo",
+"eaP3": "Sarai tra i primi ad accedere all’AI Sheikh quando sarà disponibile a dicembre, in sha’ Allah",
+"eaStart": "Inizia a leggere",
+"eaSkin": "Tema Kiswah"
 },
 "ja": {
 "surahs": "スーラ",
@@ -3832,7 +3968,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "位置情報が許可されていません。代わりに都市名を入力してください。",
 "ptCancel": "キャンセル",
 "ptRetry": "再試行",
-"ptClose": "閉じる"
+"ptClose": "閉じる",
+"eaBadge": "先行アクセス",
+"eaTitle": "あなたは最初の利用者の一人です",
+"eaSub": "ヤークーブの特別なコードを読み取ったため、この端末でTilawaの限定機能をご利用いただけるようになりました。",
+"eaP1": "キスワのテーマ：先行アクセス限定の黒と金",
+"eaP2": "プロフィールに先行アクセスバッジが表示されます",
+"eaP3": "12月に公開されたら、AIシェイクをいち早くご利用いただけます。インシャーアッラー",
+"eaStart": "読書を始める",
+"eaSkin": "キスワのテーマ"
 },
 "ko": {
 "surahs": "수라",
@@ -4045,7 +4189,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "위치 사용이 허용되지 않았습니다. 대신 도시를 입력하세요.",
 "ptCancel": "취소",
 "ptRetry": "다시 시도",
-"ptClose": "닫기"
+"ptClose": "닫기",
+"eaBadge": "얼리 액세스",
+"eaTitle": "가장 먼저 만나보는 분들 중 한 분이에요",
+"eaSub": "야쿠브의 특별 코드를 스캔하셔서 이 기기에서 틸라와의 특별 기능을 몇 가지 더 이용하실 수 있어요.",
+"eaP1": "키스와 테마: 얼리 액세스 전용 검은색과 금색 테마",
+"eaP2": "프로필에 표시되는 얼리 액세스 배지",
+"eaP3": "인샤알라, 12월에 AI 셰이크가 공개되면 가장 먼저 이용하실 수 있어요",
+"eaStart": "읽기 시작하기",
+"eaSkin": "키스와 테마"
 },
 "ku": {
 "surahs": "سورەتەکان",
@@ -4258,7 +4410,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "ڕێگە بە دەستگەیشتن بە شوێن نەدراوە. لەبری ئەوە ناوی شارەکەت بنووسە.",
 "ptCancel": "پاشگەزبوونەوە",
 "ptRetry": "دووبارە هەوڵ بدەوە",
-"ptClose": "داخستن"
+"ptClose": "داخستن",
+"eaBadge": "دەستگەیشتنی پێشوەختە",
+"eaTitle": "تۆ یەکێکیت لە یەکەم کەسان",
+"eaSub": "کۆدی تایبەتی Yaqubت سکان کرد، بۆیە Tilawa چەند تایبەتمەندییەکی زیادەی لەم ئامێرەدا بۆت چالاک کردووە.",
+"eaP1": "شێوازی کەسوەی کەعبە: ڕەش و زێڕین، تەنها بۆ دەستگەیشتنی پێشوەختە",
+"eaP2": "نیشانی دەستگەیشتنی پێشوەختە لەسەر پرۆفایلەکەت",
+"eaP3": "کاتێک لە کانوونی یەکەمدا دەکرێتەوە، تۆ یەکەم کەس دەبیت بۆ بەکارهێنانی AI Sheikh، ئین‌شاءالله",
+"eaStart": "دەست بکە بە خوێندنەوە",
+"eaSkin": "شێوازی کەسوەی کەعبە"
 },
 "ml": {
 "surahs": "സൂറത്തുകൾ",
@@ -4471,7 +4631,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "ലൊക്കേഷൻ അനുമതി നൽകിയിട്ടില്ല. പകരം നിങ്ങളുടെ നഗരം ടൈപ്പ് ചെയ്യുക.",
 "ptCancel": "റദ്ദാക്കുക",
 "ptRetry": "വീണ്ടും ശ്രമിക്കുക",
-"ptClose": "അടയ്ക്കുക"
+"ptClose": "അടയ്ക്കുക",
+"eaBadge": "ആദ്യകാല ആക്സസ്",
+"eaTitle": "നിങ്ങൾ ആദ്യമായി എത്തിയവരിൽ ഒരാളാണ്",
+"eaSub": "Yaqub-ന്റെ പ്രത്യേക കോഡ് സ്കാൻ ചെയ്തതിനാൽ, ഈ ഉപകരണത്തിൽ Tilawa കുറച്ച് അധിക സൗകര്യങ്ങൾ തുറന്നുതന്നിട്ടുണ്ട്.",
+"eaP1": "കിസ്‌വ തീം: കറുപ്പും സ്വർണനിറവും, ആദ്യകാല ആക്സസ് ഉള്ളവർക്ക് മാത്രം",
+"eaP2": "നിങ്ങളുടെ പ്രൊഫൈലിൽ ആദ്യകാല ആക്സസ് ബാഡ്ജ്",
+"eaP3": "ഡിസംബറിൽ AI Sheikh ലഭ്യമാകുമ്പോൾ, ഇൻഷാ അല്ലാഹ്, ആദ്യം അവസരം ലഭിക്കുന്നവരിൽ നിങ്ങൾ ഉണ്ടാകും",
+"eaStart": "വായന തുടങ്ങുക",
+"eaSkin": "കിസ്‌വ തീം"
 },
 "ms": {
 "surahs": "Surah",
@@ -4684,7 +4852,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Kebenaran lokasi tidak diberikan. Taip nama bandar anda.",
 "ptCancel": "Batal",
 "ptRetry": "Cuba lagi",
-"ptClose": "Tutup"
+"ptClose": "Tutup",
+"eaBadge": "Akses Awal",
+"eaTitle": "Anda antara yang terawal",
+"eaSub": "Anda mengimbas kod khas Yaqub, jadi Tilawa telah membuka beberapa ciri tambahan pada peranti ini.",
+"eaP1": "Tema kelambu Kaabah: hitam dan emas, khas untuk Akses Awal",
+"eaP2": "Lencana Akses Awal pada profil anda",
+"eaP3": "Anda akan berada di barisan hadapan untuk menggunakan AI Sheikh apabila ia dilancarkan pada bulan Disember, insya-Allah",
+"eaStart": "Mula membaca",
+"eaSkin": "Tema kelambu Kaabah"
 },
 "my": {
 "surahs": "စူရဟ်များ",
@@ -4897,7 +5073,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "တည်နေရာအသုံးပြုခွင့် မပြုထားပါ။ မြို့အမည်ကို ရိုက်ထည့်ပါ။",
 "ptCancel": "ပယ်ဖျက်ရန်",
 "ptRetry": "ထပ်ကြိုးစားရန်",
-"ptClose": "ပိတ်ရန်"
+"ptClose": "ပိတ်ရန်",
+"eaBadge": "အစောပိုင်းအသုံးပြုခွင့်",
+"eaTitle": "သင်ဟာ ပထမဆုံးအသုံးပြုသူတွေထဲက တစ်ဦးပါ",
+"eaSub": "Yaqub ရဲ့ အထူးကုဒ်ကို သင်စကင်ဖတ်ခဲ့တာကြောင့် ဒီစက်မှာ Tilawa ရဲ့ အပိုလုပ်ဆောင်ချက်တချို့ကို ဖွင့်ပေးလိုက်ပါပြီ။",
+"eaP1": "ကစ်ဝါအပြင်အဆင်—အနက်ရောင်နဲ့ ရွှေရောင်၊ အစောပိုင်းအသုံးပြုခွင့်ရသူတွေအတွက်သာ",
+"eaP2": "သင့်ပရိုဖိုင်မှာ အစောပိုင်းအသုံးပြုခွင့်ရသူတံဆိပ်",
+"eaP3": "ဒီဇင်ဘာလမှာ AI Sheikh စတင်အသုံးပြုနိုင်တဲ့အခါ အရင်ဆုံးအသုံးပြုခွင့်ရမယ့်သူတွေထဲမှာ ပါဝင်ပါမယ်၊ အင်ရှာအလ္လာဟ်",
+"eaStart": "စတင်ဖတ်ရှုရန်",
+"eaSkin": "ကစ်ဝါအပြင်အဆင်"
 },
 "nl": {
 "surahs": "Surahs",
@@ -5110,7 +5294,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Locatie is niet toegestaan. Voer in plaats daarvan je stad in.",
 "ptCancel": "Annuleren",
 "ptRetry": "Opnieuw proberen",
-"ptClose": "Sluiten"
+"ptClose": "Sluiten",
+"eaBadge": "Vroege toegang",
+"eaTitle": "Je bent een van de eersten",
+"eaSub": "Je hebt de speciale code van Yaqub gescand, dus Tilawa heeft op dit apparaat een paar extra's ontgrendeld.",
+"eaP1": "Het kiswah-thema: zwart en goud, alleen voor deelnemers met vroege toegang",
+"eaP2": "Een badge voor vroege toegang op je profiel",
+"eaP3": "Vooraan in de rij voor de AI Sheikh, zodra die in december beschikbaar komt, in shaa Allah",
+"eaStart": "Begin met lezen",
+"eaSkin": "Kiswah-thema"
 },
 "no": {
 "surahs": "Suraer",
@@ -5323,7 +5515,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Posisjonstilgang er ikke tillatt. Skriv inn byen din i stedet.",
 "ptCancel": "Avbryt",
 "ptRetry": "Prøv igjen",
-"ptClose": "Lukk"
+"ptClose": "Lukk",
+"eaBadge": "Tidlig tilgang",
+"eaTitle": "Du er blant de første",
+"eaSub": "Du skannet spesialkoden til Yaqub, så Tilawa har låst opp noen ekstra funksjoner på denne enheten.",
+"eaP1": "Kiswa-temaet: svart og gull, kun for brukere med tidlig tilgang",
+"eaP2": "Et merke for tidlig tilgang på profilen din",
+"eaP3": "Først i køen til AI Sheikh når tjenesten åpner i desember, in shaa Allah",
+"eaStart": "Begynn å lese",
+"eaSkin": "Kiswa-tema"
 },
 "pl": {
 "surahs": "Sury",
@@ -5536,7 +5736,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Brak dostępu do lokalizacji. Zamiast tego wpisz nazwę miasta.",
 "ptCancel": "Anuluj",
 "ptRetry": "Spróbuj ponownie",
-"ptClose": "Zamknij"
+"ptClose": "Zamknij",
+"eaBadge": "Wczesny dostęp",
+"eaTitle": "Jesteś wśród pierwszych",
+"eaSub": "Zeskanowano specjalny kod Yaquba, dlatego Tilawa odblokowała kilka dodatków na tym urządzeniu.",
+"eaP1": "Motyw kiswa: czarno-złoty, tylko dla osób z wczesnym dostępem",
+"eaP2": "Odznaka wczesnego dostępu na Twoim profilu",
+"eaP3": "Pierwszeństwo w dostępie do AI Sheikh, gdy pojawi się w grudniu, in shaa Allah",
+"eaStart": "Zacznij czytać",
+"eaSkin": "Motyw kiswa"
 },
 "ps": {
 "surahs": "سورتونه",
@@ -5749,7 +5957,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "د ځای معلومولو اجازه نشته. پر ځای یې خپل ښار ولیکئ.",
 "ptCancel": "لغوه کول",
 "ptRetry": "بیا هڅه",
-"ptClose": "تړل"
+"ptClose": "تړل",
+"eaBadge": "لومړنی لاسرسی",
+"eaTitle": "تاسو له لومړنیو کسانو څخه یاست",
+"eaSub": "تاسو د یعقوب ځانګړی کوډ سکین کړی، نو Tilawa په دې وسیله کې څو اضافي ځانګړنې درته فعالې کړې دي.",
+"eaP1": "د کعبې د غلاف بڼه: توره او زرینه، یوازې د لومړني لاسرسي لپاره",
+"eaP2": "ستاسو په پروفایل کې د لومړني لاسرسي نښه",
+"eaP3": "کله چې د AI شیخ په دسمبر کې پرانیستل شي، ان شاء الله، تاسو به د کارولو لپاره له لومړنیو کسانو څخه یاست",
+"eaStart": "لوستل پیل کړئ",
+"eaSkin": "د کعبې د غلاف بڼه"
 },
 "pt": {
 "surahs": "Suratas",
@@ -5962,7 +6178,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "A localização não está autorizada. Insira a sua cidade.",
 "ptCancel": "Cancelar",
 "ptRetry": "Tentar novamente",
-"ptClose": "Fechar"
+"ptClose": "Fechar",
+"eaBadge": "Acesso antecipado",
+"eaTitle": "Você está entre as primeiras pessoas",
+"eaSub": "Você escaneou o código especial do Yaqub, então a Tilawa desbloqueou alguns extras neste dispositivo.",
+"eaP1": "Tema da Kiswah: preto e dourado, exclusivo do Acesso antecipado",
+"eaP2": "Um distintivo de Acesso antecipado no seu perfil",
+"eaP3": "Você estará entre os primeiros a ter acesso ao AI Sheikh quando ele for lançado em dezembro, inshaAllah",
+"eaStart": "Começar a ler",
+"eaSkin": "Tema da Kiswah"
 },
 "ro": {
 "surahs": "Sure",
@@ -6175,7 +6399,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Accesul la locație nu este permis. Introdu orașul.",
 "ptCancel": "Anulează",
 "ptRetry": "Reîncearcă",
-"ptClose": "Închide"
+"ptClose": "Închide",
+"eaBadge": "Acces anticipat",
+"eaTitle": "Ești printre primii",
+"eaSub": "Ai scanat codul special al lui Yaqub, așa că Tilawa a deblocat câteva extraopțiuni pe acest dispozitiv.",
+"eaP1": "Tema Kiswah: negru și auriu, doar pentru acces anticipat",
+"eaP2": "O insignă de acces anticipat pe profilul tău",
+"eaP3": "Prioritate la AI Sheikh când se lansează în decembrie, in shaa Allah",
+"eaStart": "Începe să citești",
+"eaSkin": "Tema Kiswah"
 },
 "ru": {
 "surahs": "Суры",
@@ -6388,7 +6620,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Доступ к местоположению запрещён. Введите город вручную.",
 "ptCancel": "Отмена",
 "ptRetry": "Повторить",
-"ptClose": "Закрыть"
+"ptClose": "Закрыть",
+"eaBadge": "Ранний доступ",
+"eaTitle": "Вы среди первых",
+"eaSub": "Вы отсканировали специальный код Якуба, и Tilawa открыла несколько дополнительных возможностей на этом устройстве.",
+"eaP1": "Тема «Кисва»: чёрно-золотая, только для участников раннего доступа",
+"eaP2": "Значок раннего доступа в вашем профиле",
+"eaP3": "Вы будете в числе первых, кто получит доступ к ИИ-шейху, когда он появится в декабре, иншаАллах",
+"eaStart": "Начать чтение",
+"eaSkin": "Тема «Кисва»"
 },
 "sd": {
 "surahs": "سورتون",
@@ -6601,7 +6841,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "هنڌ جي اجازت ناهي. ان جي بدران پنهنجو شهر لکو.",
 "ptCancel": "رد ڪريو",
 "ptRetry": "ٻيهر ڪوشش ڪريو",
-"ptClose": "بند ڪريو"
+"ptClose": "بند ڪريو",
+"eaBadge": "ابتدائي رسائي",
+"eaTitle": "توهان پهرين ماڻهن مان هڪ آهيو",
+"eaSub": "توهان يعقوب جو خاص ڪوڊ اسڪين ڪيو، تنهنڪري Tilawa هن ڊوائيس تي ڪجهه اضافي سهولتون کوليون آهن.",
+"eaP1": "ڪعبي جي غلاف وارو ٿيم: ڪارو ۽ سونهري، رڳو ابتدائي رسائي وارن لاءِ",
+"eaP2": "توهان جي پروفائيل تي ابتدائي رسائي جو بيج",
+"eaP3": "ڊسمبر ۾ AI شيخ شروع ٿيڻ تي سڀ کان پهرين رسائي، ان شاءَ الله",
+"eaStart": "پڙهڻ شروع ڪريو",
+"eaSkin": "ڪعبي جي غلاف وارو ٿيم"
 },
 "si": {
 "surahs": "සූරා",
@@ -6814,7 +7062,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "ස්ථාන අවසරය ලබා දී නැත. ඒ වෙනුවට ඔබේ නගරය ටයිප් කරන්න.",
 "ptCancel": "අවලංගු කරන්න",
 "ptRetry": "නැවත උත්සාහ කරන්න",
-"ptClose": "වසන්න"
+"ptClose": "වසන්න",
+"eaBadge": "පූර්ව ප්‍රවේශය",
+"eaTitle": "ඔබ මුල්ම අය අතරින් කෙනෙක්",
+"eaSub": "ඔබ Yaqubගේ විශේෂ කේතය ස්කෑන් කළ නිසා, Tilawa මෙම උපාංගයේ අමතර විශේෂාංග කිහිපයක් ඔබ වෙනුවෙන් විවෘත කර ඇත.",
+"eaP1": "කිස්වා තේමාව: කළු සහ රන්වන් පැහැයෙන්, පූර්ව ප්‍රවේශය සඳහා පමණයි",
+"eaP2": "ඔබගේ පැතිකඩේ පූර්ව ප්‍රවේශ ලාංඡනයක්",
+"eaP3": "ඉන්ෂා අල්ලාහ්, දෙසැම්බරයේ AI Sheikh විවෘත වූ විට ප්‍රමුඛතාව ලැබෙන පළමු අය අතර ඔබත් සිටිනවා",
+"eaStart": "කියවීම අරඹන්න",
+"eaSkin": "කිස්වා තේමාව"
 },
 "sq": {
 "surahs": "Suret",
@@ -7027,7 +7283,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Nuk lejohet përdorimi i vendndodhjes. Shkruani qytetin tuaj në vend të kësaj.",
 "ptCancel": "Anulo",
 "ptRetry": "Provo sërish",
-"ptClose": "Mbyll"
+"ptClose": "Mbyll",
+"eaBadge": "Qasje e hershme",
+"eaTitle": "Je ndër të parët",
+"eaSub": "Skanove kodin e veçantë të Yaqubit, ndaj Tilawa ka zhbllokuar disa shtesa në këtë pajisje.",
+"eaP1": "Tema e mbulesës së Qabes: e zezë dhe e artë, vetëm për Qasjen e hershme",
+"eaP2": "Një distinktiv i Qasjes së hershme në profilin tënd",
+"eaP3": "I pari në radhë për AI Sheikh-un kur të hapet në dhjetor, në dashtë Allahu",
+"eaStart": "Fillo leximin",
+"eaSkin": "Tema e mbulesës së Qabes"
 },
 "sv": {
 "surahs": "Suror",
@@ -7240,7 +7504,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Platsåtkomst är inte tillåten. Ange din stad i stället.",
 "ptCancel": "Avbryt",
 "ptRetry": "Försök igen",
-"ptClose": "Stäng"
+"ptClose": "Stäng",
+"eaBadge": "Tidig åtkomst",
+"eaTitle": "Du är en av de första",
+"eaSub": "Du skannade Yaqubs särskilda kod, så Tilawa har låst upp några extra funktioner på den här enheten.",
+"eaP1": "Kiswa-temat: svart och guld, endast för tidig åtkomst",
+"eaP2": "Ett märke för tidig åtkomst på din profil",
+"eaP3": "Först i kön till AI Sheikh när tjänsten lanseras i december, in shaa Allah",
+"eaStart": "Börja läsa",
+"eaSkin": "Kiswa-temat"
 },
 "sw": {
 "surahs": "Sura",
@@ -7453,7 +7725,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Ruhusa ya kutumia eneo haijatolewa. Andika jina la jiji lako badala yake.",
 "ptCancel": "Ghairi",
 "ptRetry": "Jaribu tena",
-"ptClose": "Funga"
+"ptClose": "Funga",
+"eaBadge": "Ufikiaji wa Mapema",
+"eaTitle": "Wewe ni miongoni mwa wa kwanza",
+"eaSub": "Ulichanganua msimbo maalum wa Yaqub, kwa hivyo Tilawa imefungua vipengele vichache vya ziada kwenye kifaa hiki.",
+"eaP1": "Mandhari ya Kiswa: nyeusi na dhahabu, kwa walio na Ufikiaji wa Mapema pekee",
+"eaP2": "Beji ya Ufikiaji wa Mapema kwenye wasifu wako",
+"eaP3": "Utakuwa wa kwanza kupata AI Sheikh itakapozinduliwa mwezi Desemba, Inshaallah",
+"eaStart": "Anza kusoma",
+"eaSkin": "Mandhari ya Kiswa"
 },
 "ta": {
 "surahs": "ஸூராக்கள்",
@@ -7666,7 +7946,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "இருப்பிட அனுமதி வழங்கப்படவில்லை. அதற்குப் பதிலாக உங்கள் நகரத்தை உள்ளிடுங்கள்.",
 "ptCancel": "ரத்து",
 "ptRetry": "மீண்டும் முயற்சி",
-"ptClose": "மூடு"
+"ptClose": "மூடு",
+"eaBadge": "முன்கூட்டிய அணுகல்",
+"eaTitle": "முதலில் வந்தவர்களில் நீங்களும் ஒருவர்",
+"eaSub": "Yaqub-இன் சிறப்புக் குறியீட்டை ஸ்கேன் செய்ததால், இந்தச் சாதனத்தில் Tilawa சில கூடுதல் அம்சங்களைத் திறந்துள்ளது.",
+"eaP1": "கிஸ்வா தீம்: கருப்பு மற்றும் தங்க நிறத்தில், முன்கூட்டிய அணுகல் பெறுபவர்களுக்கு மட்டும்",
+"eaP2": "உங்கள் சுயவிவரத்தில் முன்கூட்டிய அணுகல் அடையாளச் சின்னம்",
+"eaP3": "இன்ஷா அல்லாஹ், டிசம்பரில் AI ஷேக் அறிமுகமாகும்போது முதலில் அணுகுபவர்களில் நீங்களும் ஒருவர்",
+"eaStart": "வாசிக்கத் தொடங்கு",
+"eaSkin": "கிஸ்வா தீம்"
 },
 "tg": {
 "surahs": "Сураҳо",
@@ -7879,7 +8167,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Иҷозати дастрасӣ ба ҷойгиршавӣ дода нашуд. Ба ҷойи он номи шаҳрро нависед.",
 "ptCancel": "Бекор кардан",
 "ptRetry": "Аз нав кӯшиш кардан",
-"ptClose": "Пӯшидан"
+"ptClose": "Пӯшидан",
+"eaBadge": "Дастрасии пешакӣ",
+"eaTitle": "Шумо аз аввалинҳо ҳастед",
+"eaSub": "Шумо рамзи махсуси Yaqub-ро скан кардед, бинобар ин Tilawa дар ин дастгоҳ чанд имконияти иловагиро фаъол кард.",
+"eaP1": "Мавзӯи Кисва: сиёҳу тиллоӣ, танҳо барои дастрасии пешакӣ",
+"eaP2": "Нишони дастрасии пешакӣ дар профили шумо",
+"eaP3": "Вақте ки AI Sheikh дар моҳи декабр дастрас мешавад, шумо аввалин шуда метавонед аз он истифода баред, иншоаллоҳ",
+"eaStart": "Ба қироат оғоз кунед",
+"eaSkin": "Мавзӯи Кисва"
 },
 "th": {
 "surahs": "ซูเราะฮ์",
@@ -8092,7 +8388,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "ไม่ได้รับอนุญาตให้ใช้ตำแหน่ง โปรดพิมพ์ชื่อเมืองแทน",
 "ptCancel": "ยกเลิก",
 "ptRetry": "ลองอีกครั้ง",
-"ptClose": "ปิด"
+"ptClose": "ปิด",
+"eaBadge": "สิทธิ์เข้าถึงก่อนใคร",
+"eaTitle": "คุณคือหนึ่งในกลุ่มแรก",
+"eaSub": "คุณสแกนโค้ดพิเศษของ Yaqub แล้ว Tilawa จึงปลดล็อกสิทธิพิเศษบางอย่างบนอุปกรณ์เครื่องนี้",
+"eaP1": "ธีมผ้ากิสวะฮ์: สีดำและสีทอง สำหรับผู้ที่ได้สิทธิ์เข้าถึงก่อนใครเท่านั้น",
+"eaP2": "ตราสัญลักษณ์ผู้ได้สิทธิ์เข้าถึงก่อนใครบนโปรไฟล์ของคุณ",
+"eaP3": "ได้เข้าคิวเป็นคนแรก ๆ เพื่อใช้งาน AI Sheikh เมื่อเปิดให้บริการในเดือนธันวาคม อินชาอัลลอฮ์",
+"eaStart": "เริ่มอ่าน",
+"eaSkin": "ธีมผ้ากิสวะฮ์"
 },
 "tr": {
 "surahs": "Sureler",
@@ -8305,7 +8609,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Konum izni verilmedi. Bunun yerine şehrinizi yazın.",
 "ptCancel": "İptal",
 "ptRetry": "Tekrar dene",
-"ptClose": "Kapat"
+"ptClose": "Kapat",
+"eaBadge": "Erken Erişim",
+"eaTitle": "İlk kişilerden birisiniz",
+"eaSub": "Yaqub'ın özel kodunu taradığınız için Tilawa bu cihazda birkaç ekstra özelliğin kilidini açtı.",
+"eaP1": "Kâbe örtüsü teması: siyah ve altın rengi, yalnızca Erken Erişim'e özel",
+"eaP2": "Profilinizde Erken Erişim rozeti",
+"eaP3": "AI Sheikh aralık ayında açıldığında ilk erişenlerden olun, inşallah",
+"eaStart": "Okumaya başlayın",
+"eaSkin": "Kâbe örtüsü teması"
 },
 "tt": {
 "surahs": "Сүрәләр",
@@ -8518,7 +8830,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Урынны билгеләргә рөхсәт юк. Шәһәрегезне языгыз.",
 "ptCancel": "Баш тарту",
 "ptRetry": "Кабатлау",
-"ptClose": "Ябу"
+"ptClose": "Ябу",
+"eaBadge": "Иртә керү",
+"eaTitle": "Сез беренчеләрдән",
+"eaSub": "Сез Yaqub-ның махсус кодын сканерладыгыз, шуңа күрә Tilawa бу җайланмада берничә өстәмә мөмкинлекне ачты.",
+"eaP1": "Кисва темасы: кара һәм алтынсу төсләрдә, бары тик иртә керү өчен",
+"eaP2": "Профилегездә иртә керү билгесе",
+"eaP3": "Аллаһ теләсә, декабрьдә ачылгач, AI Sheikh-ны беренчеләрдән булып кулланачаксыз",
+"eaStart": "Укый башлау",
+"eaSkin": "Кисва темасы"
 },
 "ug": {
 "surahs": "سۈرىلەر",
@@ -8731,7 +9051,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "ئورنىڭىزنى بەلگىلەشكە رۇخسەت بېرىلمىدى. ئۇنىڭ ئورنىغا شەھىرىڭىزنى كىرگۈزۈڭ.",
 "ptCancel": "بىكار قىلىش",
 "ptRetry": "قايتا سىناش",
-"ptClose": "يېپىش"
+"ptClose": "يېپىش",
+"eaBadge": "دەسلەپكى زىيارەت",
+"eaTitle": "سىز تۇنجى بولۇپ سىناپ باققۇچىلاردىن بىرىسىز",
+"eaSub": "ياقۇپنىڭ ئالاھىدە كودىنى سىكانىرلىدىڭىز، شۇڭا Tilawa بۇ ئۈسكۈنىدە سىز ئۈچۈن بىر قانچە قوشۇمچە ئىقتىدارنى ئاچتى.",
+"eaP1": "كىسۋە ئۇسلۇبى: قارا ۋە ئالتۇن رەڭلەر، پەقەت دەسلەپكى زىيارەتكە ئېرىشكەنلەر ئۈچۈن",
+"eaP2": "ئارخىپىڭىزدا دەسلەپكى زىيارەت بەلگىسى",
+"eaP3": "ئىنشائاللاھ، AI شەيخ دېكابىردا ئىشقا كىرىشتۈرۈلگەندە ئۇنى تۇنجى بولۇپ ئىشلىتىش پۇرسىتى",
+"eaStart": "ئوقۇشنى باشلاڭ",
+"eaSkin": "كىسۋە ئۇسلۇبى"
 },
 "ur": {
 "surahs": "سورتیں",
@@ -8944,7 +9272,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "مقام کی اجازت نہیں ہے۔ اس کے بجائے اپنے شہر کا نام لکھیں۔",
 "ptCancel": "منسوخ کریں",
 "ptRetry": "دوبارہ کوشش کریں",
-"ptClose": "بند کریں"
+"ptClose": "بند کریں",
+"eaBadge": "ابتدائی رسائی",
+"eaTitle": "آپ اولین لوگوں میں سے ہیں",
+"eaSub": "آپ نے Yaqub کا خصوصی کوڈ اسکین کیا ہے، اس لیے Tilawa نے اس ڈیوائس پر چند اضافی سہولتیں فعال کر دی ہیں۔",
+"eaP1": "غلافِ کعبہ کا تھیم: سیاہ اور سنہری، صرف ابتدائی رسائی کے لیے",
+"eaP2": "آپ کی پروفائل پر ابتدائی رسائی کا بیج",
+"eaP3": "دسمبر میں AI Sheikh کی سروس شروع ہوتے ہی سب سے پہلے رسائی حاصل کریں، ان شاء اللہ",
+"eaStart": "پڑھنا شروع کریں",
+"eaSkin": "غلافِ کعبہ کا تھیم"
 },
 "uz": {
 "surahs": "Suralar",
@@ -9157,7 +9493,15 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "Joylashuvga ruxsat berilmagan. Buning o‘rniga shahringizni kiriting.",
 "ptCancel": "Bekor qilish",
 "ptRetry": "Qayta urinish",
-"ptClose": "Yopish"
+"ptClose": "Yopish",
+"eaBadge": "Ilk foydalanish",
+"eaTitle": "Siz ilk foydalanuvchilardan birisiz",
+"eaSub": "Yaqubning maxsus kodini skaner qildingiz, shu bois Tilawa ushbu qurilmada bir nechta qo‘shimcha imkoniyatlarni ochdi.",
+"eaP1": "Kisva mavzusi: qora va oltin ranglarda, faqat ilk foydalanuvchilar uchun",
+"eaP2": "Profilingizda ilk foydalanuvchi nishoni",
+"eaP3": "AI Sheikh dekabrda ishga tushganda, navbatda birinchi bo‘lasiz, inshaalloh",
+"eaStart": "O‘qishni boshlash",
+"eaSkin": "Kisva mavzusi"
 },
 "zh": {
 "surahs": "苏拉",
@@ -9370,6 +9714,14 @@ Object.assign(window.TILAWA_I18N,{
 "ptLocErr": "未获准使用位置信息。请改为输入城市。",
 "ptCancel": "取消",
 "ptRetry": "重试",
-"ptClose": "关闭"
+"ptClose": "关闭",
+"eaBadge": "抢先体验",
+"eaTitle": "你是最早体验的用户之一",
+"eaSub": "你扫描了 Yaqub 的专属码，因此 Tilawa 已在此设备上为你解锁了几项特别内容。",
+"eaP1": "克尔白帷幕主题：黑金配色，仅限抢先体验用户",
+"eaP2": "个人资料上的抢先体验徽章",
+"eaP3": "待 AI Sheikh 于 12 月开放时，你将优先体验，若真主意欲",
+"eaStart": "开始阅读",
+"eaSkin": "克尔白帷幕主题"
 }
 });

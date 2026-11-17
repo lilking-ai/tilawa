@@ -115,10 +115,10 @@ function renderPf(){
   if(u){
     var initial=esc(String(u.displayName||u.email||"?").charAt(0).toUpperCase());
     top='<div class="pf-card pf-user"><div class="pf-av">'+(u.photoURL?'<img src="'+esc(u.photoURL)+'" alt="" referrerpolicy="no-referrer">':initial)+'</div>'+
-      '<div class="pf-who"><b>'+esc(u.displayName||u.email||"")+'</b>'+(u.displayName&&u.email?'<span>'+esc(u.email)+'</span>':'')+
+      '<div class="pf-who"><b>'+esc(u.displayName||u.email||"")+'</b>'+(window.TilawaEarly&&TilawaEarly.isEarly()?'<span class="ea-tag">✦ '+esc(t("eaBadge"))+'</span>':'')+(u.displayName&&u.email?'<span>'+esc(u.email)+'</span>':'')+
       '<span class="pf-sync '+esc(A.sync||"ok")+'">'+esc(A.sync==="busy"?t("syncing"):A.sync==="err"?t("syncErr"):t("synced"))+'</span></div></div>';
   }else{
-    top='<div class="pf-card"><div class="pf-guest"><div class="pf-av">'+I.user+'</div><div><b>'+esc(t("prGuest"))+'</b><span>'+esc(t("prSignedOut"))+'</span></div></div>'+signHTML(true)+'</div>';
+    top='<div class="pf-card"><div class="pf-guest"><div class="pf-av">'+I.user+'</div><div><b>'+esc(t("prGuest"))+'</b>'+(window.TilawaEarly&&TilawaEarly.isEarly()?'<span class="ea-tag">✦ '+esc(t("eaBadge"))+'</span>':'')+'<span>'+esc(t("prSignedOut"))+'</span></div></div>'+signHTML(true)+'</div>';
   }
   pf.innerHTML='<div class="pf-head"><b>'+esc(t("profile"))+'</b><button class="iconbtn" data-act="pfclose" aria-label="Close">'+I.x+'</button></div>'+
     '<div class="pf-body">'+top+
@@ -128,6 +128,7 @@ function renderPf(){
       row("bookmarks",I.bookmark,t("bookmarks"),'<span class="val">'+P.bookmarks+'</span>'+chev)+
       row("favs",I.heart,t("favorites"),'<span class="val">'+P.favs+'</span>'+chev)+
       row("sheikh",I.chat,t("shTitle"),chev)+
+      (window.TilawaEarly&&TilawaEarly.isEarly()?row("skin",I.star.replace(/width="38" height="38"/,'width="20" height="20"'),t("eaSkin"),'<span class="switch'+(TilawaEarly.skinOn()?" on":"")+'" role="switch" aria-checked="'+TilawaEarly.skinOn()+'"></span>'):'')+
     '</div>'+
     (u?'<div class="pf-list"><button class="pf-row danger" data-act="signout">'+esc(t("signOut"))+'</button></div>':'')+
     '<p class="pf-about"><b>'+esc(t("prAbout"))+'</b><br>'+esc(t("prAboutText"))+'</p></div>';
@@ -157,6 +158,7 @@ function onAct(e){
   if(a==="pfclose"){closePf();return}
   if(a==="lang"){openLp(false);return}
   if(a==="theme"){T.toggleTheme();renderPf();return}
+  if(a==="skin"){TilawaEarly.setSkin(!TilawaEarly.skinOn());renderPf();return}
   if(a==="bookmarks"){closePf();T.showBookmarks();return}
   if(a==="favs"){closePf();T.showFavs();return}
   if(a==="sheikh"){closePf();var sb=document.getElementById("sheikhBtn");if(sb)sb.click();return}
